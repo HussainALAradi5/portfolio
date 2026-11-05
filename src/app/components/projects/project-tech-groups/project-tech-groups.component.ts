@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, computed, input } from '@angular/co
 import { HlmBadge } from '@spartan-ng/helm/badge';
 import { TECH_LAYER_LABELS, TECH_LAYER_ORDER } from '../../../constants/projects/project-labels.constants';
 import { ProjectTech } from '../../../interfaces/projects/project-tech.interface';
-import { groupTechByLayer } from '../../../utilities/projects/project.utility';
+import { groupTechByLayer } from '../../../utilities/projects/tech/group-tech-by-layer.utility';
 
 @Component({
   selector: 'app-project-tech-groups',

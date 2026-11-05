@@ -1,3 +1,4 @@
+import { BadgeVariants } from '@spartan-ng/helm/badge';
 import { ProjectStatus } from '../../enums/projects/project-status.enum';
 import { RepositoryRole } from '../../enums/projects/repository-role.enum';
 import { TechLayer } from '../../enums/projects/tech-layer.enum';
@@ -34,5 +35,9 @@ export const PROJECT_STATUS_LABELS: Record<ProjectStatus, string> = {
   [ProjectStatus.Completed]: 'Completed',
 };
 
-/** Number of stack badges shown on a project card before the "+n" badge. */
-export const CARD_TECH_LIMIT = 5;
+/** Badge style per status, shared by the card and the detail page. */
+export const PROJECT_STATUS_BADGE_VARIANTS: Record<ProjectStatus, BadgeVariants['variant']> = {
+  [ProjectStatus.Live]: 'default',
+  [ProjectStatus.InProgress]: 'outline',
+  [ProjectStatus.Completed]: 'secondary',
+};

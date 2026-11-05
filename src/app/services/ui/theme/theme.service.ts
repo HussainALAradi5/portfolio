@@ -1,7 +1,7 @@
 import { DOCUMENT } from '@angular/common';
 import { Injectable, effect, inject, signal } from '@angular/core';
-import { DARK_SCHEME_QUERY, DARK_THEME_CLASS, THEME_STORAGE_KEY } from '../../constants/ui/theme.constants';
-import { ThemeMode } from '../../enums/ui/theme-mode.enum';
+import { DARK_SCHEME_QUERY, DARK_THEME_CLASS, THEME_STORAGE_KEY } from '../../../constants/ui/theme.constants';
+import { ThemeMode } from '../../../enums/ui/theme-mode.enum';
 
 @Injectable({ providedIn: 'root' })
 export class ThemeService {

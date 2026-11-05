@@ -10,10 +10,13 @@ import { ProjectRepositoryListComponent } from '../../../components/projects/pro
 import { ProjectTechGroupsComponent } from '../../../components/projects/project-tech-groups/project-tech-groups.component';
 import { ProjectCoverComponent } from '../../../components/projects/project-cover/project-cover.component';
 import { UI_TEXT } from '../../../constants/common/ui-text.constants';
-import { PROJECT_STATUS_LABELS } from '../../../constants/projects/project-labels.constants';
+import {
+  PROJECT_STATUS_BADGE_VARIANTS,
+  PROJECT_STATUS_LABELS,
+} from '../../../constants/projects/project-labels.constants';
 import { ROUTE_PATHS } from '../../../constants/routes/route-paths.constants';
 import { ICON } from '../../../constants/ui/icons.constants';
-import { ProjectService } from '../../../services/projects/project.service';
+import { ProjectService } from '../../../services/projects/project/project.service';
 
 @Component({
   selector: 'app-project-detail-page',
@@ -42,6 +45,7 @@ export class ProjectDetailPageComponent {
   protected readonly text = UI_TEXT;
   protected readonly icon = ICON;
   protected readonly statusLabels = PROJECT_STATUS_LABELS;
+  protected readonly statusVariants = PROJECT_STATUS_BADGE_VARIANTS;
   protected readonly homePath = `/${ROUTE_PATHS.home}`;
   protected readonly projectsFragment = ROUTE_PATHS.projectsAnchor;
   protected readonly projectsPath = `/${ROUTE_PATHS.projects}`;

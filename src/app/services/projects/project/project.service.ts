@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { PROJECTS } from '../../constants/projects/projects.constants';
-import { ProjectFilter } from '../../enums/projects/project-filter.enum';
-import { ProjectNeighbours } from '../../interfaces/projects/project-neighbours.interface';
-import { Project } from '../../interfaces/projects/project.interface';
-import { filterProjects, findProjectNeighbours } from '../../utilities/projects/project.utility';
+import { PROJECTS } from '../../../constants/projects/projects.constants';
+import { ProjectTier } from '../../../enums/projects/project-tier.enum';
+import { ProjectNeighbours } from '../../../interfaces/projects/project-neighbours.interface';
+import { Project } from '../../../interfaces/projects/project.interface';
+import { filterProjectsByTier } from '../../../utilities/projects/filter/filter-projects-by-tier.utility';
+import { findProjectNeighbours } from '../../../utilities/projects/neighbours/find-project-neighbours.utility';
 
 /**
  * Read access to the portfolio projects. The data is static, so this is the
@@ -18,8 +19,8 @@ export class ProjectService {
     return this.projects;
   }
 
-  findByFilter(filter: ProjectFilter): readonly Project[] {
-    return filterProjects(this.projects, filter);
+  findByTier(tier?: ProjectTier): readonly Project[] {
+    return filterProjectsByTier(this.projects, tier);
   }
 
   findBySlug(slug: string): Project | undefined {

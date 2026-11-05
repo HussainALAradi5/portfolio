@@ -5,10 +5,13 @@ import { HlmBadge } from '@spartan-ng/helm/badge';
 import { HlmButton } from '@spartan-ng/helm/button';
 import { HlmCardImports } from '@spartan-ng/helm/card';
 import { UI_TEXT } from '../../../constants/common/ui-text.constants';
-import { CARD_TECH_LIMIT, PROJECT_STATUS_LABELS } from '../../../constants/projects/project-labels.constants';
+import { CARD_TECH_LIMIT } from '../../../constants/projects/project-display.constants';
+import {
+  PROJECT_STATUS_BADGE_VARIANTS,
+  PROJECT_STATUS_LABELS,
+} from '../../../constants/projects/project-labels.constants';
 import { ROUTE_PATHS } from '../../../constants/routes/route-paths.constants';
 import { ICON } from '../../../constants/ui/icons.constants';
-import { ProjectStatus } from '../../../enums/projects/project-status.enum';
 import { Project } from '../../../interfaces/projects/project.interface';
 import { ProjectCoverComponent } from '../project-cover/project-cover.component';
 
@@ -26,7 +29,7 @@ export class ProjectCardComponent {
   protected readonly text = UI_TEXT;
   protected readonly icon = ICON;
   protected readonly statusLabels = PROJECT_STATUS_LABELS;
-  protected readonly liveStatus = ProjectStatus.Live;
+  protected readonly statusVariants = PROJECT_STATUS_BADGE_VARIANTS;
 
   protected readonly detailLink = computed(() => ['/', ROUTE_PATHS.projects, this.project().slug]);
   protected readonly visibleTech = computed(() => this.project().tech.slice(0, CARD_TECH_LIMIT));

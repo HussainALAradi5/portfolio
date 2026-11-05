@@ -9,7 +9,7 @@
         <ng-icon [name]="project().icon" />
         {{ project().domain }}
       </span>
-      <span hlmBadge [variant]="project().status === liveStatus ? 'default' : 'outline'">
+      <span hlmBadge [variant]="statusVariants[project().status]">
         {{ statusLabels[project().status] }}
       </span>
       <span class="ms-auto text-xs text-muted-foreground">{{ project().period }}</span>

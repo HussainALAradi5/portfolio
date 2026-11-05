@@ -12,7 +12,7 @@
             <ng-icon [name]="project.icon" />
             {{ project.domain }}
           </span>
-          <span hlmBadge variant="outline">{{ statusLabels[project.status] }}</span>
+          <span hlmBadge [variant]="statusVariants[project.status]">{{ statusLabels[project.status] }}</span>
           <span class="text-sm text-muted-foreground">{{ project.period }}</span>
         </div>
         <h1 class="text-4xl font-bold tracking-tight sm:text-5xl">{{ project.name }}</h1>

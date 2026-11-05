@@ -12,9 +12,9 @@
         <span class="hidden text-xs text-muted-foreground sm:inline">{{ repo.stack }}</span>
       </ng-template>
 
-      @if (repo.url) {
+      @if (repositoryUrl(repo); as url) {
         <a
-          [href]="repo.url"
+          [href]="url"
           target="_blank"
           rel="noopener"
           class="flex items-center gap-3 p-3 transition-colors hover:bg-muted/50"
