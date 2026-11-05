@@ -14,7 +14,7 @@ export const FUN_TRAVELS_TOUR_PROJECT: Project = {
   domain: 'Travel',
   icon: 'lucidePlane',
   tier: ProjectTier.Flagship,
-  status: ProjectStatus.Completed,
+  status: ProjectStatus.Live,
   period: '2026',
   summary:
     'Travel agencies publish tours with their own vehicles, seats and meals. Customers browse the catalog, book seats, pay from a wallet ' +
@@ -26,6 +26,7 @@ export const FUN_TRAVELS_TOUR_PROJECT: Project = {
     'Live notifications over WebSocket and support requests with replies.',
     'Branded PDF and Excel reports generated on the server.',
     'Client DTO mirrors generated from the server source; CI runs tests, type-check, lint and build for each repository.',
+    'Live demo: the web app on Vercel, the API on Render and the database on Neon, seeded with bookable demo tours.',
   ],
   tech: [
     { layer: TechLayer.Frontend, name: 'Next.js 16' },
@@ -61,7 +62,10 @@ export const FUN_TRAVELS_TOUR_PROJECT: Project = {
       stack: 'Markdown',
     },
   ],
-  links: [],
+  links: [
+    { label: 'Open web app', url: 'https://fun-travels-tour-client.vercel.app' },
+    { label: 'API', url: 'https://fun-travels-tour-api.onrender.com/api/v1/tours/catalog' },
+  ],
   screenshots: [
     { src: `${IMAGES}/home.webp`, caption: 'Public home page' },
     { src: `${IMAGES}/tours.webp`, caption: 'Tour catalog' },
