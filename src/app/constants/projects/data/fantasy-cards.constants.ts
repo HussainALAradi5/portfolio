@@ -3,7 +3,7 @@ import { ProjectTier } from '../../../enums/projects/project-tier.enum';
 import { RepositoryRole } from '../../../enums/projects/repository-role.enum';
 import { TechLayer } from '../../../enums/projects/tech-layer.enum';
 import { Project } from '../../../interfaces/projects/project.interface';
-import { GITHUB_BASE_URL, PROJECT_IMAGE_BASE } from '../project-paths.constants';
+import { PROJECT_IMAGE_BASE } from '../project-paths.constants';
 
 const IMAGES = `${PROJECT_IMAGE_BASE}/fantasy-cards`;
 
@@ -31,12 +31,12 @@ export const FANTASY_CARDS_PROJECT: Project = {
     { layer: TechLayer.Frontend, name: 'CSS' },
   ],
   repositories: [
-    { role: RepositoryRole.Application, name: 'Fantasy_Cards', stack: 'React', url: `${GITHUB_BASE_URL}/Fantasy_Cards` },
+    { role: RepositoryRole.Application, name: 'Fantasy_Cards', stack: 'React' },
   ],
   links: [{ label: 'Play the game', url: 'https://fantasy_cards.surge.sh/' }],
   screenshots: [
-    { src: `${IMAGES}/intro.png`, caption: 'Intro screen' },
-    { src: `${IMAGES}/easy.png`, caption: 'Easy mode' },
-    { src: `${IMAGES}/normal.png`, caption: 'Normal mode' },
+    { src: `${IMAGES}/intro.webp`, caption: 'Intro screen' },
+    { src: `${IMAGES}/easy.webp`, caption: 'Easy mode' },
+    { src: `${IMAGES}/normal.webp`, caption: 'Normal mode' },
   ],
 };

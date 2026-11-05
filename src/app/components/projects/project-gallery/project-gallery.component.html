@@ -19,7 +19,7 @@
           [class.opacity-60]="index !== selectedIndex()"
           (click)="select(index)"
         >
-          <img [src]="thumb.src" [alt]="thumb.caption" loading="lazy" decoding="async" class="aspect-video w-full object-cover object-top" />
+          <img [src]="thumbnailSrc(thumb.src)" [alt]="thumb.caption" loading="lazy" decoding="async" class="aspect-video w-full object-cover object-top" />
         </button>
       }
     </div>

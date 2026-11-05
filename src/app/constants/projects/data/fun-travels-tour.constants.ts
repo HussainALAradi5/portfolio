@@ -3,7 +3,7 @@ import { ProjectTier } from '../../../enums/projects/project-tier.enum';
 import { RepositoryRole } from '../../../enums/projects/repository-role.enum';
 import { TechLayer } from '../../../enums/projects/tech-layer.enum';
 import { Project } from '../../../interfaces/projects/project.interface';
-import { GITHUB_BASE_URL, PROJECT_IMAGE_BASE } from '../project-paths.constants';
+import { PROJECT_IMAGE_BASE } from '../project-paths.constants';
 
 const IMAGES = `${PROJECT_IMAGE_BASE}/fun-travels-tour`;
 
@@ -48,27 +48,24 @@ export const FUN_TRAVELS_TOUR_PROJECT: Project = {
       role: RepositoryRole.Server,
       name: 'fun-travels-tour-server',
       stack: 'Spring Boot',
-      url: `${GITHUB_BASE_URL}/fun-travels-tour-server`,
     },
     {
       role: RepositoryRole.Client,
       name: 'fun-travels-tour-client',
       stack: 'Next.js',
-      url: `${GITHUB_BASE_URL}/fun-travels-tour-client`,
     },
-    { role: RepositoryRole.Mobile, name: 'fun-travels-tour-mobile', stack: 'Expo' },
+    { role: RepositoryRole.Mobile, name: 'fun-travels-tour-mobile', stack: 'Expo', isPrivate: true },
     {
       role: RepositoryRole.Documentation,
       name: 'fun-travels-tour-document',
       stack: 'Markdown',
-      url: `${GITHUB_BASE_URL}/fun-travels-tour-document`,
     },
   ],
   links: [],
   screenshots: [
-    { src: `${IMAGES}/home.png`, caption: 'Public home page' },
-    { src: `${IMAGES}/tours.png`, caption: 'Tour catalog' },
-    { src: `${IMAGES}/admin-tours.png`, caption: 'Tour inventory management' },
-    { src: `${IMAGES}/ledger.png`, caption: 'Transaction ledger' },
+    { src: `${IMAGES}/home.webp`, caption: 'Public home page' },
+    { src: `${IMAGES}/tours.webp`, caption: 'Tour catalog' },
+    { src: `${IMAGES}/admin-tours.webp`, caption: 'Tour inventory management' },
+    { src: `${IMAGES}/ledger.webp`, caption: 'Transaction ledger' },
   ],
 };

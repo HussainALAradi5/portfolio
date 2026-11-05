@@ -1,7 +1,7 @@
 <div class="relative aspect-[16/10] overflow-hidden bg-muted">
   @if (cover(); as shot) {
     <img
-      [src]="shot.src"
+      [src]="coverSrc()"
       [alt]="shot.caption"
       [attr.loading]="eager() ? 'eager' : 'lazy'"
       decoding="async"

@@ -3,7 +3,6 @@ import { ProjectTier } from '../../../enums/projects/project-tier.enum';
 import { RepositoryRole } from '../../../enums/projects/repository-role.enum';
 import { TechLayer } from '../../../enums/projects/tech-layer.enum';
 import { Project } from '../../../interfaces/projects/project.interface';
-import { GITHUB_BASE_URL } from '../project-paths.constants';
 
 export const CARE_TRACK_PROJECT: Project = {
   slug: 'care-track',
@@ -43,15 +42,14 @@ export const CARE_TRACK_PROJECT: Project = {
     { layer: TechLayer.Security, name: 'Spring Security' },
   ],
   repositories: [
-    { role: RepositoryRole.Server, name: 'care_track_server_side', stack: 'Spring Boot' },
-    { role: RepositoryRole.Client, name: 'care_track_client_side', stack: 'Angular' },
+    { role: RepositoryRole.Server, name: 'care_track_server_side', stack: 'Spring Boot', isPrivate: true },
+    { role: RepositoryRole.Client, name: 'care_track_client_side', stack: 'Angular', isPrivate: true },
     {
       role: RepositoryRole.Mobile,
       name: 'care_track_client_mobile',
       stack: 'Flutter',
-      url: `${GITHUB_BASE_URL}/care_track_client_mobile`,
     },
-    { role: RepositoryRole.Documentation, name: 'caretrack-docs', stack: 'Markdown' },
+    { role: RepositoryRole.Documentation, name: 'caretrack-docs', stack: 'Markdown', isPrivate: true },
   ],
   links: [],
   screenshots: [],

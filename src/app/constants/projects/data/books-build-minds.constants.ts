@@ -3,7 +3,7 @@ import { ProjectTier } from '../../../enums/projects/project-tier.enum';
 import { RepositoryRole } from '../../../enums/projects/repository-role.enum';
 import { TechLayer } from '../../../enums/projects/tech-layer.enum';
 import { Project } from '../../../interfaces/projects/project.interface';
-import { GITHUB_BASE_URL, PROJECT_IMAGE_BASE } from '../project-paths.constants';
+import { PROJECT_IMAGE_BASE } from '../project-paths.constants';
 
 const IMAGES = `${PROJECT_IMAGE_BASE}/books-build-minds`;
 
@@ -46,32 +46,28 @@ export const BOOKS_BUILD_MINDS_PROJECT: Project = {
       role: RepositoryRole.Server,
       name: 'books_build_minds_server',
       stack: 'Flask',
-      url: `${GITHUB_BASE_URL}/books_build_minds_server`,
     },
     {
       role: RepositoryRole.Client,
       name: 'books_build_minds_client_side',
       stack: 'Next.js',
-      url: `${GITHUB_BASE_URL}/books_build_minds_client_side`,
     },
     {
       role: RepositoryRole.Mobile,
       name: 'books_build_minds_mobile',
       stack: 'Flutter',
-      url: `${GITHUB_BASE_URL}/books_build_minds_mobile`,
     },
     {
       role: RepositoryRole.Documentation,
       name: 'books_build_minds_documentation',
       stack: 'Markdown',
-      url: `${GITHUB_BASE_URL}/books_build_minds_documentation`,
     },
   ],
   links: [],
   screenshots: [
-    { src: `${IMAGES}/catalog.png`, caption: 'Book catalog' },
-    { src: `${IMAGES}/book.png`, caption: 'Book details' },
-    { src: `${IMAGES}/inventory.png`, caption: 'Administrator inventory' },
-    { src: `${IMAGES}/catalog-dark.png`, caption: 'Catalog in dark mode' },
+    { src: `${IMAGES}/catalog.webp`, caption: 'Book catalog' },
+    { src: `${IMAGES}/book.webp`, caption: 'Book details' },
+    { src: `${IMAGES}/inventory.webp`, caption: 'Administrator inventory' },
+    { src: `${IMAGES}/catalog-dark.webp`, caption: 'Catalog in dark mode' },
   ],
 };

@@ -3,7 +3,7 @@ import { ProjectTier } from '../../../enums/projects/project-tier.enum';
 import { RepositoryRole } from '../../../enums/projects/repository-role.enum';
 import { TechLayer } from '../../../enums/projects/tech-layer.enum';
 import { Project } from '../../../interfaces/projects/project.interface';
-import { GITHUB_BASE_URL, PROJECT_IMAGE_BASE } from '../project-paths.constants';
+import { PROJECT_IMAGE_BASE } from '../project-paths.constants';
 
 const IMAGES = `${PROJECT_IMAGE_BASE}/task-flow-proto`;
 
@@ -43,26 +43,23 @@ export const TASK_FLOW_PROTO_PROJECT: Project = {
       role: RepositoryRole.Server,
       name: 'task-flow-proto-server-side',
       stack: 'Express',
-      url: `${GITHUB_BASE_URL}/task-flow-proto-server-side`,
     },
     {
       role: RepositoryRole.Client,
       name: 'task-flow-proto-client-side',
       stack: 'Angular',
-      url: `${GITHUB_BASE_URL}/task-flow-proto-client-side`,
     },
     {
       role: RepositoryRole.Documentation,
       name: 'task-flow-proto-documenation',
       stack: 'Markdown',
-      url: `${GITHUB_BASE_URL}/task-flow-proto-documenation`,
     },
   ],
   links: [{ label: 'Open live demo', url: 'https://taskflow-proto-client.onrender.com' }],
   screenshots: [
-    { src: `${IMAGES}/board.png`, caption: 'Project board' },
-    { src: `${IMAGES}/task-details.png`, caption: 'Task details' },
-    { src: `${IMAGES}/dashboard.png`, caption: 'Admin dashboard' },
-    { src: `${IMAGES}/discussion.png`, caption: 'Card discussion' },
+    { src: `${IMAGES}/board.webp`, caption: 'Project board' },
+    { src: `${IMAGES}/task-details.webp`, caption: 'Task details' },
+    { src: `${IMAGES}/dashboard.webp`, caption: 'Admin dashboard' },
+    { src: `${IMAGES}/discussion.webp`, caption: 'Card discussion' },
   ],
 };
