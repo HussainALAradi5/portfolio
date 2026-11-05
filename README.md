@@ -51,10 +51,16 @@ public/images/projects/     screenshots per project
 
 Repositories without a `url` are shown as private.
 
-## Deploy (Render, free static site)
+## Deploy
 
-`render.yaml` describes a static site: it runs `npm ci && npm run build`, serves `dist/portfolio/browser`, and rewrites every path to `index.html` so deep links work.
+### GitHub Pages (live site)
 
-1. Push this repository to GitHub.
-2. In the Render dashboard choose **New → Blueprint**, connect this repository and apply.
-3. Each push to `master` redeploys the site.
+Live at **https://hussainalaradi5.github.io/portfolio/**.
+
+`.github/workflows/deploy.yml` runs on every push to `master` (or by hand from the Actions tab): it installs, runs the unit tests, builds with `--base-href /portfolio/`, copies `index.html` to `404.html` so deep links load the app, and deploys to Pages. A failing test stops the deploy.
+
+One-time setup: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
+
+### Render (alternative)
+
+`render.yaml` describes a Render static site at the domain root: it runs `npm ci && npm run build`, serves `dist/portfolio/browser`, and rewrites every path to `index.html`. In the Render dashboard choose **New → Blueprint** and connect this repository; each push to `master` redeploys.
