@@ -4,6 +4,7 @@ export const UI_TEXT = {
     projects: 'Projects',
     github: 'GitHub profile',
     toggleTheme: 'Toggle colour theme',
+    loading: 'Loading page',
   },
   hero: {
     eyebrow: 'Portfolio',
