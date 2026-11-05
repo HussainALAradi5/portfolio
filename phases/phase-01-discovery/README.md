@@ -29,7 +29,8 @@ Decide which projects the portfolio shows and collect accurate facts, links and 
 | --- | --- | --- |
 | Public repositories | `curl https://api.github.com/users/HussainALAradi5/repos` and the signed-in repository list | 5 repositories private, the rest public, on 2026-11-05 |
 | Live demos | `curl -w "%{http_code}"` on each demo URL | e-Clinic, TaskFlow, Fantasy Cards: 200 on 2026-11-05 |
-| CareTrack demo | Render dashboard and `curl` on the `render.yaml` example hosts | Not deployed on 2026-11-05 |
+| CareTrack demo | Render dashboard and `curl` on the `render.yaml` example hosts | Not deployed on 2026-11-06 |
+| Fun Travels Tour demo | `curl` on the Vercel web app and the Render API catalog | Both 200 on 2026-11-06 |
 
 ## Risks and open questions
 - CareTrack has a Render Blueprint but no deployment. When it is deployed, add its link and set its status to Live.
