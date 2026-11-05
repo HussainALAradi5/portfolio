@@ -1,59 +1,60 @@
 # Portfolio
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.4.
+Personal portfolio of Hussain Al Aradi, built with **Angular 21**, **Spartan UI** (helm components on `@spartan-ng/brain`) and **Tailwind CSS 4**. It presents seven projects with screenshots, tech stack, repositories and live demo links, in light and dark themes.
 
-## Development server
+| Project | Stack |
+| --- | --- |
+| CareTrack | Spring Boot 4, Angular 21, Flutter, PostgreSQL, Keycloak |
+| e-Clinic | Laravel 12, Angular 21, Flutter, PostgreSQL, Redis |
+| Fun Travels Tour | Spring Boot 3.5, Next.js 16, Expo, PostgreSQL |
+| Books Build Minds | Flask, Next.js 16, Flutter, PostgreSQL |
+| TaskFlow | Express 5, Angular 21, MongoDB |
+| Fantasy Cards | React |
+| Videos Waves | React, Chakra UI, Node.js, MongoDB |
 
-To start a local development server, run:
-
-```bash
-ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Run locally
 
 ```bash
-ng generate component component-name
+npm ci
+npm start          # http://localhost:4200
+npm test -- --watch=false
+npm run build      # output: dist/portfolio/browser
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Layout (layer-first)
 
-```bash
-ng generate --help
+```text
+src/app/
+├── config/site/            owner profile and social links
+├── constants/
+│   ├── common/             UI text
+│   ├── projects/           project data (one file per project in data/), labels, filters
+│   ├── routes/             route paths
+│   └── ui/                 icons, theme keys
+├── enums/                  projects (tier, status, repository role, tech layer), ui (theme)
+├── interfaces/             projects, site (one per file)
+├── services/               projects (ProjectService), ui (ThemeService)
+├── middlewares/guards/     projects (unknown slugs go to 404)
+├── utilities/projects/     filtering, grouping, counts (+ spec)
+├── components/             layout, common, home, projects
+└── pages/                  home, projects (detail), system (404)
+libs/ui/                    Spartan helm components (button, card, badge, separator, tabs, tooltip)
+public/images/projects/     screenshots per project
 ```
 
-## Building
+### Add or change a project
 
-To build the project run:
+1. Add screenshots under `public/images/projects/<slug>/`.
+2. Create `src/app/constants/projects/data/<slug>.constants.ts` following an existing file.
+3. Add it to `PROJECTS` in `src/app/constants/projects/projects.constants.ts` (array order is display order).
+4. If it uses a new Lucide icon, register it in `src/app/constants/ui/icons.constants.ts`.
 
-```bash
-ng build
-```
+Repositories without a `url` are shown as private.
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## Deploy (Render, free static site)
 
-## Running unit tests
+`render.yaml` describes a static site: it runs `npm ci && npm run build`, serves `dist/portfolio/browser`, and rewrites every path to `index.html` so deep links work.
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+1. Push this repository to GitHub.
+2. In the Render dashboard choose **New → Blueprint**, connect this repository and apply.
+3. Each push to `master` redeploys the site.

@@ -1,0 +1,33 @@
+<ul class="divide-y rounded-xl border">
+  @for (repo of repositories(); track repo.name) {
+    <li>
+      <ng-template #row>
+        <span class="grid size-9 shrink-0 place-items-center rounded-lg bg-muted text-muted-foreground">
+          <ng-icon [name]="roleMeta[repo.role].icon" />
+        </span>
+        <span class="min-w-0 flex-1">
+          <span class="block text-sm font-medium">{{ roleMeta[repo.role].label }}</span>
+          <span class="block truncate font-mono text-xs text-muted-foreground">{{ repo.name }}</span>
+        </span>
+        <span class="hidden text-xs text-muted-foreground sm:inline">{{ repo.stack }}</span>
+      </ng-template>
+
+      @if (repo.url) {
+        <a
+          [href]="repo.url"
+          target="_blank"
+          rel="noopener"
+          class="flex items-center gap-3 p-3 transition-colors hover:bg-muted/50"
+        >
+          <ng-container [ngTemplateOutlet]="row" />
+          <ng-icon [name]="icon.externalLink" class="text-muted-foreground" />
+        </a>
+      } @else {
+        <div class="flex items-center gap-3 p-3" [attr.title]="text.detail.privateRepository">
+          <ng-container [ngTemplateOutlet]="row" />
+          <span class="text-xs text-muted-foreground">{{ text.detail.privateRepository }}</span>
+        </div>
+      }
+    </li>
+  }
+</ul>

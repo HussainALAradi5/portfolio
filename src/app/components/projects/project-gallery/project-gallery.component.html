@@ -1,0 +1,27 @@
+@if (selected(); as shot) {
+  <figure class="space-y-3">
+    <a [href]="shot.src" target="_blank" rel="noopener" class="block overflow-hidden rounded-xl border bg-muted">
+      <img [src]="shot.src" [alt]="shot.caption" decoding="async" class="max-h-[70vh] w-full object-contain" />
+    </a>
+    <figcaption class="text-center text-sm text-muted-foreground">{{ shot.caption }}</figcaption>
+  </figure>
+
+  @if (screenshots().length > 1) {
+    <div class="mt-4 grid grid-cols-3 gap-3 sm:grid-cols-5">
+      @for (thumb of screenshots(); track thumb.src; let index = $index) {
+        <button
+          type="button"
+          [attr.aria-pressed]="index === selectedIndex()"
+          [attr.aria-label]="thumb.caption"
+          class="overflow-hidden rounded-lg border-2 transition-all hover:opacity-100 focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none"
+          [class.border-primary]="index === selectedIndex()"
+          [class.border-transparent]="index !== selectedIndex()"
+          [class.opacity-60]="index !== selectedIndex()"
+          (click)="select(index)"
+        >
+          <img [src]="thumb.src" [alt]="thumb.caption" loading="lazy" decoding="async" class="aspect-video w-full object-cover object-top" />
+        </button>
+      }
+    </div>
+  }
+}

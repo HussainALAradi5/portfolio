@@ -1,0 +1,46 @@
+<article hlmCard class="group/card h-full gap-0 overflow-hidden py-0 transition-shadow hover:shadow-lg">
+  <a [routerLink]="detailLink()" class="block" [attr.aria-label]="project().name">
+    <app-project-cover [project]="project()" [eager]="eager()" />
+  </a>
+
+  <div hlmCardHeader class="gap-2 pt-5">
+    <div class="flex flex-wrap items-center gap-2">
+      <span hlmBadge variant="secondary">
+        <ng-icon [name]="project().icon" />
+        {{ project().domain }}
+      </span>
+      <span hlmBadge [variant]="project().status === liveStatus ? 'default' : 'outline'">
+        {{ statusLabels[project().status] }}
+      </span>
+      <span class="ms-auto text-xs text-muted-foreground">{{ project().period }}</span>
+    </div>
+    <h3 hlmCardTitle class="text-lg">
+      <a [routerLink]="detailLink()" class="hover:underline underline-offset-4">{{ project().name }}</a>
+    </h3>
+    <p hlmCardDescription>{{ project().tagline }}</p>
+  </div>
+
+  <div hlmCardContent class="flex flex-1 flex-col gap-4 pt-3">
+    <p class="line-clamp-3 text-sm text-muted-foreground">{{ project().summary }}</p>
+    <div class="mt-auto flex flex-wrap gap-1.5">
+      @for (tech of visibleTech(); track tech.name) {
+        <span hlmBadge variant="outline">{{ tech.name }}</span>
+      }
+      @if (hiddenTechCount() > 0) {
+        <span hlmBadge variant="ghost">+{{ hiddenTechCount() }}</span>
+      }
+    </div>
+  </div>
+
+  <div hlmCardFooter class="mt-5 justify-between gap-2 border-t py-4">
+    <span class="flex items-center gap-1.5 text-xs text-muted-foreground">
+      <ng-icon [name]="icon.repository" />
+      {{ repositoryCount() }}
+      {{ repositoryCount() === 1 ? text.projects.repository : text.projects.repositories }}
+    </span>
+    <a hlmBtn variant="ghost" size="sm" [routerLink]="detailLink()">
+      {{ text.projects.viewDetails }}
+      <ng-icon [name]="icon.arrowRight" data-icon="inline-end" />
+    </a>
+  </div>
+</article>

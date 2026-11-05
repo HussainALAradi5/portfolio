@@ -1,0 +1,12 @@
+<dl class="space-y-4">
+  @for (group of groups(); track group.layer) {
+    <div class="space-y-2">
+      <dt class="text-xs font-medium uppercase tracking-wide text-muted-foreground">{{ labels[group.layer] }}</dt>
+      <dd class="flex flex-wrap gap-1.5">
+        @for (item of group.items; track item) {
+          <span hlmBadge variant="secondary">{{ item }}</span>
+        }
+      </dd>
+    </div>
+  }
+</dl>

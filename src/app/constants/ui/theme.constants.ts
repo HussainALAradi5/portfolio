@@ -1,0 +1,3 @@
+export const THEME_STORAGE_KEY = 'portfolio-theme';
+export const DARK_THEME_CLASS = 'dark';
+export const DARK_SCHEME_QUERY = '(prefers-color-scheme: dark)';

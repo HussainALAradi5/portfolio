@@ -2,10 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Portfolio</title>
+  <title>Hussain Al Aradi — Projects</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Portfolio of Hussain Al Aradi, full-stack developer: CareTrack, e-Clinic, Fun Travels Tour, Books Build Minds, TaskFlow and more.">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script>
+    try {
+      var t = localStorage.getItem('portfolio-theme');
+      if (t === 'dark' || (!t && matchMedia('(prefers-color-scheme: dark)').matches)) document.documentElement.classList.add('dark');
+    } catch (e) {}
+  </script>
 </head>
 <body>
   <app-root></app-root>

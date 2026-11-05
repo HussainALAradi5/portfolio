@@ -1,0 +1,34 @@
+<section class="hero relative overflow-hidden">
+  <div class="mx-auto grid max-w-6xl gap-12 px-4 pt-16 pb-12 sm:px-6 sm:pt-24 lg:grid-cols-[1.4fr_1fr] lg:items-end">
+    <div class="space-y-6">
+      <p class="text-sm font-medium uppercase tracking-[0.2em] text-muted-foreground">{{ text.hero.eyebrow }}</p>
+      <h1 class="text-4xl font-bold tracking-tight text-balance sm:text-5xl lg:text-6xl">
+        {{ text.hero.greeting }} <span class="hero-name">{{ profile.name }}</span>
+      </h1>
+      <p class="text-xl font-medium text-foreground/80">{{ profile.role }}</p>
+      <p class="max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">{{ profile.intro }}</p>
+
+      <div class="flex flex-wrap items-center gap-2 pt-2">
+        <a hlmBtn size="lg" routerLink="/" [fragment]="projectsFragment">
+          {{ text.hero.viewProjects }}
+          <ng-icon [name]="icon.arrowRight" data-icon="inline-end" />
+        </a>
+        @for (link of profile.socialLinks; track link.url) {
+          <a hlmBtn variant="outline" size="lg" [href]="link.url" target="_blank" rel="noopener">
+            <ng-icon [name]="link.icon" data-icon="inline-start" />
+            {{ link.label }}
+          </a>
+        }
+      </div>
+    </div>
+
+    <dl class="grid grid-cols-3 gap-3">
+      @for (stat of stats(); track stat.label) {
+        <div class="rounded-xl border bg-card/60 p-4 text-center backdrop-blur">
+          <dd class="text-3xl font-bold tracking-tight sm:text-4xl">{{ stat.value }}</dd>
+          <dt class="mt-1 text-xs text-muted-foreground sm:text-sm">{{ stat.label }}</dt>
+        </div>
+      }
+    </dl>
+  </div>
+</section>

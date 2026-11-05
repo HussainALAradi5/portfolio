@@ -1,0 +1,38 @@
+<header class="sticky top-0 z-40 border-b bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+  <div class="mx-auto flex h-14 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
+    <a [routerLink]="homePath" class="flex items-center gap-2 font-semibold tracking-tight">
+      <span class="grid size-8 place-items-center rounded-lg bg-primary text-xs font-bold text-primary-foreground">
+        {{ text.brand }}
+      </span>
+      <span class="hidden sm:inline">{{ profile.name }}</span>
+    </a>
+
+    <nav class="flex items-center gap-1">
+      <a hlmBtn variant="ghost" size="sm" [routerLink]="homePath" [fragment]="projectsFragment">
+        {{ text.nav.projects }}
+      </a>
+      <a
+        hlmBtn
+        variant="ghost"
+        size="icon-sm"
+        [href]="profile.githubUrl"
+        target="_blank"
+        rel="noopener"
+        [attr.aria-label]="text.nav.github"
+      >
+        <ng-icon [name]="icon.github" />
+      </a>
+      <button
+        hlmBtn
+        variant="ghost"
+        size="icon-sm"
+        type="button"
+        [hlmTooltip]="text.nav.toggleTheme"
+        [attr.aria-label]="text.nav.toggleTheme"
+        (click)="toggleTheme()"
+      >
+        <ng-icon [name]="themeIcon()" />
+      </button>
+    </nav>
+  </div>
+</header>

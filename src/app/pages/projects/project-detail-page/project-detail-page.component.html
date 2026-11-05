@@ -1,0 +1,116 @@
+@if (project(); as project) {
+  <article class="mx-auto max-w-6xl px-4 pt-8 sm:px-6">
+    <a hlmBtn variant="ghost" size="sm" class="-ms-2" [routerLink]="homePath" [fragment]="projectsFragment">
+      <ng-icon [name]="icon.arrowLeft" data-icon="inline-start" />
+      {{ text.detail.back }}
+    </a>
+
+    <header class="mt-6 grid gap-8 lg:grid-cols-[1.2fr_1fr] lg:items-center">
+      <div class="space-y-4">
+        <div class="flex flex-wrap items-center gap-2">
+          <span hlmBadge variant="secondary">
+            <ng-icon [name]="project.icon" />
+            {{ project.domain }}
+          </span>
+          <span hlmBadge variant="outline">{{ statusLabels[project.status] }}</span>
+          <span class="text-sm text-muted-foreground">{{ project.period }}</span>
+        </div>
+        <h1 class="text-4xl font-bold tracking-tight sm:text-5xl">{{ project.name }}</h1>
+        <p class="text-xl text-muted-foreground">{{ project.tagline }}</p>
+
+        @if (project.links.length) {
+          <div class="flex flex-wrap gap-2 pt-2">
+            @for (link of project.links; track link.url; let first = $first) {
+              <a hlmBtn [variant]="first ? 'default' : 'outline'" [href]="link.url" target="_blank" rel="noopener">
+                {{ link.label }}
+                <ng-icon [name]="icon.externalLink" data-icon="inline-end" />
+              </a>
+            }
+          </div>
+        }
+      </div>
+      <div class="overflow-hidden rounded-xl border shadow-sm">
+        <app-project-cover [project]="project" [eager]="true" />
+      </div>
+    </header>
+
+    <div class="mt-12 grid gap-8 lg:grid-cols-[1.6fr_1fr]">
+      <div class="space-y-10">
+        <section class="space-y-3">
+          <h2 class="text-xl font-semibold tracking-tight">{{ text.detail.overview }}</h2>
+          <p class="leading-relaxed text-muted-foreground">{{ project.summary }}</p>
+        </section>
+
+        <section class="space-y-4">
+          <h2 class="text-xl font-semibold tracking-tight">{{ text.detail.highlights }}</h2>
+          <ul class="grid gap-3 sm:grid-cols-2">
+            @for (highlight of project.highlights; track highlight) {
+              <li class="flex gap-3 rounded-lg border bg-card p-4 text-sm leading-relaxed">
+                <ng-icon [name]="icon.check" class="mt-0.5 shrink-0 text-primary" />
+                <span>{{ highlight }}</span>
+              </li>
+            }
+          </ul>
+        </section>
+      </div>
+
+      <aside class="space-y-6">
+        <section hlmCard>
+          <div hlmCardHeader>
+            <h2 hlmCardTitle class="flex items-center gap-2">
+              <ng-icon [name]="icon.layers" />
+              {{ text.detail.stack }}
+            </h2>
+          </div>
+          <div hlmCardContent>
+            <app-project-tech-groups [tech]="project.tech" />
+          </div>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="flex items-center gap-2 font-semibold">
+            <ng-icon [name]="icon.repository" />
+            {{ text.detail.repositories }}
+          </h2>
+          <app-project-repository-list [repositories]="project.repositories" />
+        </section>
+      </aside>
+    </div>
+
+    <section class="mt-14 space-y-4">
+      <h2 class="text-xl font-semibold tracking-tight">{{ text.detail.gallery }}</h2>
+      @if (project.screenshots.length) {
+        <app-project-gallery [screenshots]="project.screenshots" />
+      } @else {
+        <p class="rounded-xl border border-dashed p-8 text-center text-muted-foreground">{{ text.detail.noScreenshots }}</p>
+      }
+    </section>
+
+    <hlm-separator class="mt-14" />
+
+    <nav class="mt-6 grid grid-cols-2 gap-4">
+      <div>
+        @if (neighbours().previous; as previous) {
+          <a [routerLink]="[projectsPath, previous.slug]" class="group block rounded-lg p-3 hover:bg-muted/50">
+            <span class="flex items-center gap-1 text-xs text-muted-foreground">
+              <ng-icon [name]="icon.arrowLeft" />
+              {{ text.detail.previous }}
+            </span>
+            <span class="font-medium group-hover:underline">{{ previous.name }}</span>
+          </a>
+        }
+      </div>
+      <div class="text-end">
+        @if (neighbours().next; as next) {
+          <a [routerLink]="[projectsPath, next.slug]" class="group block rounded-lg p-3 hover:bg-muted/50">
+            <span class="flex items-center justify-end gap-1 text-xs text-muted-foreground">
+              {{ text.detail.next }}
+              <ng-icon [name]="icon.arrowRight" />
+            </span>
+            <span class="font-medium group-hover:underline">{{ next.name }}</span>
+          </a>
+        }
+      </div>
+    </nav>
+  </article>
+}

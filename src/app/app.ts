@@ -1,12 +1,17 @@
-import { Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { SiteFooterComponent } from './components/layout/site-footer/site-footer.component';
+import { SiteHeaderComponent } from './components/layout/site-header/site-header.component';
+import { ThemeService } from './services/ui/theme.service';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, SiteHeaderComponent, SiteFooterComponent],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: './app.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class App {
-  protected readonly title = signal('portfolio');
+  // Injected here so the stored or system theme applies before the first paint.
+  private readonly theme = inject(ThemeService);
 }
