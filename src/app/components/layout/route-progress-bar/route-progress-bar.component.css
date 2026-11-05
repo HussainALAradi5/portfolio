@@ -1,0 +1,23 @@
+:host {
+  display: block;
+}
+
+.progress-host {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 60;
+  opacity: 0;
+  transition: opacity 200ms ease;
+  pointer-events: none;
+  line-height: 0;
+}
+
+/* Same teal-to-blue as the hero name. */
+.progress-host .progress-fill {
+  background: linear-gradient(90deg, oklch(0.6 0.14 185), oklch(0.55 0.2 265));
+  box-shadow: 0 0 8px oklch(0.6 0.17 230 / 0.6);
+}
+
+.progress-host.is-visible {
+  opacity: 1;
+}

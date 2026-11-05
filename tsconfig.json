@@ -33,6 +33,9 @@
       ],
       "@spartan-ng/helm/tooltip": [
         "./libs/ui/tooltip/src/index.ts"
+      ],
+      "@spartan-ng/helm/progress": [
+        "./libs/ui/progress/src/index.ts"
       ]
     }
   },
