@@ -3,7 +3,7 @@ import { ProjectTier } from '../../../enums/projects/project-tier.enum';
 import { RepositoryRole } from '../../../enums/projects/repository-role.enum';
 import { TechLayer } from '../../../enums/projects/tech-layer.enum';
 import { Project } from '../../../interfaces/projects/project.interface';
-import { GITHUB_BASE_URL, PROJECT_IMAGE_BASE } from '../project-paths.constants';
+import { PROJECT_IMAGE_BASE } from '../project-paths.constants';
 
 const IMAGES = `${PROJECT_IMAGE_BASE}/e-clinic`;
 
@@ -44,19 +44,19 @@ export const E_CLINIC_PROJECT: Project = {
     { layer: TechLayer.Security, name: 'spatie/laravel-permission' },
   ],
   repositories: [
-    { role: RepositoryRole.Server, name: 'e_clinic_server', stack: 'Laravel', url: `${GITHUB_BASE_URL}/e_clinic_server` },
-    { role: RepositoryRole.Client, name: 'e_clinic_client', stack: 'Angular', url: `${GITHUB_BASE_URL}/e_clinic_client` },
-    { role: RepositoryRole.Mobile, name: 'e_clinic_mobile', stack: 'Flutter', url: `${GITHUB_BASE_URL}/e_clinic_mobile` },
-    { role: RepositoryRole.Documentation, name: 'e_clinic_documentation', stack: 'Markdown' },
+    { role: RepositoryRole.Server, name: 'e_clinic_server', stack: 'Laravel' },
+    { role: RepositoryRole.Client, name: 'e_clinic_client', stack: 'Angular' },
+    { role: RepositoryRole.Mobile, name: 'e_clinic_mobile', stack: 'Flutter' },
+    { role: RepositoryRole.Documentation, name: 'e_clinic_documentation', stack: 'Markdown', isPrivate: true },
   ],
   links: [
     { label: 'Open web app', url: 'https://e-clinic-web.onrender.com' },
     { label: 'API', url: 'https://e-clinic-api.onrender.com' },
   ],
   screenshots: [
-    { src: `${IMAGES}/admin-dashboard.png`, caption: 'Admin dashboard' },
-    { src: `${IMAGES}/doctor-visit.png`, caption: 'Doctor visit' },
-    { src: `${IMAGES}/patient-portal.png`, caption: 'Patient portal' },
-    { src: `${IMAGES}/journal.png`, caption: 'Accounting journal (dark)' },
+    { src: `${IMAGES}/admin-dashboard.webp`, caption: 'Admin dashboard' },
+    { src: `${IMAGES}/doctor-visit.webp`, caption: 'Doctor visit' },
+    { src: `${IMAGES}/patient-portal.webp`, caption: 'Patient portal' },
+    { src: `${IMAGES}/journal.webp`, caption: 'Accounting journal (dark)' },
   ],
 };

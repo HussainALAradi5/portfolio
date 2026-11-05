@@ -15,15 +15,18 @@
 
     @for (tab of filterTabs; track tab.value) {
       <div [hlmTabsContent]="tab.value" class="pt-4">
-        @if (tab.projects.length) {
-          <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            @for (project of tab.projects; track project.slug; let index = $index) {
-              <app-project-card [project]="project" [eager]="index < eagerCoverCount" />
-            }
-          </div>
-        } @else {
-          <p class="py-12 text-center text-muted-foreground">{{ text.projects.empty }}</p>
-        }
+        <!-- Lazy: only the open tab's cards are in the page. -->
+        <ng-template hlmTabsContentLazy>
+          @if (tab.projects.length) {
+            <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              @for (project of tab.projects; track project.slug; let index = $index) {
+                <app-project-card [project]="project" [eager]="index < eagerCoverCount" />
+              }
+            </div>
+          } @else {
+            <p class="py-12 text-center text-muted-foreground">{{ text.projects.empty }}</p>
+          }
+        </ng-template>
       </div>
     }
   </hlm-tabs>

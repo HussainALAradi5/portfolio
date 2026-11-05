@@ -3,7 +3,7 @@ import { ProjectTier } from '../../../enums/projects/project-tier.enum';
 import { RepositoryRole } from '../../../enums/projects/repository-role.enum';
 import { TechLayer } from '../../../enums/projects/tech-layer.enum';
 import { Project } from '../../../interfaces/projects/project.interface';
-import { GITHUB_BASE_URL, PROJECT_IMAGE_BASE } from '../project-paths.constants';
+import { PROJECT_IMAGE_BASE } from '../project-paths.constants';
 
 const IMAGES = `${PROJECT_IMAGE_BASE}/videos-waves`;
 
@@ -38,15 +38,14 @@ export const VIDEOS_WAVES_PROJECT: Project = {
       role: RepositoryRole.Application,
       name: 'videos_waves',
       stack: 'React + Node.js',
-      url: `${GITHUB_BASE_URL}/videos_waves`,
     },
   ],
   links: [],
   screenshots: [
-    { src: `${IMAGES}/homepage.png`, caption: 'Home feed' },
-    { src: `${IMAGES}/upload.png`, caption: 'Drag-and-drop upload' },
-    { src: `${IMAGES}/commentsection.png`, caption: 'Comment section' },
-    { src: `${IMAGES}/dark-mode.png`, caption: 'Dark mode' },
-    { src: `${IMAGES}/login.png`, caption: 'Login' },
+    { src: `${IMAGES}/homepage.webp`, caption: 'Home feed' },
+    { src: `${IMAGES}/upload.webp`, caption: 'Drag-and-drop upload' },
+    { src: `${IMAGES}/commentsection.webp`, caption: 'Comment section' },
+    { src: `${IMAGES}/dark-mode.webp`, caption: 'Dark mode' },
+    { src: `${IMAGES}/login.webp`, caption: 'Login' },
   ],
 };

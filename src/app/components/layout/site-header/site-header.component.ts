@@ -8,7 +8,7 @@ import { UI_TEXT } from '../../../constants/common/ui-text.constants';
 import { ROUTE_PATHS } from '../../../constants/routes/route-paths.constants';
 import { ICON } from '../../../constants/ui/icons.constants';
 import { ThemeMode } from '../../../enums/ui/theme-mode.enum';
-import { ThemeService } from '../../../services/ui/theme.service';
+import { ThemeService } from '../../../services/ui/theme/theme.service';
 
 @Component({
   selector: 'app-site-header',

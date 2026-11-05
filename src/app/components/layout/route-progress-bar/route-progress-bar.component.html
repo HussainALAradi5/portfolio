@@ -1,0 +1,5 @@
+<div class="progress-host" [class.is-visible]="progress.isVisible()" [attr.aria-hidden]="!progress.isVisible()">
+  <hlm-progress [value]="progress.value()" [attr.aria-label]="label" class="flex h-[3px] rounded-none bg-transparent">
+    <hlm-progress-indicator class="progress-fill" />
+  </hlm-progress>
+</div>

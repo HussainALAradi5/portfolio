@@ -1,7 +1,7 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 import { ROUTE_PATHS } from '../../../constants/routes/route-paths.constants';
-import { ProjectService } from '../../../services/projects/project.service';
+import { ProjectService } from '../../../services/projects/project/project.service';
 
 /** Sends unknown project slugs to the not-found page. */
 export const projectExistsGuard: CanActivateFn = (route) => {

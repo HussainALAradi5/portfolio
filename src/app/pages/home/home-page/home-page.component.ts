@@ -4,13 +4,12 @@ import { SectionHeadingComponent } from '../../../components/common/section-head
 import { HeroSectionComponent } from '../../../components/home/hero-section/hero-section.component';
 import { ProjectCardComponent } from '../../../components/projects/project-card/project-card.component';
 import { UI_TEXT } from '../../../constants/common/ui-text.constants';
+import { EAGER_COVER_COUNT } from '../../../constants/projects/project-display.constants';
 import { PROJECT_FILTER_OPTIONS } from '../../../constants/projects/project-filters.constants';
 import { ROUTE_PATHS } from '../../../constants/routes/route-paths.constants';
 import { ProjectFilter } from '../../../enums/projects/project-filter.enum';
-import { ProjectService } from '../../../services/projects/project.service';
-
-/** Number of cards above the fold whose cover images load eagerly. */
-const EAGER_COVER_COUNT = 3;
+import { ProjectFilterTab } from '../../../interfaces/projects/project-filter-tab.interface';
+import { ProjectService } from '../../../services/projects/project/project.service';
 
 @Component({
   selector: 'app-home-page',
@@ -27,8 +26,8 @@ export class HomePageComponent {
   protected readonly defaultFilter = ProjectFilter.All;
   protected readonly eagerCoverCount = EAGER_COVER_COUNT;
   protected readonly allProjects = this.projectService.findAll();
-  protected readonly filterTabs = PROJECT_FILTER_OPTIONS.map((option) => ({
+  protected readonly filterTabs: readonly ProjectFilterTab[] = PROJECT_FILTER_OPTIONS.map((option) => ({
     ...option,
-    projects: this.projectService.findByFilter(option.value),
+    projects: this.projectService.findByTier(option.tier),
   }));
 }

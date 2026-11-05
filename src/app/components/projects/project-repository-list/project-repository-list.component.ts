@@ -5,6 +5,7 @@ import { UI_TEXT } from '../../../constants/common/ui-text.constants';
 import { REPOSITORY_ROLE_META } from '../../../constants/projects/project-labels.constants';
 import { ICON } from '../../../constants/ui/icons.constants';
 import { ProjectRepository } from '../../../interfaces/projects/project-repository.interface';
+import { repositoryUrl } from '../../../utilities/projects/repositories/repository-url.utility';
 
 @Component({
   selector: 'app-project-repository-list',
@@ -19,4 +20,5 @@ export class ProjectRepositoryListComponent {
   protected readonly roleMeta = REPOSITORY_ROLE_META;
   protected readonly text = UI_TEXT;
   protected readonly icon = ICON;
+  protected readonly repositoryUrl = repositoryUrl;
 }

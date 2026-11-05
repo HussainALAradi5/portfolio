@@ -24,6 +24,7 @@ import {
   lucideStethoscope,
   lucideSun,
 } from '@ng-icons/lucide';
+import type { AppIconName } from '../../types/ui/app-icon-name.type';
 
 /** Every icon the app renders, registered once at the root. */
 export const APP_ICONS = {
@@ -66,4 +67,4 @@ export const ICON = {
   moon: 'lucideMoon',
   repository: 'lucideFolderGit2',
   sun: 'lucideSun',
-} as const;
+} as const satisfies Record<string, AppIconName>;
