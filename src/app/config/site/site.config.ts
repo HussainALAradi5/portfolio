@@ -11,10 +11,6 @@ export const SITE_PROFILE: SiteProfile = {
   intro:
     'I build complete products: the API, the web client, the mobile app and the documentation that ties them together. ' +
     'Most projects below live in separate repositories with layer-first architecture, typed contracts and role-based access.',
-  githubUrl: GITHUB_BASE_URL,
-  email: EMAIL,
-  linkedinUrl: LINKEDIN_URL,
-  location: 'Bahrain',
   cv: {
     url: 'files/cv/hussain-al-aradi-cv.pdf',
     fileName: 'Hussain Al Aradi - Software Engineer CV.pdf',
