@@ -1,5 +1,6 @@
 import { formatDuration } from './format-duration.utility';
 import { formatPeriod } from './format-period.utility';
+import { formatYearRange } from './format-year-range.utility';
 
 describe('experience period', () => {
   const sep2024 = { year: 2024, month: 9 };
@@ -24,5 +25,12 @@ describe('experience period', () => {
 
   it('gives a single date no duration', () => {
     expect(formatDuration(sep2025, undefined, today)).toBeNull();
+  });
+
+  it('gives each timeline stop a short year range', () => {
+    expect(formatYearRange({ year: 2017, month: 2 }, { year: 2024, month: 2 })).toBe('2017 – 2024');
+    expect(formatYearRange(sep2025, null)).toBe('2025 – Now');
+    expect(formatYearRange({ year: 2023, month: 10 }, { year: 2023, month: 12 })).toBe('2023');
+    expect(formatYearRange({ year: 2024, month: 11 }, undefined)).toBe('2024');
   });
 });

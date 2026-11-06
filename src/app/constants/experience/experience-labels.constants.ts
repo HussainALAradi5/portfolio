@@ -26,6 +26,7 @@ export const MONTHS_PER_YEAR = 12;
 
 export const PERIOD_TEXT = {
   present: 'Present',
+  now: 'Now',
   separator: ' – ',
   year: 'yr',
   years: 'yrs',

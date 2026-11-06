@@ -9,15 +9,15 @@ import { YearMonth } from '../../../interfaces/experience/year-month.interface';
 import { formatDuration } from '../../../utilities/experience/period/format-duration.utility';
 import { formatPeriod } from '../../../utilities/experience/period/format-period.utility';
 
+/** Card with everything about the timeline stop that is selected. */
 @Component({
-  selector: 'li[app-experience-entry]',
+  selector: 'app-experience-details',
   imports: [NgIcon, HlmBadge],
-  templateUrl: './experience-entry.component.html',
-  styleUrl: './experience-entry.component.css',
+  templateUrl: './experience-details.component.html',
+  styleUrl: './experience-details.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { class: 'relative block ps-14 sm:ps-20' },
 })
-export class ExperienceEntryComponent {
+export class ExperienceDetailsComponent {
   readonly entry = input.required<ExperienceEntry>();
   readonly today = input.required<YearMonth>();
 
