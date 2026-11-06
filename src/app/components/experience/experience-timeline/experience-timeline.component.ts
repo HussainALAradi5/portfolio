@@ -14,7 +14,7 @@ import { EXPERIENCE_KIND_STYLES } from '../../../constants/experience/experience
 import { EXPERIENCE } from '../../../constants/experience/experience.constants';
 import { KEY } from '../../../constants/ui/keyboard.constants';
 import { YearMonth } from '../../../interfaces/experience/year-month.interface';
-import { formatYearRange } from '../../../utilities/experience/period/format-year-range.utility';
+import { formatPeriod } from '../../../utilities/experience/period/format-period.utility';
 import { SectionHeadingComponent } from '../../common/section-heading/section-heading.component';
 import { ExperienceDetailsComponent } from '../experience-details/experience-details.component';
 
@@ -40,7 +40,7 @@ export class ExperienceTimelineComponent {
   protected readonly panelId = PANEL_ID;
   protected readonly kindStyles = EXPERIENCE_KIND_STYLES;
   protected readonly entries = EXPERIENCE;
-  protected readonly stopLabels = EXPERIENCE.map(({ start, end }) => formatYearRange(start, end));
+  protected readonly stopPeriods = EXPERIENCE.map(({ start, end }) => formatPeriod(start, end));
   /** Ongoing roles count their length up to the current month. */
   protected readonly today: YearMonth = { year: now.getFullYear(), month: now.getMonth() + 1 };
 
