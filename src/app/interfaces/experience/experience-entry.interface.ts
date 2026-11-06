@@ -10,10 +10,8 @@ export interface ExperienceEntry {
   start: YearMonth;
   /** Omitted for a single date (a certificate); `null` while the role is ongoing. */
   end?: YearMonth | null;
-  summary: string;
-  /** What I did there, one item per line. */
+  /** What I did there, one CV line per item. */
   achievements: readonly string[];
+  /** Technologies named in those lines; may be empty. */
   skills: readonly string[];
-  /** Slugs of portfolio projects built during this period. */
-  projectSlugs?: readonly string[];
 }
