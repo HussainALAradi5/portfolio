@@ -11,7 +11,7 @@ Home page with filterable project cards and a detail page per project.
 | --- | --- | --- |
 | Home | `src/app/pages/home/`, `src/app/components/home/` | Hero with totals, then the projects and experience sections |
 | Section pages | `src/app/pages/projects/projects-page/`, `src/app/pages/experience/experience-page/`, `src/app/pages/skills/skills-page/` | Projects, experience or skills only, opened from the header |
-| Contact section | `npm test`; headless Edge at 1280px light and dark | Renders on all three pages; copy confirmation and reset covered; 54 tests passed on 2026-11-06 |
+| No duplicated actions | Browser: counted CV buttons and email, LinkedIn, GitHub and Projects links on `/`, `/projects`, `/experience`, `/skills` | One of each on `/`, none repeated on any page; 51 tests passed on 2026-11-06 |
 | Skills | `npm test`; headless Edge at 1280px light and dark on `/skills` | Six groups, core first; rows end evenly; 57 tests passed on 2026-11-06 |
 | Experience | `src/app/components/experience/` | Timeline section and entry card |
 | Projects | `src/app/components/projects/` | Projects section (filter tabs, lazy content, grid), card, cover, tech groups, repository list, gallery |
@@ -29,7 +29,7 @@ Home page with filterable project cards and a detail page per project.
 - [x] Experience timeline (`components/experience/`, data in `constants/experience/`, periods in `utilities/experience/period/`): a horizontal line of stops, oldest first; selecting a stop (click, arrow, Home or End keys) shows its card with the CV's lines, dates, length and skills; the current role is selected first and pulses; on phones the line scrolls inside its own box
 - [x] One job per area: the header only navigates (Projects, Experience, GitHub, theme) and the hero holds the actions (Download CV, GitHub, LinkedIn, Email), so no button appears twice
 - [x] Header links open their own pages: `/projects` shows only projects, `/experience` only the timeline, `/` everything; the active link is highlighted and each page sets its tab title (project pages through `middlewares/resolvers/projects/project-title.resolver.ts`)
-- [x] Contact section (`components/common/contact-section/`) at the bottom of the home, projects and experience pages: Email me, LinkedIn, Download CV (not on home, where the hero has it) and a copy-email button through `services/ui/clipboard/`
+- [x] Every action appears once: the hero holds Download CV, GitHub, LinkedIn and Email; the contact section, the header GitHub icon and the footer icons that repeated them were removed
 - [x] Skills (`components/skills/skills-section/`, data in `constants/skills/` copied from the CV): core strengths highlighted, then languages, frameworks, databases, tools and spoken languages; on its own page at `/skills` and on the home page
 
 ## Acceptance criteria

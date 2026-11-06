@@ -4,7 +4,6 @@ export const UI_TEXT = {
     projects: 'Projects',
     experience: 'Experience',
     skills: 'Skills',
-    github: 'GitHub profile',
     toggleTheme: 'Toggle colour theme',
     loading: 'Loading page',
   },
@@ -44,15 +43,6 @@ export const UI_TEXT = {
   skills: {
     title: 'Skills',
     subtitle: 'The languages, frameworks and tools I work with, as on my CV.',
-  },
-  contact: {
-    eyebrow: 'Contact',
-    title: 'Let’s work together',
-    message: 'Have a role or a project in mind? Send me an email or message me on LinkedIn, and I will get back to you.',
-    emailMe: 'Email me',
-    linkedin: 'LinkedIn',
-    copyEmail: 'Copy email address',
-    copied: 'Copied',
   },
   detail: {
     back: 'All projects',
