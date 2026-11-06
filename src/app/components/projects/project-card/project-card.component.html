@@ -1,4 +1,7 @@
-<article hlmCard class="group/card h-full gap-0 overflow-hidden py-0 transition-shadow hover:shadow-lg">
+<article
+  hlmCard
+  class="group/card h-full gap-0 overflow-hidden py-0 transition duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/10 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+>
   <a [routerLink]="detailLink()" class="block" [attr.aria-label]="project().name">
     <app-project-cover [project]="project()" [eager]="eager()" />
   </a>
@@ -15,7 +18,7 @@
       <span class="ms-auto text-xs text-muted-foreground">{{ project().period }}</span>
     </div>
     <h3 hlmCardTitle class="text-lg">
-      <a [routerLink]="detailLink()" class="hover:underline underline-offset-4">{{ project().name }}</a>
+      <a [routerLink]="detailLink()" class="transition-colors hover:text-primary">{{ project().name }}</a>
     </h3>
     <p hlmCardDescription>{{ project().tagline }}</p>
   </div>

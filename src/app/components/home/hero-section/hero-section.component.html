@@ -1,7 +1,7 @@
 <section class="hero relative overflow-hidden">
   <div class="mx-auto grid max-w-6xl gap-12 px-4 pt-16 pb-12 sm:px-6 sm:pt-24 lg:grid-cols-[1.4fr_1fr] lg:items-end">
-    <div class="space-y-6">
-      <p class="text-sm font-medium uppercase tracking-[0.2em] text-muted-foreground">{{ text.hero.eyebrow }}</p>
+    <div class="hero-enter space-y-6">
+      <p class="text-sm font-medium uppercase tracking-[0.2em] text-primary">{{ text.hero.eyebrow }}</p>
       <h1 class="text-4xl font-bold tracking-tight text-balance sm:text-5xl lg:text-6xl">
         {{ text.hero.greeting }} <span class="hero-name">{{ profile.name }}</span>
       </h1>
@@ -22,10 +22,10 @@
       </div>
     </div>
 
-    <dl class="grid grid-cols-3 gap-3">
+    <dl class="hero-enter grid grid-cols-3 gap-3">
       @for (stat of stats(); track stat.label) {
-        <div class="rounded-xl border bg-card/60 p-4 text-center backdrop-blur">
-          <dd class="text-3xl font-bold tracking-tight sm:text-4xl">{{ stat.value }}</dd>
+        <div class="hero-stat rounded-xl border bg-card/60 p-4 text-center backdrop-blur">
+          <dd class="text-3xl font-bold tracking-tight text-primary sm:text-4xl">{{ stat.value }}</dd>
           <dt class="mt-1 text-xs text-muted-foreground sm:text-sm">{{ stat.label }}</dt>
         </div>
       }
