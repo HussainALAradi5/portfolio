@@ -1,0 +1,35 @@
+:host {
+  display: block;
+}
+
+/* Core strengths span the first row and stand out in blue. */
+.skill-group.is-core {
+  grid-column: 1 / -1;
+  border-color: color-mix(in oklch, var(--primary) 35%, transparent);
+  background:
+    radial-gradient(60% 120% at 0% 0%, color-mix(in oklch, var(--primary) 14%, transparent), transparent 70%),
+    var(--card);
+}
+
+.skill-group.is-core .group-icon {
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.skill-group.is-core .skill {
+  border-color: color-mix(in oklch, var(--primary) 40%, transparent);
+  color: var(--primary);
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+}
+
+:host-context(.dark) .skill-group {
+  box-shadow: inset 0 1px 0 oklch(1 0 0 / 0.06);
+}
+
+/* Five groups follow the core row; on three columns the last one widens so the rows end evenly. */
+@media (min-width: 64rem) {
+  .skill-group:last-child {
+    grid-column: span 2;
+  }
+}

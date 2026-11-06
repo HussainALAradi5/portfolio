@@ -35,6 +35,11 @@ export const routes: Routes = [
       import('./pages/experience/experience-page/experience-page.component').then((m) => m.ExperiencePageComponent),
   },
   {
+    path: ROUTE_PATHS.skills,
+    title: formatPageTitle(PAGE_NAMES.skills),
+    loadComponent: () => import('./pages/skills/skills-page/skills-page.component').then((m) => m.SkillsPageComponent),
+  },
+  {
     path: ROUTE_PATHS.notFound,
     title: formatPageTitle(PAGE_NAMES.notFound),
     loadComponent: () =>
