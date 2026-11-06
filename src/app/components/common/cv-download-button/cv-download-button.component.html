@@ -1,0 +1,19 @@
+<button
+  hlmBtn
+  type="button"
+  [variant]="variant()"
+  [size]="size()"
+  [class.cv-accent]="isAccent()"
+  [disabled]="isDownloading()"
+  [attr.aria-busy]="isDownloading()"
+  [attr.aria-label]="isDownloading() ? text.cv.preparing : text.cv.download"
+  (click)="download()"
+>
+  @if (isDownloading()) {
+    <ng-icon [name]="icon.loader" class="animate-spin" data-icon="inline-start" />
+    {{ text.cv.preparing }}
+  } @else {
+    <ng-icon [name]="icon.download" data-icon="inline-start" />
+    {{ label() }}
+  }
+</button>

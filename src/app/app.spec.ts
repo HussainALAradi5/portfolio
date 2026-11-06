@@ -3,6 +3,7 @@ import { provideRouter } from '@angular/router';
 import { provideIcons } from '@ng-icons/core';
 import { App } from './app';
 import { SITE_PROFILE } from './config/site/site.config';
+import { UI_TEXT } from './constants/common/ui-text.constants';
 import { APP_ICONS } from './constants/ui/icons.constants';
 
 describe('App', () => {
@@ -23,5 +24,14 @@ describe('App', () => {
     await fixture.whenStable();
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('header')?.textContent).toContain(SITE_PROFILE.name);
+  });
+
+  it('should offer an enabled CV download button in the header', async () => {
+    const fixture = TestBed.createComponent(App);
+    await fixture.whenStable();
+    const compiled = fixture.nativeElement as HTMLElement;
+    const button = compiled.querySelector<HTMLButtonElement>('header app-cv-download-button button');
+    expect(button?.textContent).toContain(UI_TEXT.nav.cv);
+    expect(button?.disabled).toBe(false);
   });
 });

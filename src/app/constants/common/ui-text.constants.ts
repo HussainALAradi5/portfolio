@@ -4,6 +4,7 @@ export const UI_TEXT = {
     projects: 'Projects',
     github: 'GitHub profile',
     toggleTheme: 'Toggle colour theme',
+    cv: 'CV',
     loading: 'Loading page',
   },
   hero: {
@@ -15,6 +16,10 @@ export const UI_TEXT = {
       repositories: 'Repositories',
       liveDemos: 'Live demos',
     },
+  },
+  cv: {
+    download: 'Download CV',
+    preparing: 'Preparing…',
   },
   projects: {
     title: 'Selected projects',

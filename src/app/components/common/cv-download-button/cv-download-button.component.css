@@ -1,0 +1,13 @@
+:host {
+  display: contents;
+}
+
+.cv-accent {
+  border-color: color-mix(in oklch, var(--primary) 40%, transparent);
+  color: var(--primary);
+}
+
+.cv-accent:hover {
+  background-color: color-mix(in oklch, var(--primary) 10%, transparent);
+  color: var(--primary);
+}
