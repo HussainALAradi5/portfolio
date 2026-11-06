@@ -19,8 +19,6 @@ export class CvDownloadButtonComponent {
   readonly label = input<string>(UI_TEXT.cv.download);
   readonly variant = input<ButtonVariants['variant']>('outline');
   readonly size = input<ButtonVariants['size']>('default');
-  /** Blue outline that marks the button as a call to action. */
-  readonly isAccent = input(false);
 
   protected readonly text = UI_TEXT;
   protected readonly icon = ICON;

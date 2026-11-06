@@ -5,13 +5,11 @@ export const UI_TEXT = {
     experience: 'Experience',
     github: 'GitHub profile',
     toggleTheme: 'Toggle colour theme',
-    cv: 'CV',
     loading: 'Loading page',
   },
   hero: {
     eyebrow: 'Portfolio',
     greeting: "Hi, I'm",
-    viewProjects: 'View projects',
     stats: {
       projects: 'Projects',
       repositories: 'Repositories',

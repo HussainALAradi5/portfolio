@@ -9,11 +9,7 @@
       <p class="max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">{{ profile.intro }}</p>
 
       <div class="flex flex-wrap items-center gap-2 pt-2">
-        <a hlmBtn size="lg" [routerLink]="homePath" [fragment]="projectsFragment">
-          {{ text.hero.viewProjects }}
-          <ng-icon [name]="icon.arrowRight" data-icon="inline-end" />
-        </a>
-        <app-cv-download-button size="lg" [isAccent]="true" />
+        <app-cv-download-button variant="default" size="lg" />
         @for (link of profile.socialLinks; track link.url) {
           <a hlmBtn variant="outline" size="lg" [href]="link.url" target="_blank" rel="noopener">
             <ng-icon [name]="link.icon" data-icon="inline-start" />

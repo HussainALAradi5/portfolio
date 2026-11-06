@@ -1,12 +1,9 @@
 import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
-import { RouterLink } from '@angular/router';
 import { NgIcon } from '@ng-icons/core';
 import { HlmButton } from '@spartan-ng/helm/button';
 import { CvDownloadButtonComponent } from '../../common/cv-download-button/cv-download-button.component';
 import { SITE_PROFILE } from '../../../config/site/site.config';
 import { UI_TEXT } from '../../../constants/common/ui-text.constants';
-import { ROUTE_PATHS } from '../../../constants/routes/route-paths.constants';
-import { ICON } from '../../../constants/ui/icons.constants';
 import { HeroStat } from '../../../interfaces/home/hero-stat.interface';
 import { Project } from '../../../interfaces/projects/project.interface';
 import { countLiveDemos } from '../../../utilities/projects/stats/count-live-demos.utility';
@@ -14,7 +11,7 @@ import { countRepositories } from '../../../utilities/projects/stats/count-repos
 
 @Component({
   selector: 'app-hero-section',
-  imports: [RouterLink, NgIcon, HlmButton, CvDownloadButtonComponent],
+  imports: [NgIcon, HlmButton, CvDownloadButtonComponent],
   templateUrl: './hero-section.component.html',
   styleUrl: './hero-section.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -24,9 +21,6 @@ export class HeroSectionComponent {
 
   protected readonly text = UI_TEXT;
   protected readonly profile = SITE_PROFILE;
-  protected readonly icon = ICON;
-  protected readonly homePath = `/${ROUTE_PATHS.home}`;
-  protected readonly projectsFragment = ROUTE_PATHS.projectsAnchor;
 
   protected readonly stats = computed<readonly HeroStat[]>(() => [
     { label: UI_TEXT.hero.stats.projects, value: this.projects().length },
