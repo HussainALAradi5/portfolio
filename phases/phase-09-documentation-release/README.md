@@ -12,6 +12,7 @@ Document the project, deploy it, and keep it deploying on every push.
 | Setup, layout, adding a project, deploy | `README.md` |
 | Screenshots of the portfolio | `docs/screenshots/` |
 | Link preview card and meta tags | `scripts/og/`, `public/og-image.png`, `src/index.html` |
+| Icons | `public/favicon.svg`, `favicon.ico` (built by `scripts/icons/build-favicon-ico.mjs`), `favicon-32.png`, `apple-touch-icon.png` |
 | Phases | `phases/` |
 | Deploy | `.github/workflows/deploy.yml` (GitHub Pages), `render.yaml` (alternative) |
 
@@ -33,6 +34,7 @@ Document the project, deploy it, and keep it deploying on every push.
 | Live home page | Browser on the live URL | 7 projects, no broken images on 2026-11-05 |
 | Live deep link | Browser on `/portfolio/projects/e-clinic` | Detail page loads on 2026-11-05 |
 | Failing test stops the deploy | Run 42200678234 (#14) | Deploy stopped on 2026-11-06; fixed in #15 |
+| Console errors | Fresh browser tab on the dev server | `/favicon.ico` 404 fixed; no errors on 2026-11-06 |
 | Preview tags in the build | `dist/portfolio/browser/index.html`, `og-image.png` | Present on 2026-11-06 |
 
 ## Risks and open questions
