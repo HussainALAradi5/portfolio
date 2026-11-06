@@ -4,20 +4,18 @@
 **Depends on:** Phases 03 and 05
 
 ## Goal
-Home page with filterable project cards and a detail page per project.
+A home page that shows everything, pages for projects, experience and skills, and a detail page per project, all following the CV.
 
 ## Scope
 | Layer | Folders | Items |
 | --- | --- | --- |
-| Home | `src/app/pages/home/`, `src/app/components/home/` | Hero with totals, then the projects and experience sections |
+| Home | `src/app/pages/home/`, `src/app/components/home/` | Hero (Download CV, GitHub, LinkedIn, Email, totals), then the projects, experience and skills sections |
 | Section pages | `src/app/pages/projects/projects-page/`, `src/app/pages/experience/experience-page/`, `src/app/pages/skills/skills-page/` | Projects, experience or skills only, opened from the header |
-| No duplicated actions | Browser: counted CV buttons and email, LinkedIn, GitHub and Projects links on `/`, `/projects`, `/experience`, `/skills` | One of each on `/`, none repeated on any page; 51 tests passed on 2026-11-06 |
-| Lightbox | `npm test`; browser on `/projects/fun-travels-tour` | Opens on 1 / 4, → shows the next image, Escape closes and unlocks scrolling, thumbnail follows; 56 tests passed on 2026-11-06 |
-| Command palette | `npm test`; fresh browser tab: Ctrl + K, typed "spring", Enter; header at 375px | Opened with focus in the field, found CareTrack and Fun Travels Tour, opened CareTrack and closed; header fits inside the margin; 68 tests passed on 2026-11-06 |
-| Skills | `npm test`; headless Edge at 1280px light and dark on `/skills` | Six groups, core first; rows end evenly; 57 tests passed on 2026-11-06 |
-| Experience | `src/app/components/experience/` | Timeline section and entry card |
 | Projects | `src/app/components/projects/` | Projects section (filter tabs, lazy content, grid), card, cover, tech groups, repository list, gallery |
-| Detail | `src/app/pages/projects/` | Overview, highlights, stack, repositories, screenshots, previous and next |
+| Detail | `src/app/pages/projects/project-detail-page/` | Overview, highlights, stack, repositories, screenshots, previous and next |
+| Experience | `src/app/components/experience/` | Horizontal timeline and the details card |
+| Skills | `src/app/components/skills/` | Skill groups from the CV |
+| Shared | `src/app/components/common/`, `src/app/components/layout/` | Section heading, CV download button, image lightbox, header, footer, command palette |
 | System | `src/app/pages/system/` | 404 page |
 
 ## Tasks
@@ -26,37 +24,41 @@ Home page with filterable project cards and a detail page per project.
 - [x] Light and dark themes; phone layout without horizontal scroll
 - [x] Blue brand palette in `src/styles.css`, with a navy dark theme lit by soft blue glows and a dot grid behind the hero
 - [x] Motion: staggered hero entrance, drifting hero glow, cards that fade up on scroll and lift on hover; all of it off under `prefers-reduced-motion`
-- [x] Download CV: `components/common/cv-download-button/` (the hero's main action) and `services/site/cv-download/`; the button shows a spinner and stays disabled while the PDF in `public/files/cv/` is fetched, and falls back to opening the file if the fetch fails
+- [x] Download CV: `components/common/cv-download-button/` and `services/site/cv-download/`; the button shows a spinner and stays disabled while the PDF in `public/files/cv/` is fetched, and falls back to opening the file if the fetch fails
 - [x] Duck Street added as an early project (`constants/projects/data/duck-street.constants.ts`) with screenshots of the live game
-- [x] Experience timeline (`components/experience/`, data in `constants/experience/`, periods in `utilities/experience/period/`): a horizontal line of stops, oldest first; selecting a stop (click, arrow, Home or End keys) shows its card with the CV's lines, dates, length and skills; the current role is selected first and pulses; on phones the line scrolls inside its own box
-- [x] One job per area: the header only navigates (Projects, Experience, GitHub, theme) and the hero holds the actions (Download CV, GitHub, LinkedIn, Email), so no button appears twice
-- [x] Header links open their own pages: `/projects` shows only projects, `/experience` only the timeline, `/` everything; the active link is highlighted and each page sets its tab title (project pages through `middlewares/resolvers/projects/project-title.resolver.ts`)
-- [x] Every action appears once: the hero holds Download CV, GitHub, LinkedIn and Email; the contact section, the header GitHub icon and the footer icons that repeated them were removed
+- [x] Experience timeline (`components/experience/`, data in `constants/experience/`, periods in `utilities/experience/period/`): a horizontal line of stops, oldest first, showing the CV's dates; selecting a stop (click, arrow, Home or End keys) shows its card with the CV's lines, the length and skills; the current role is selected first and pulses; on phones the line scrolls inside its own box
+- [x] Lengths count the months elapsed (Sep 2024 – Sep 2025 is 1 yr; Oct 2023 – Jan 2024 is 3 mos)
+- [x] Header links open their own pages: `/projects`, `/experience` and `/skills` show one section each, `/` shows everything; the active link is highlighted and each page sets its tab title (project pages through `middlewares/resolvers/projects/project-title.resolver.ts`)
+- [x] Skills (`components/skills/skills-section/`, data in `constants/skills/` copied from the CV): core strengths highlighted, then languages, frameworks, databases, tools and spoken languages; on `/skills` and on the home page
+- [x] Every action appears once: the hero holds Download CV, GitHub, LinkedIn and Email; the header only navigates; a contact section, the header GitHub icon and the footer icons that repeated the hero were removed
 - [x] Screenshot lightbox (`components/common/image-lightbox/`) on a native modal `<dialog>`: the gallery preview opens it full screen; arrows, side buttons or a swipe move between images; Escape, the close button or a click outside closes it; page scrolling is locked while open and the gallery follows the image on show
 - [x] Command palette (`components/layout/command-palette/`, commands from `services/ui/command-palette/`, matching in `utilities/command-palette/`): Ctrl + K, Cmd + K or the header search button opens a search over pages, projects (with their technologies) and actions (Download CV, switch theme); arrows, Enter and Escape work, with combobox and listbox roles
-- [x] Skills (`components/skills/skills-section/`, data in `constants/skills/` copied from the CV): core strengths highlighted, then languages, frameworks, databases, tools and spoken languages; on its own page at `/skills` and on the home page
 
 ## Acceptance criteria
-- All eight projects open from the home page.
+- All eight projects open from the home page and from search.
+- Experience and skills match the CV.
+- No action appears twice on a page.
 - Desktop and 375px widths work in light and dark themes.
 
 ## Verification
 | Check | Command | Result |
 | --- | --- | --- |
-| Screens | Browser at desktop and 375px, light and dark | Passed on 2026-11-05; screenshots in `docs/screenshots/` |
-| Horizontal scroll at 375px | `scrollWidth > clientWidth` in the browser | false on 2026-11-05 |
-| Console errors | Browser console | None on 2026-11-05 |
-| Blue theme and motion | Browser at desktop and 375px, light and dark | Passed on 2026-11-06; screenshots in `docs/screenshots/` refreshed |
-| Horizontal scroll at 375px after the theme change | `scrollWidth <= innerWidth` in the browser | true on 2026-11-06 |
-| Console errors after the theme change | Browser console | None on 2026-11-06 |
-| Download CV busy state | Slowed `fetch` in the browser, clicked Download CV | Both buttons showed "Preparing…" and were disabled, then saved `Hussain Al Aradi - Software Engineer CV.pdf` on 2026-11-06 |
-| CV service rules | `npm test -- --watch=false` | Busy state, double-click guard and fallback covered; 32 tests passed on 2026-11-06 |
-| Experience timeline | Browser at 1280px light and dark, 500px dark; `npm test` | Renders 5 entries, no horizontal scroll at 375px, no console errors; 40 tests passed on 2026-11-06 |
-| Header and hero without duplicates | `npm test`; browser at 1280px and 375px | Header shows Projects, Experience, GitHub, theme and fits at 375px; hero shows Download CV first; 42 tests passed on 2026-11-06 |
-| Timeline matches the CV | Compared every title, date and line with the CV PDF; `npm test` | Match on 2026-11-06 (Safeway start corrected to Nov 2025); site PDF replaced with the current CV |
-| Horizontal timeline | `npm test`; headless Edge at 1280px light and dark; browser at 375px | Click and keys change the card; current role centred on load at 375px; no page scroll; 45 tests passed on 2026-11-06 |
-| Section pages | Browser: home, Experience, Projects, a project, back, logo | Each shows only its section, active link and tab title correct; 48 tests passed with exit code 0 on 2026-11-06 |
+| Screens | Browser at desktop and 375px, light and dark | Passed on 2026-11-05 |
+| Horizontal scroll at 375px | `scrollWidth <= innerWidth` in the browser | true on 2026-11-05 and after every change on 2026-11-06 |
+| Blue theme and motion | Browser at desktop and 375px, light and dark | Passed on 2026-11-06 |
+| Download CV busy state | Slowed `fetch` in the browser, clicked Download CV | Showed "Preparing…" and was disabled, then saved `Hussain Al Aradi - Software Engineer CV.pdf` on 2026-11-06 |
+| Timeline matches the CV | Compared every title, date and line with the CV PDF | Match on 2026-11-06 (Safeway start corrected to Nov 2025); site PDF replaced with the current CV |
+| Timeline lengths | Period utility specs | Sep–Sep 1 yr, Oct–Jan 3 mos, Feb 2017–Feb 2024 7 yrs, Nov 2025–now 1 yr on 2026-11-06 |
+| Horizontal timeline | Headless Edge at 1280px light and dark; browser at 375px | Click and keys change the card; current role centred on load at 375px; no page scroll on 2026-11-06 |
+| Section pages | Browser: home, Experience, Projects, a project, back, logo | Each shows only its section; active link and tab title correct on 2026-11-06 |
+| Skills | Headless Edge at 1280px on `/skills`, light and dark | Six groups, core first; rows end evenly on 2026-11-06 |
+| No duplicated actions | Counted CV buttons and email, LinkedIn, GitHub and Projects links on `/`, `/projects`, `/experience`, `/skills` | One of each on `/`; nothing repeated on any page on 2026-11-06 |
+| Lightbox | Browser on `/projects/fun-travels-tour` | Opens on 1 / 4, → shows the next image, Escape closes and unlocks scrolling, thumbnail follows on 2026-11-06 |
+| Command palette | Fresh browser tab: Ctrl + K, typed "spring", Enter; header at 375px | Found CareTrack and Fun Travels Tour, opened CareTrack and closed; header fits inside the margin on 2026-11-06 |
+| Live site | Browser on the live URL after #24 | Every check above holds; no console errors on 2026-11-06 |
+| Unit tests | `npm test -- --watch=false` | 68 passed, exit code 0 on 2026-11-06 |
 
 ## Risks and open questions
 - Scroll-reveal on cards uses CSS scroll-driven animations; browsers without them (Firefox today) show the cards without the effect.
 - CareTrack shows an icon cover until it has screenshots.
+- The projects, experience and skills pages carry no CV or contact links; visitors reach them from the home page or search.

@@ -1,6 +1,6 @@
 # Phase 08: Quality
 
-**Status:** In review (pull requests open)
+**Status:** Done (merged in #1 on 2026-11-05)
 **Depends on:** Phase 06
 
 ## Goal
@@ -28,6 +28,7 @@ Fix the findings of the clean-code-standards review and measure the performance 
 | Cards in the page on load | `/` | 14 | 7 |
 | All screenshots | `public/images/projects/` | 10,004 KB | 1,792 KB |
 | Unit tests | `npx ng test --watch=false` | 8 passed | 28 passed |
+| Unit tests now | `npm test -- --watch=false` | — | 68 passed on 2026-11-06 |
 
 ## Risks and open questions
 - GitHub Pages can't set response headers; the headers apply only when hosted on Render.
