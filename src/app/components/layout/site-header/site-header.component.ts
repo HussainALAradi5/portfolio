@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { NgIcon } from '@ng-icons/core';
 import { HlmButton } from '@spartan-ng/helm/button';
 import { HlmTooltip } from '@spartan-ng/helm/tooltip';
@@ -12,7 +12,7 @@ import { ThemeService } from '../../../services/ui/theme/theme.service';
 
 @Component({
   selector: 'app-site-header',
-  imports: [RouterLink, NgIcon, HlmButton, HlmTooltip],
+  imports: [RouterLink, RouterLinkActive, NgIcon, HlmButton, HlmTooltip],
   templateUrl: './site-header.component.html',
   styleUrl: './site-header.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -24,8 +24,8 @@ export class SiteHeaderComponent {
   protected readonly profile = SITE_PROFILE;
   protected readonly icon = ICON;
   protected readonly homePath = `/${ROUTE_PATHS.home}`;
-  protected readonly projectsFragment = ROUTE_PATHS.projectsAnchor;
-  protected readonly experienceFragment = ROUTE_PATHS.experienceAnchor;
+  protected readonly projectsPath = `/${ROUTE_PATHS.projects}`;
+  protected readonly experiencePath = `/${ROUTE_PATHS.experience}`;
   protected readonly themeIcon = computed(() => (this.theme.mode() === ThemeMode.Dark ? ICON.sun : ICON.moon));
 
   protected toggleTheme(): void {

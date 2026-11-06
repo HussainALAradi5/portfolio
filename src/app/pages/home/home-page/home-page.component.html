@@ -1,35 +1,5 @@
 <app-hero-section [projects]="allProjects" />
 
-<section [id]="sectionId" class="mx-auto max-w-6xl scroll-mt-20 px-4 pt-12 sm:px-6">
-  <app-section-heading [heading]="text.projects.title" [subtitle]="text.projects.subtitle" />
-
-  <hlm-tabs [tab]="defaultFilter" class="mt-8">
-    <hlm-tabs-list [attr.aria-label]="text.projects.filterLabel">
-      @for (tab of filterTabs; track tab.value) {
-        <button [hlmTabsTrigger]="tab.value">
-          {{ tab.label }}
-          <span class="ms-1 text-xs text-muted-foreground">{{ tab.projects.length }}</span>
-        </button>
-      }
-    </hlm-tabs-list>
-
-    @for (tab of filterTabs; track tab.value) {
-      <div [hlmTabsContent]="tab.value" class="pt-4">
-        <!-- Lazy: only the open tab's cards are in the page. -->
-        <ng-template hlmTabsContentLazy>
-          @if (tab.projects.length) {
-            <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              @for (project of tab.projects; track project.slug; let index = $index) {
-                <app-project-card [project]="project" [eager]="index < eagerCoverCount" />
-              }
-            </div>
-          } @else {
-            <p class="py-12 text-center text-muted-foreground">{{ text.projects.empty }}</p>
-          }
-        </ng-template>
-      </div>
-    }
-  </hlm-tabs>
-</section>
+<app-projects-section />
 
 <app-experience-timeline />

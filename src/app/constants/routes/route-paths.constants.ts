@@ -1,8 +1,7 @@
 export const ROUTE_PATHS = {
   home: '',
   projects: 'projects',
+  experience: 'experience',
   projectSlugParam: 'slug',
   notFound: 'not-found',
-  projectsAnchor: 'projects',
-  experienceAnchor: 'experience',
 } as const;
