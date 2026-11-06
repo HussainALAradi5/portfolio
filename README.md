@@ -57,16 +57,16 @@ Also on every page:
 
 ```bash
 npm ci
-npm start                                      # http://localhost:4200
-npm test -- --watch=false                      # unit tests (Vitest)
-npm run build                                  # output: dist/portfolio/browser
-npm run images:optimize                        # new PNG/JPG project screenshots to WebP + thumbnails
-node scripts/screenshots/capture-screenshots.mjs   # README screenshots, with npm start running
-node scripts/og/render-og-image.mjs            # link-preview card: public/og-image.png
-node scripts/icons/build-favicon-ico.mjs       # public/favicon.ico from public/favicon.svg
+npm start                    # http://localhost:4200
+npm test -- --watch=false    # unit tests (Vitest)
+npm run build                # output: dist/portfolio/browser
+npm run images:optimize      # new PNG/JPG project screenshots to WebP + thumbnails
+npm run screenshots          # README screenshots in docs/screenshots (starts and stops its own server)
+npm run og:render            # link-preview card: public/og-image.png
+npm run icons:favicon        # public/favicon.ico from public/favicon.svg
 ```
 
-The three `node scripts/...` commands use Microsoft Edge in headless mode; set `BROWSER` to another Chromium-based browser if needed. The screenshot script reads `BASE_URL` (default `http://localhost:4200`).
+`screenshots`, `og:render` and `icons:favicon` use Microsoft Edge in headless mode; set `BROWSER` to another Chromium-based browser if needed. `npm run screenshots` starts the site on port 4321 and stops it when done (about 30 seconds); set `BASE_URL` to capture a server that is already running instead.
 
 ## Layout (layer-first)
 

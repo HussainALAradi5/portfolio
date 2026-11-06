@@ -7,7 +7,10 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "images:optimize": "node scripts/images/optimize-images.mjs"
+    "images:optimize": "node scripts/images/optimize-images.mjs",
+    "screenshots": "node scripts/screenshots/capture-screenshots.mjs",
+    "og:render": "node scripts/og/render-og-image.mjs",
+    "icons:favicon": "node scripts/icons/build-favicon-ico.mjs"
   },
   "prettier": {
     "printWidth": 100,
