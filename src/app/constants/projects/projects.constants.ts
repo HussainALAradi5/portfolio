@@ -1,6 +1,7 @@
 import { Project } from '../../interfaces/projects/project.interface';
 import { BOOKS_BUILD_MINDS_PROJECT } from './data/books-build-minds.constants';
 import { CARE_TRACK_PROJECT } from './data/care-track.constants';
+import { DUCK_STREET_PROJECT } from './data/duck-street.constants';
 import { E_CLINIC_PROJECT } from './data/e-clinic.constants';
 import { FANTASY_CARDS_PROJECT } from './data/fantasy-cards.constants';
 import { FUN_TRAVELS_TOUR_PROJECT } from './data/fun-travels-tour.constants';
@@ -16,4 +17,5 @@ export const PROJECTS: readonly Project[] = [
   TASK_FLOW_PROTO_PROJECT,
   VIDEOS_WAVES_PROJECT,
   FANTASY_CARDS_PROJECT,
+  DUCK_STREET_PROJECT,
 ];
