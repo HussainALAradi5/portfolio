@@ -5,6 +5,8 @@ import {
   lucideBookOpen,
   lucideBriefcase,
   lucideCheck,
+  lucideChevronLeft,
+  lucideChevronRight,
   lucideClapperboard,
   lucideCode,
   lucideDatabase,
@@ -24,6 +26,7 @@ import {
   lucideLoaderCircle,
   lucideMail,
   lucideMapPin,
+  lucideMaximize2,
   lucideMonitor,
   lucideMoon,
   lucidePlane,
@@ -34,6 +37,7 @@ import {
   lucideStethoscope,
   lucideSun,
   lucideWrench,
+  lucideX,
 } from '@ng-icons/lucide';
 import type { AppIconName } from '../../types/ui/app-icon-name.type';
 
@@ -45,6 +49,8 @@ export const APP_ICONS = {
   lucideBookOpen,
   lucideBriefcase,
   lucideCheck,
+  lucideChevronLeft,
+  lucideChevronRight,
   lucideClapperboard,
   lucideCode,
   lucideDatabase,
@@ -64,6 +70,7 @@ export const APP_ICONS = {
   lucideLoaderCircle,
   lucideMail,
   lucideMapPin,
+  lucideMaximize2,
   lucideMonitor,
   lucideMoon,
   lucidePlane,
@@ -74,14 +81,19 @@ export const APP_ICONS = {
   lucideStethoscope,
   lucideSun,
   lucideWrench,
+  lucideX,
 } as const;
 
 export const ICON = {
   arrowLeft: 'lucideArrowLeft',
   arrowRight: 'lucideArrowRight',
   check: 'lucideCheck',
+  chevronLeft: 'lucideChevronLeft',
+  chevronRight: 'lucideChevronRight',
+  close: 'lucideX',
   code: 'lucideCode',
   download: 'lucideDownload',
+  enlarge: 'lucideMaximize2',
   externalLink: 'lucideExternalLink',
   github: 'lucideGithub',
   layers: 'lucideLayers',

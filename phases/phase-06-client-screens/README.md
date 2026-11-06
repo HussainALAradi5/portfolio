@@ -12,6 +12,7 @@ Home page with filterable project cards and a detail page per project.
 | Home | `src/app/pages/home/`, `src/app/components/home/` | Hero with totals, then the projects and experience sections |
 | Section pages | `src/app/pages/projects/projects-page/`, `src/app/pages/experience/experience-page/`, `src/app/pages/skills/skills-page/` | Projects, experience or skills only, opened from the header |
 | No duplicated actions | Browser: counted CV buttons and email, LinkedIn, GitHub and Projects links on `/`, `/projects`, `/experience`, `/skills` | One of each on `/`, none repeated on any page; 51 tests passed on 2026-11-06 |
+| Lightbox | `npm test`; browser on `/projects/fun-travels-tour` | Opens on 1 / 4, → shows the next image, Escape closes and unlocks scrolling, thumbnail follows; 56 tests passed on 2026-11-06 |
 | Skills | `npm test`; headless Edge at 1280px light and dark on `/skills` | Six groups, core first; rows end evenly; 57 tests passed on 2026-11-06 |
 | Experience | `src/app/components/experience/` | Timeline section and entry card |
 | Projects | `src/app/components/projects/` | Projects section (filter tabs, lazy content, grid), card, cover, tech groups, repository list, gallery |
@@ -30,6 +31,7 @@ Home page with filterable project cards and a detail page per project.
 - [x] One job per area: the header only navigates (Projects, Experience, GitHub, theme) and the hero holds the actions (Download CV, GitHub, LinkedIn, Email), so no button appears twice
 - [x] Header links open their own pages: `/projects` shows only projects, `/experience` only the timeline, `/` everything; the active link is highlighted and each page sets its tab title (project pages through `middlewares/resolvers/projects/project-title.resolver.ts`)
 - [x] Every action appears once: the hero holds Download CV, GitHub, LinkedIn and Email; the contact section, the header GitHub icon and the footer icons that repeated them were removed
+- [x] Screenshot lightbox (`components/common/image-lightbox/`) on a native modal `<dialog>`: the gallery preview opens it full screen; arrows, side buttons or a swipe move between images; Escape, the close button or a click outside closes it; page scrolling is locked while open and the gallery follows the image on show
 - [x] Skills (`components/skills/skills-section/`, data in `constants/skills/` copied from the CV): core strengths highlighted, then languages, frameworks, databases, tools and spoken languages; on its own page at `/skills` and on the home page
 
 ## Acceptance criteria
