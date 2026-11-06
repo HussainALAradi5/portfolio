@@ -13,6 +13,7 @@ Home page with filterable project cards and a detail page per project.
 | Section pages | `src/app/pages/projects/projects-page/`, `src/app/pages/experience/experience-page/`, `src/app/pages/skills/skills-page/` | Projects, experience or skills only, opened from the header |
 | No duplicated actions | Browser: counted CV buttons and email, LinkedIn, GitHub and Projects links on `/`, `/projects`, `/experience`, `/skills` | One of each on `/`, none repeated on any page; 51 tests passed on 2026-11-06 |
 | Lightbox | `npm test`; browser on `/projects/fun-travels-tour` | Opens on 1 / 4, → shows the next image, Escape closes and unlocks scrolling, thumbnail follows; 56 tests passed on 2026-11-06 |
+| Command palette | `npm test`; fresh browser tab: Ctrl + K, typed "spring", Enter; header at 375px | Opened with focus in the field, found CareTrack and Fun Travels Tour, opened CareTrack and closed; header fits inside the margin; 68 tests passed on 2026-11-06 |
 | Skills | `npm test`; headless Edge at 1280px light and dark on `/skills` | Six groups, core first; rows end evenly; 57 tests passed on 2026-11-06 |
 | Experience | `src/app/components/experience/` | Timeline section and entry card |
 | Projects | `src/app/components/projects/` | Projects section (filter tabs, lazy content, grid), card, cover, tech groups, repository list, gallery |
@@ -32,6 +33,7 @@ Home page with filterable project cards and a detail page per project.
 - [x] Header links open their own pages: `/projects` shows only projects, `/experience` only the timeline, `/` everything; the active link is highlighted and each page sets its tab title (project pages through `middlewares/resolvers/projects/project-title.resolver.ts`)
 - [x] Every action appears once: the hero holds Download CV, GitHub, LinkedIn and Email; the contact section, the header GitHub icon and the footer icons that repeated them were removed
 - [x] Screenshot lightbox (`components/common/image-lightbox/`) on a native modal `<dialog>`: the gallery preview opens it full screen; arrows, side buttons or a swipe move between images; Escape, the close button or a click outside closes it; page scrolling is locked while open and the gallery follows the image on show
+- [x] Command palette (`components/layout/command-palette/`, commands from `services/ui/command-palette/`, matching in `utilities/command-palette/`): Ctrl + K, Cmd + K or the header search button opens a search over pages, projects (with their technologies) and actions (Download CV, switch theme); arrows, Enter and Escape work, with combobox and listbox roles
 - [x] Skills (`components/skills/skills-section/`, data in `constants/skills/` copied from the CV): core strengths highlighted, then languages, frameworks, databases, tools and spoken languages; on its own page at `/skills` and on the home page
 
 ## Acceptance criteria

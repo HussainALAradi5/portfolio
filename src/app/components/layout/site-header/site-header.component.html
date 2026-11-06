@@ -7,11 +7,26 @@
       <span class="hidden sm:inline">{{ profile.name }}</span>
     </a>
 
-    <nav class="flex items-center gap-1">
+    <nav class="flex items-center gap-0.5 sm:gap-1">
+      <button
+        hlmBtn
+        variant="outline"
+        size="sm"
+        type="button"
+        class="search-trigger me-0.5 gap-2 px-2 text-muted-foreground sm:me-1 md:px-3"
+        [attr.aria-label]="text.palette.openLabel"
+        aria-haspopup="dialog"
+        (click)="openPalette()"
+      >
+        <ng-icon [name]="icon.search" />
+        <span class="hidden md:inline">{{ text.palette.open }}</span>
+        <kbd class="hidden md:inline-grid">{{ shortcutLabel }}</kbd>
+      </button>
       <a
         hlmBtn
         variant="ghost"
         size="sm"
+        class="px-2 sm:px-3"
         [routerLink]="projectsPath"
         routerLinkActive="nav-active"
         ariaCurrentWhenActive="page"
@@ -22,6 +37,7 @@
         hlmBtn
         variant="ghost"
         size="sm"
+        class="px-2 sm:px-3"
         [routerLink]="experiencePath"
         routerLinkActive="nav-active"
         ariaCurrentWhenActive="page"
@@ -32,6 +48,7 @@
         hlmBtn
         variant="ghost"
         size="sm"
+        class="px-2 sm:px-3"
         [routerLink]="skillsPath"
         routerLinkActive="nav-active"
         ariaCurrentWhenActive="page"
