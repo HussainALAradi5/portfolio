@@ -3,7 +3,10 @@ import { ExperienceEntry } from '../../interfaces/experience/experience-entry.in
 
 const BAHRAIN = 'Bahrain';
 
-/** Career timeline, ordered by when each entry ended (ongoing first). Content follows the CV. */
+/**
+ * Career timeline, ordered by when each entry ended (ongoing first).
+ * Titles, dates and lines are copied from the CV in public/files/cv; keep the two in step.
+ */
 export const EXPERIENCE: readonly ExperienceEntry[] = [
   {
     id: 'safeway-software-engineer',
@@ -11,14 +14,13 @@ export const EXPERIENCE: readonly ExperienceEntry[] = [
     title: 'Software Engineer',
     organization: 'Safeway Express Cargo Logistic',
     location: BAHRAIN,
-    start: { year: 2025, month: 9 },
+    start: { year: 2025, month: 11 },
     end: null,
-    summary: 'Full-stack web development with Next.js on the front end and ASP.NET on the back end.',
     achievements: [
-      'Develop and maintain full-stack features using Next.js and ASP.NET (C#).',
-      'Build responsive, high-performance web interfaces and RESTful backend services.',
+      'Developing and maintaining full-stack features using Next.js and ASP.NET (C#).',
+      'Building responsive, high-performance web interfaces and RESTful backend services.',
     ],
-    skills: ['Next.js', 'React', 'ASP.NET', 'C#', 'REST APIs'],
+    skills: ['Next.js', 'ASP.NET', 'C#', 'REST APIs'],
   },
   {
     id: 'open-inside-odoo-developer',
@@ -28,12 +30,11 @@ export const EXPERIENCE: readonly ExperienceEntry[] = [
     location: BAHRAIN,
     start: { year: 2024, month: 9 },
     end: { year: 2025, month: 9 },
-    summary: 'Odoo ERP customisation and integrations for client businesses.',
     achievements: [
-      'Developed and customised Odoo modules to meet client-specific business requirements.',
+      'Developed and customized Odoo modules to meet client-specific business requirements.',
       'Integrated third-party APIs into the Odoo ecosystem, extending platform functionality.',
     ],
-    skills: ['Odoo', 'Python', 'API integration'],
+    skills: ['Odoo', 'Third-party APIs'],
   },
   {
     id: 'general-assembly-sei',
@@ -42,13 +43,8 @@ export const EXPERIENCE: readonly ExperienceEntry[] = [
     organization: 'General Assembly',
     location: BAHRAIN,
     start: { year: 2024, month: 11 },
-    summary: 'Full-time immersive bootcamp, graduated with the Software Engineering Immersive certificate.',
-    achievements: [
-      'Built full-stack apps across JavaScript, Node.js and Express, MongoDB, React, Python with Flask and Django, Vue and SQL.',
-      'Shipped Duck Street, my first project: a browser game in plain JavaScript, HTML and CSS.',
-    ],
-    skills: ['JavaScript', 'Node.js', 'Express', 'MongoDB', 'React', 'Python', 'Django', 'Vue'],
-    projectSlugs: ['duck-street'],
+    achievements: ['Graduation Certificate.'],
+    skills: [],
   },
   {
     id: 'uob-bsc-software-engineering',
@@ -58,11 +54,10 @@ export const EXPERIENCE: readonly ExperienceEntry[] = [
     location: BAHRAIN,
     start: { year: 2017, month: 2 },
     end: { year: 2024, month: 2 },
-    summary: 'Bachelor’s degree in Software Engineering.',
     achievements: [
-      'Capstone project: Ehsebha, a cloud-based mobile point-of-sale system for reservation management, built with React Native, Express and MongoDB.',
+      'Capstone project: Ehsebha, a cloud-based mobile Point of Sale system for reservation management and streamlined POS operations.',
     ],
-    skills: ['Software engineering', 'UML', 'React Native', 'Express', 'MongoDB'],
+    skills: ['React Native', 'Express', 'MongoDB'],
   },
   {
     id: 'uob-trainee',
@@ -72,12 +67,11 @@ export const EXPERIENCE: readonly ExperienceEntry[] = [
     location: BAHRAIN,
     start: { year: 2023, month: 10 },
     end: { year: 2024, month: 1 },
-    summary: 'Internship focused on automation and digital workflows.',
     achievements: [
-      'Developed a Python automation script that extracts WhatsApp group participants and phone numbers into Excel sheets with a single click.',
-      'Gained proficiency in Python libraries for digitalisation and workflow automation.',
-      'Designed promotional posters in Photoshop for marketing efforts.',
+      'Developed a Python automation script to extract WhatsApp group participants and phone numbers into Excel sheets with a single click.',
+      'Gained proficiency in Python libraries for digitalization and workflow automation.',
+      'Used Photoshop to design promotional posters for marketing efforts.',
     ],
-    skills: ['Python', 'Automation', 'Excel', 'Photoshop'],
+    skills: ['Python', 'Excel', 'Photoshop'],
   },
 ];

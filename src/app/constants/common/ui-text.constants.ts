@@ -31,10 +31,9 @@ export const UI_TEXT = {
   },
   experience: {
     title: 'Experience',
-    subtitle: 'Where I have worked and studied, and what I did there.',
+    subtitle: 'Where I have worked and studied, and what I did there, as on my CV.',
     current: 'Current',
     whatIDid: 'What I did',
-    relatedProjects: 'Built here',
   },
   detail: {
     back: 'All projects',
