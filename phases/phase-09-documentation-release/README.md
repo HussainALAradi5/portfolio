@@ -39,6 +39,7 @@ Document the project, deploy it, and keep it deploying on every push.
 | Console errors | Fresh browser tab on the dev server | `/favicon.ico` 404 fixed; no errors on 2026-11-06 |
 | Preview tags in the build | `dist/portfolio/browser/index.html`, `og-image.png` | Present on 2026-11-06 |
 | README screenshots | `node scripts/screenshots/capture-screenshots.mjs` against the dev server | Eight screenshots written and checked on 2026-11-06 |
+| One-command screenshots | `npm run screenshots` with no server running | Started the site on 4321, wrote 8 screenshots, stopped the site; 31 s on 2026-11-06 |
 
 ## Risks and open questions
 - The site lives under `/portfolio/`. Renaming the repository to `HussainALAradi5.github.io` would give a root address; the workflow already uses the repository name for the base path.

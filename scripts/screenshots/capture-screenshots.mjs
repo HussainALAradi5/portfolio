@@ -1,16 +1,20 @@
-// Captures the README screenshots in docs/screenshots from a running dev server.
-// Drives headless Edge or Chrome over the DevTools protocol, so it can emulate a phone, pick the
-// colour scheme, open the command palette or lightbox, and wait for animations to finish.
-//   npm start                                   (in another terminal)
-//   node scripts/screenshots/capture-screenshots.mjs
-// BASE_URL overrides http://localhost:4200, BROWSER the Edge path.
-import { spawn } from 'node:child_process';
+// Captures the README screenshots in docs/screenshots.
+// Starts the dev server on its own port, drives headless Edge or Chrome over the DevTools protocol
+// (to emulate a phone, pick the colour scheme and open the command palette or lightbox), then stops
+// the server again.
+//   npm run screenshots
+// BASE_URL uses an already running server instead; BROWSER overrides the Edge path.
+import { spawn, spawnSync } from 'node:child_process';
 import { mkdtempSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import sharp from 'sharp';
 
-const BASE_URL = process.env.BASE_URL ?? 'http://localhost:4200';
+/** A port of its own, so it never captures another app on the usual 4200. */
+const SERVER_PORT = 4321;
+const BASE_URL = process.env.BASE_URL ?? `http://localhost:${SERVER_PORT}`;
+const STARTS_SERVER = !process.env.BASE_URL;
+const SERVER_TIMEOUT_MS = 180_000;
 const BROWSER = process.env.BROWSER ?? 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe';
 const OUTPUT_DIR = 'docs/screenshots';
 const DEBUG_PORT = 9333;
@@ -43,6 +47,39 @@ const SHOTS = [
 ];
 
 const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+async function isUp(url) {
+  try {
+    return (await fetch(url)).ok;
+  } catch {
+    return false;
+  }
+}
+
+/** Starts `ng serve` and resolves once it answers, or fails after SERVER_TIMEOUT_MS. */
+async function startServer() {
+  if (await isUp(BASE_URL)) {
+    throw new Error(`Port ${SERVER_PORT} is already in use; stop that server or pass BASE_URL.`);
+  }
+  console.log(`starting the dev server on port ${SERVER_PORT}…`);
+  const server = spawn(`npx ng serve --port ${SERVER_PORT}`, { shell: true, stdio: 'ignore' });
+  const deadline = Date.now() + SERVER_TIMEOUT_MS;
+  while (Date.now() < deadline) {
+    if (await isUp(BASE_URL)) return server;
+    await wait(1000);
+  }
+  stopProcess(server);
+  throw new Error('The dev server did not start in time.');
+}
+
+/** Stops a process and its children (ng serve runs under a shell). */
+function stopProcess(child) {
+  if (process.platform === 'win32') {
+    spawnSync('taskkill', ['/pid', String(child.pid), '/T', '/F'], { stdio: 'ignore' });
+  } else {
+    child.kill();
+  }
+}
 
 async function connect() {
   for (let attempt = 0; attempt < 50; attempt++) {
@@ -114,6 +151,7 @@ async function capture(cdp, shot) {
   console.log(`wrote ${file}`);
 }
 
+const server = STARTS_SERVER ? await startServer() : null;
 const profile = mkdtempSync(join(tmpdir(), 'shots-'));
 const browser = spawn(BROWSER, [
   '--headless=new',
@@ -133,7 +171,8 @@ try {
   }
 } finally {
   cdp?.close();
-  browser.kill();
+  stopProcess(browser);
+  if (server) stopProcess(server);
   await wait(500);
   rmSync(profile, { recursive: true, force: true });
 }
