@@ -21,8 +21,8 @@ Personal portfolio of Hussain Al Aradi, built with **Angular 21**, **Spartan UI*
 | Fun Travels Tour | Spring Boot 3.5, Next.js 16, Expo, PostgreSQL |
 | Books Build Minds | Flask, Next.js 16, Flutter, PostgreSQL |
 | TaskFlow | Express 5, Angular 21, MongoDB |
+| Videos Waves | Express 5, Next.js 16, Flutter, MongoDB |
 | Fantasy Cards | React |
-| Videos Waves | React, Chakra UI, Node.js, MongoDB |
 
 ## Run locally
 
