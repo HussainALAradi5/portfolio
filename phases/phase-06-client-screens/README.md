@@ -23,7 +23,7 @@ Home page with filterable project cards and a detail page per project.
 - [x] Motion: staggered hero entrance, drifting hero glow, cards that fade up on scroll and lift on hover; all of it off under `prefers-reduced-motion`
 - [x] Download CV: `components/common/cv-download-button/` (the hero's main action) and `services/site/cv-download/`; the button shows a spinner and stays disabled while the PDF in `public/files/cv/` is fetched, and falls back to opening the file if the fetch fails
 - [x] Duck Street added as an early project (`constants/projects/data/duck-street.constants.ts`) with screenshots of the live game
-- [x] Experience timeline (`components/experience/`, data in `constants/experience/`, period and duration in `utilities/experience/period/`): work, education and certificate entries with the CV's own lines, dates and skills; a scroll-filled rail and a pulsing node for the current role
+- [x] Experience timeline (`components/experience/`, data in `constants/experience/`, periods in `utilities/experience/period/`): a horizontal line of stops, oldest first; selecting a stop (click, arrow, Home or End keys) shows its card with the CV's lines, dates, length and skills; the current role is selected first and pulses; on phones the line scrolls inside its own box
 - [x] One job per area: the header only navigates (Projects, Experience, GitHub, theme) and the hero holds the actions (Download CV, GitHub, LinkedIn, Email), so no button appears twice
 
 ## Acceptance criteria
@@ -44,6 +44,7 @@ Home page with filterable project cards and a detail page per project.
 | Experience timeline | Browser at 1280px light and dark, 500px dark; `npm test` | Renders 5 entries, no horizontal scroll at 375px, no console errors; 40 tests passed on 2026-11-06 |
 | Header and hero without duplicates | `npm test`; browser at 1280px and 375px | Header shows Projects, Experience, GitHub, theme and fits at 375px; hero shows Download CV first; 42 tests passed on 2026-11-06 |
 | Timeline matches the CV | Compared every title, date and line with the CV PDF; `npm test` | Match on 2026-11-06 (Safeway start corrected to Nov 2025); site PDF replaced with the current CV |
+| Horizontal timeline | `npm test`; headless Edge at 1280px light and dark; browser at 375px | Click and keys change the card; current role centred on load at 375px; no page scroll; 45 tests passed on 2026-11-06 |
 
 ## Risks and open questions
 - Scroll-reveal on cards uses CSS scroll-driven animations; browsers without them (Firefox today) show the cards without the effect.

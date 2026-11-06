@@ -34,6 +34,11 @@ export const UI_TEXT = {
     subtitle: 'Where I have worked and studied, and what I did there, as on my CV.',
     current: 'Current',
     whatIDid: 'What I did',
+    period: 'Period',
+    duration: 'Length',
+    location: 'Location',
+    stopsLabel: 'Career timeline',
+    hint: 'Select a point on the timeline to see what I did there.',
   },
   detail: {
     back: 'All projects',

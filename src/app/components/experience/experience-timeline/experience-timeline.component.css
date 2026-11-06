@@ -2,28 +2,101 @@
   display: block;
 }
 
-.timeline-fill {
-  background: linear-gradient(180deg, var(--primary), oklch(0.72 0.15 225));
-  transform-origin: top;
+/* The rail runs between the centres of the first and last stop node (each stop is 1/count wide). */
+.timeline-track {
+  --node-centre: 24px;
+  --rail-inset: calc(100% / var(--stop-count) / 2);
 }
 
-/* The rail fills with blue as the timeline scrolls through the viewport. */
-@supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    .timeline {
-      view-timeline-name: --timeline;
-    }
+.timeline-rail,
+.timeline-fill {
+  position: absolute;
+  top: calc(var(--node-centre) - 1.5px);
+  left: var(--rail-inset);
+  height: 3px;
+  border-radius: 999px;
+}
 
-    .timeline-fill {
-      animation: rail-fill linear both;
-      animation-timeline: --timeline;
-      animation-range: entry 20% exit 60%;
-    }
+.timeline-rail {
+  right: var(--rail-inset);
+  background: var(--border);
+}
+
+.timeline-fill {
+  width: calc((100% - 2 * var(--rail-inset)) * var(--progress));
+  background: linear-gradient(90deg, oklch(0.72 0.15 225), var(--primary));
+  transition: width 450ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.stop {
+  cursor: pointer;
+  border-radius: 1rem;
+}
+
+.stop-node {
+  border-color: var(--border);
+  color: var(--muted-foreground);
+  transition:
+    transform 250ms ease,
+    background-color 250ms ease,
+    border-color 250ms ease,
+    color 250ms ease,
+    box-shadow 250ms ease;
+}
+
+.stop-years {
+  color: var(--muted-foreground);
+}
+
+.stop:hover .stop-node {
+  border-color: color-mix(in oklch, var(--primary) 60%, transparent);
+  color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.stop:focus-visible .stop-node {
+  box-shadow: 0 0 0 4px color-mix(in oklch, var(--ring) 45%, transparent);
+}
+
+.stop.is-selected .stop-node {
+  border-color: var(--primary);
+  background: var(--primary);
+  color: var(--primary-foreground);
+  transform: scale(1.12);
+  box-shadow: 0 8px 24px -6px color-mix(in oklch, var(--primary) 55%, transparent);
+}
+
+.stop.is-selected .stop-years,
+.stop.is-selected .stop-title {
+  color: var(--primary);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* The ongoing role sends out a soft pulse. */
+  .stop.is-current .stop-node::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    border: 2px solid var(--primary);
+    animation: node-pulse 2.4s ease-out infinite;
   }
 }
 
-@keyframes rail-fill {
+@media (prefers-reduced-motion: reduce) {
+  .timeline-fill,
+  .stop-node {
+    transition: none;
+  }
+}
+
+@keyframes node-pulse {
   from {
-    transform: scaleY(0);
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(1.7);
   }
 }

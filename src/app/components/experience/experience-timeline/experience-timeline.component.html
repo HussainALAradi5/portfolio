@@ -1,17 +1,47 @@
 <section [id]="sectionId" class="mx-auto max-w-6xl scroll-mt-20 px-4 pt-20 sm:px-6">
   <app-section-heading [heading]="text.experience.title" [subtitle]="text.experience.subtitle" />
 
-  <div class="timeline relative mt-10 max-w-4xl">
-    <span
-      class="timeline-rail absolute start-[19px] top-2 bottom-2 w-0.5 overflow-hidden rounded-full bg-border sm:start-[27px]"
-      aria-hidden="true"
+  <div #scroller class="timeline-scroller relative -mx-4 mt-10 overflow-x-auto px-4 pt-5 pb-2 sm:mx-0 sm:px-0">
+    <div
+      role="tablist"
+      class="timeline-track relative flex min-w-max sm:min-w-0"
+      [style.--stop-count]="entries.length"
+      [style.--progress]="progress()"
+      [attr.aria-label]="text.experience.stopsLabel"
+      (keydown)="onKeydown($event)"
     >
-      <span class="timeline-fill absolute inset-0 rounded-full"></span>
-    </span>
-    <ol class="relative space-y-6">
-      @for (entry of entries; track entry.id) {
-        <li app-experience-entry [entry]="entry" [today]="today"></li>
+      <span class="timeline-rail" aria-hidden="true"></span>
+      <span class="timeline-fill" aria-hidden="true"></span>
+
+      @for (entry of entries; track entry.id; let index = $index) {
+        <button
+          #stop
+          type="button"
+          role="tab"
+          class="stop group relative flex w-40 shrink-0 flex-col items-center gap-3 px-2 pb-2 text-center outline-none sm:w-auto sm:flex-1"
+          [class.is-selected]="index === selectedIndex()"
+          [class.is-current]="entry.end === null"
+          [attr.aria-selected]="index === selectedIndex()"
+          [attr.aria-controls]="panelId"
+          [attr.tabindex]="index === selectedIndex() ? 0 : -1"
+          (click)="select(index)"
+        >
+          <span class="stop-node relative z-10 grid size-12 place-items-center rounded-full border-2 bg-background">
+            <ng-icon [name]="kindStyles[entry.kind].icon" size="20" />
+          </span>
+          <span class="stop-years text-xs font-semibold tracking-wide">{{ stopLabels[index] }}</span>
+          <span class="stop-title text-sm leading-snug font-semibold">{{ entry.title }}</span>
+          <span class="text-xs leading-snug text-muted-foreground">{{ entry.organization }}</span>
+        </button>
       }
-    </ol>
+    </div>
+  </div>
+
+  <p class="mt-2 text-center text-xs text-muted-foreground">{{ text.experience.hint }}</p>
+
+  <div [id]="panelId" role="tabpanel" class="mt-6" [attr.aria-label]="selected().title">
+    @for (entry of [selected()]; track entry.id) {
+      <app-experience-details [entry]="entry" [today]="today" />
+    }
   </div>
 </section>
