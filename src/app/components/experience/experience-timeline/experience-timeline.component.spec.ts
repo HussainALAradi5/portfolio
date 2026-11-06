@@ -7,6 +7,8 @@ import { ExperienceTimelineComponent } from './experience-timeline.component';
 
 describe('ExperienceTimelineComponent', () => {
   beforeEach(async () => {
+    // jsdom has no element scrolling; the component centres the selected stop with scrollTo.
+    Element.prototype.scrollTo = vi.fn();
     await TestBed.configureTestingModule({
       imports: [ExperienceTimelineComponent],
       providers: [provideIcons(APP_ICONS)],

@@ -12,7 +12,6 @@ import { NgIcon } from '@ng-icons/core';
 import { UI_TEXT } from '../../../constants/common/ui-text.constants';
 import { EXPERIENCE_KIND_STYLES } from '../../../constants/experience/experience-labels.constants';
 import { EXPERIENCE } from '../../../constants/experience/experience.constants';
-import { ROUTE_PATHS } from '../../../constants/routes/route-paths.constants';
 import { KEY } from '../../../constants/ui/keyboard.constants';
 import { YearMonth } from '../../../interfaces/experience/year-month.interface';
 import { formatYearRange } from '../../../utilities/experience/period/format-year-range.utility';
@@ -38,7 +37,6 @@ export class ExperienceTimelineComponent {
   private readonly stopButtons = viewChildren<ElementRef<HTMLButtonElement>>('stop');
 
   protected readonly text = UI_TEXT;
-  protected readonly sectionId = ROUTE_PATHS.experienceAnchor;
   protected readonly panelId = PANEL_ID;
   protected readonly kindStyles = EXPERIENCE_KIND_STYLES;
   protected readonly entries = EXPERIENCE;

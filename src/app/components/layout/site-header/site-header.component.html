@@ -8,15 +8,23 @@
     </a>
 
     <nav class="flex items-center gap-1">
-      <a hlmBtn variant="ghost" size="sm" [routerLink]="homePath" [fragment]="projectsFragment">
+      <a
+        hlmBtn
+        variant="ghost"
+        size="sm"
+        [routerLink]="projectsPath"
+        routerLinkActive="nav-active"
+        ariaCurrentWhenActive="page"
+      >
         {{ text.nav.projects }}
       </a>
       <a
         hlmBtn
         variant="ghost"
         size="sm"
-        [routerLink]="homePath"
-        [fragment]="experienceFragment"
+        [routerLink]="experiencePath"
+        routerLinkActive="nav-active"
+        ariaCurrentWhenActive="page"
       >
         {{ text.nav.experience }}
       </a>

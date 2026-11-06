@@ -46,8 +46,6 @@ export class ProjectDetailPageComponent {
   protected readonly icon = ICON;
   protected readonly statusLabels = PROJECT_STATUS_LABELS;
   protected readonly statusVariants = PROJECT_STATUS_BADGE_VARIANTS;
-  protected readonly homePath = `/${ROUTE_PATHS.home}`;
-  protected readonly projectsFragment = ROUTE_PATHS.projectsAnchor;
   protected readonly projectsPath = `/${ROUTE_PATHS.projects}`;
 
   protected readonly project = computed(() => this.projectService.findBySlug(this.slug()));
