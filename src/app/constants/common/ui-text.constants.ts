@@ -2,6 +2,7 @@ export const UI_TEXT = {
   brand: 'HA',
   nav: {
     projects: 'Projects',
+    experience: 'Experience',
     github: 'GitHub profile',
     toggleTheme: 'Toggle colour theme',
     cv: 'CV',
@@ -29,6 +30,13 @@ export const UI_TEXT = {
     viewDetails: 'View details',
     repositories: 'repositories',
     repository: 'repository',
+  },
+  experience: {
+    title: 'Experience',
+    subtitle: 'Where I have worked and studied, and what I did there.',
+    current: 'Current',
+    whatIDid: 'What I did',
+    relatedProjects: 'Built here',
   },
   detail: {
     back: 'All projects',

@@ -1,0 +1,29 @@
+:host {
+  display: block;
+}
+
+.timeline-fill {
+  background: linear-gradient(180deg, var(--primary), oklch(0.72 0.15 225));
+  transform-origin: top;
+}
+
+/* The rail fills with blue as the timeline scrolls through the viewport. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .timeline {
+      view-timeline-name: --timeline;
+    }
+
+    .timeline-fill {
+      animation: rail-fill linear both;
+      animation-timeline: --timeline;
+      animation-range: entry 20% exit 60%;
+    }
+  }
+}
+
+@keyframes rail-fill {
+  from {
+    transform: scaleY(0);
+  }
+}

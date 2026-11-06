@@ -4,4 +4,5 @@ export const ROUTE_PATHS = {
   projectSlugParam: 'slug',
   notFound: 'not-found',
   projectsAnchor: 'projects',
+  experienceAnchor: 'experience',
 } as const;

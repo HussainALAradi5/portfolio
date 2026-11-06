@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { HlmTabsImports } from '@spartan-ng/helm/tabs';
 import { SectionHeadingComponent } from '../../../components/common/section-heading/section-heading.component';
+import { ExperienceTimelineComponent } from '../../../components/experience/experience-timeline/experience-timeline.component';
 import { HeroSectionComponent } from '../../../components/home/hero-section/hero-section.component';
 import { ProjectCardComponent } from '../../../components/projects/project-card/project-card.component';
 import { UI_TEXT } from '../../../constants/common/ui-text.constants';
@@ -13,7 +14,7 @@ import { ProjectService } from '../../../services/projects/project/project.servi
 
 @Component({
   selector: 'app-home-page',
-  imports: [HlmTabsImports, SectionHeadingComponent, HeroSectionComponent, ProjectCardComponent],
+  imports: [HlmTabsImports, SectionHeadingComponent, HeroSectionComponent, ProjectCardComponent, ExperienceTimelineComponent],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
