@@ -49,7 +49,7 @@ Also on every page:
 | Fun Travels Tour | Spring Boot 3.5, Next.js 16, Expo, PostgreSQL | Live demo, Android APK |
 | Books Build Minds | Flask, Next.js 16, Flutter, PostgreSQL | Completed |
 | TaskFlow | Express 5, Angular 21, MongoDB | Live demo |
-| Videos Waves | Express 5, Next.js 16, Flutter, MongoDB | Live demo |
+| Videos Waves | Express 5, Next.js 16, Flutter, MongoDB | Live demo, Android APK |
 | Fantasy Cards | React | Live demo |
 | Duck Street | JavaScript, HTML, CSS | Live demo |
 

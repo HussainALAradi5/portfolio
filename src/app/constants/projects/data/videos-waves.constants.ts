@@ -31,7 +31,7 @@ export const VIDEOS_WAVES_PROJECT: Project = {
     'One response envelope and paged lists (page size up to 50, allowlisted sorting) shared by web and mobile.',
     'Generic building blocks: config-driven forms, infinite grid, data table, query states and status badges.',
     'Vitest and Supertest HTTP tests on an in-memory MongoDB; development seed with one user per role.',
-    'Live demo: the web app on Vercel, the Flutter app as a web build on GitHub Pages and the API on Render, seeded with demo accounts and public sample clips.',
+    'Live demo: the web app on Vercel, the Flutter app as a web build on GitHub Pages and an Android APK, and the API on Render, seeded with demo accounts and public sample clips.',
   ],
   tech: [
     { layer: TechLayer.Frontend, name: 'Next.js 16' },
@@ -64,6 +64,10 @@ export const VIDEOS_WAVES_PROJECT: Project = {
   links: [
     { label: 'Open web app', url: 'https://videos-waves-client.vercel.app' },
     { label: 'Mobile web demo', url: 'https://hussainalaradi5.github.io/videos_waves_mobile/' },
+    {
+      label: 'Download Android app',
+      url: 'https://github.com/HussainALAradi5/videos_waves_mobile/releases/latest/download/videos-waves.apk',
+    },
     { label: 'API', url: 'https://videos-waves-api.onrender.com/health' },
   ],
   // From the web client repository's docs/screenshots.
