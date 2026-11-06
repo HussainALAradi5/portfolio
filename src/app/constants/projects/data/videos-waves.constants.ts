@@ -14,20 +14,24 @@ export const VIDEOS_WAVES_PROJECT: Project = {
   domain: 'Social media',
   icon: 'lucideClapperboard',
   tier: ProjectTier.Flagship,
-  status: ProjectStatus.Completed,
+  status: ProjectStatus.Live,
   period: '2024, rebuilt 2026',
   summary:
-    'A TikTok-style app where users upload videos, scroll an infinite feed, like and comment, and can ask to become admins who moderate ' +
-    'videos and comments. First built in 2024 as one React project, it was rebuilt in 2026 as an Express and TypeScript API, ' +
-    'a Next.js web client, a Flutter mobile app and a documentation repository.',
+    'An Instagram-style short-video app: people upload videos, browse a For you or Following feed, like, comment and reply, follow ' +
+    'each other and chat live in direct and group conversations. Admins moderate content and review requests for admin access. ' +
+    'First built in 2024 as one React project, it was rebuilt in 2026 as an Express and TypeScript API, a Next.js web client, ' +
+    'a Flutter mobile app and a documentation repository.',
   highlights: [
-    'Infinite feed with search, video streaming, likes and comments that their authors can edit or delete.',
+    'For you and Following feeds with search, video streaming, likes, and comments with replies.',
+    'Live direct and group chat over Socket.IO with photos, files, voice notes, reactions and Seen.',
+    'Follow, block and restrict, with private accounts.',
     'Drag-and-drop uploads on the web and device uploads on mobile, checked for file type and size.',
     'Admin role: users request admin access, admins accept or reject it and moderate any video or comment.',
     'JWT access and refresh tokens; one shared refresh on a 401 retries every waiting request.',
     'One response envelope and paged lists (page size up to 50, allowlisted sorting) shared by web and mobile.',
     'Generic building blocks: config-driven forms, infinite grid, data table, query states and status badges.',
     'Vitest and Supertest HTTP tests on an in-memory MongoDB; development seed with one user per role.',
+    'Live demo: the web app on Vercel and the API on Render, seeded with demo accounts and public sample clips.',
   ],
   tech: [
     { layer: TechLayer.Frontend, name: 'Next.js 16' },
@@ -40,6 +44,8 @@ export const VIDEOS_WAVES_PROJECT: Project = {
     { layer: TechLayer.Backend, name: 'TypeScript' },
     { layer: TechLayer.Backend, name: 'Zod 4' },
     { layer: TechLayer.Backend, name: 'Multer' },
+    { layer: TechLayer.Backend, name: 'Socket.IO 4' },
+    { layer: TechLayer.Backend, name: 'ImageKit' },
     { layer: TechLayer.Mobile, name: 'Flutter 3.47' },
     { layer: TechLayer.Mobile, name: 'provider' },
     { layer: TechLayer.Mobile, name: 'go_router' },
@@ -55,13 +61,17 @@ export const VIDEOS_WAVES_PROJECT: Project = {
     { role: RepositoryRole.Mobile, name: 'videos_waves_mobile', stack: 'Flutter' },
     { role: RepositoryRole.Documentation, name: 'videos_waves_documentation', stack: 'Markdown' },
   ],
-  links: [],
-  // Screenshots of the original 2024 version; the rebuilt client has none published yet.
+  links: [
+    { label: 'Open web app', url: 'https://videos-waves-client.vercel.app' },
+    { label: 'API', url: 'https://videos-waves-api.onrender.com/health' },
+  ],
+  // From the web client repository's docs/screenshots.
   screenshots: [
-    { src: `${IMAGES}/homepage.webp`, caption: 'Home feed (original version)' },
-    { src: `${IMAGES}/upload.webp`, caption: 'Drag-and-drop upload (original version)' },
-    { src: `${IMAGES}/commentsection.webp`, caption: 'Comment section (original version)' },
-    { src: `${IMAGES}/dark-mode.webp`, caption: 'Dark mode (original version)' },
-    { src: `${IMAGES}/login.webp`, caption: 'Login (original version)' },
+    { src: `${IMAGES}/desktop-dark-feed.webp`, caption: 'Feed (dark)' },
+    { src: `${IMAGES}/desktop-dark-video.webp`, caption: 'Video with comments and the Owner badge' },
+    { src: `${IMAGES}/desktop-dark-chat.webp`, caption: 'Live chat' },
+    { src: `${IMAGES}/desktop-dark-chat-options.webp`, caption: 'Reactions and chat options' },
+    { src: `${IMAGES}/desktop-light-profile.webp`, caption: 'Profile (light)' },
+    { src: `${IMAGES}/tablet-light-feed.webp`, caption: 'Feed (light, tablet width)' },
   ],
 };
