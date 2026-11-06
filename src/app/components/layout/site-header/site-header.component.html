@@ -11,6 +11,16 @@
       <a hlmBtn variant="ghost" size="sm" [routerLink]="homePath" [fragment]="projectsFragment">
         {{ text.nav.projects }}
       </a>
+      <a
+        hlmBtn
+        variant="ghost"
+        size="sm"
+        class="hidden sm:inline-flex"
+        [routerLink]="homePath"
+        [fragment]="experienceFragment"
+      >
+        {{ text.nav.experience }}
+      </a>
       <app-cv-download-button variant="ghost" size="sm" [label]="text.nav.cv" />
       <a
         hlmBtn

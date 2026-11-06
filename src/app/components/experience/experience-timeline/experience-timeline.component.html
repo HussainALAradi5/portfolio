@@ -1,0 +1,17 @@
+<section [id]="sectionId" class="mx-auto max-w-6xl scroll-mt-20 px-4 pt-20 sm:px-6">
+  <app-section-heading [heading]="text.experience.title" [subtitle]="text.experience.subtitle" />
+
+  <div class="timeline relative mt-10 max-w-4xl">
+    <span
+      class="timeline-rail absolute start-[19px] top-2 bottom-2 w-0.5 overflow-hidden rounded-full bg-border sm:start-[27px]"
+      aria-hidden="true"
+    >
+      <span class="timeline-fill absolute inset-0 rounded-full"></span>
+    </span>
+    <ol class="relative space-y-6">
+      @for (entry of entries; track entry.id) {
+        <li app-experience-entry [entry]="entry" [today]="today"></li>
+      }
+    </ol>
+  </div>
+</section>
