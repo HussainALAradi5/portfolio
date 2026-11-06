@@ -1,6 +1,6 @@
 # Portfolio
 
-Personal portfolio of Hussain Al Aradi, built with **Angular 21**, **Spartan UI** (helm components on `@spartan-ng/brain`) and **Tailwind CSS 4**. It presents seven projects with screenshots, tech stack, repositories and live demo links, in light and dark themes.
+Personal portfolio of Hussain Al Aradi, built with **Angular 21**, **Spartan UI** (helm components on `@spartan-ng/brain`) and **Tailwind CSS 4**. It presents eight projects with screenshots, tech stack, repositories and live demo links, in light and dark themes.
 
 **Live:** https://hussainalaradi5.github.io/portfolio/
 
@@ -23,6 +23,7 @@ Personal portfolio of Hussain Al Aradi, built with **Angular 21**, **Spartan UI*
 | TaskFlow | Express 5, Angular 21, MongoDB |
 | Videos Waves | Express 5, Next.js 16, Flutter, MongoDB |
 | Fantasy Cards | React |
+| Duck Street | JavaScript, HTML, CSS |
 
 ## Run locally
 

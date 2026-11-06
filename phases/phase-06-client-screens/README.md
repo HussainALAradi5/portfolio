@@ -21,9 +21,10 @@ Home page with filterable project cards and a detail page per project.
 - [x] Blue brand palette in `src/styles.css`, with a navy dark theme lit by soft blue glows and a dot grid behind the hero
 - [x] Motion: staggered hero entrance, drifting hero glow, cards that fade up on scroll and lift on hover; all of it off under `prefers-reduced-motion`
 - [x] Download CV: `components/common/cv-download-button/` (reused in the header and hero) and `services/site/cv-download/`; the button shows a spinner and stays disabled while the PDF in `public/files/cv/` is fetched, and falls back to opening the file if the fetch fails
+- [x] Duck Street added as an early project (`constants/projects/data/duck-street.constants.ts`) with screenshots of the live game
 
 ## Acceptance criteria
-- All seven projects open from the home page.
+- All eight projects open from the home page.
 - Desktop and 375px widths work in light and dark themes.
 
 ## Verification
