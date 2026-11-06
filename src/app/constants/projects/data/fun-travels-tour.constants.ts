@@ -21,12 +21,14 @@ export const FUN_TRAVELS_TOUR_PROJECT: Project = {
     'and carry a boarding pass with a QR code. Owners, managers and employees run their agency, and administrators run the platform.',
   highlights: [
     'Per-tour seat inventory, meal options and bookings paid from a wallet, with Stripe top-up on the web.',
+    'Book seats for a whole family in one booking, with tour sale prices set by the agency.',
+    'Per-agency discount and refund rules; customers see the exact refund before they cancel.',
     'Boarding pass with QR code, cancellations and refunds calculated from the notice period.',
     'Seven roles scoped to their own agency or branch, from customer to owner and platform admin.',
     'Live notifications over WebSocket and support requests with replies.',
     'Branded PDF and Excel reports generated on the server.',
-    'Client DTO mirrors generated from the server source; CI runs tests, type-check, lint and build for each repository.',
-    'Live demo: the web app on Vercel, the API on Render and the database on Neon, seeded with bookable demo tours.',
+    'Client DTO mirrors generated from the server source; CI runs tests, type-check, lint and build for each repository, plus 316 live API checks on the server.',
+    'Live demo: the web app on Vercel, the API on Render and the database on Neon, seeded with bookable demo tours; the Android app ships as an APK.',
   ],
   tech: [
     { layer: TechLayer.Frontend, name: 'Next.js 16' },
@@ -55,7 +57,11 @@ export const FUN_TRAVELS_TOUR_PROJECT: Project = {
       name: 'fun-travels-tour-client',
       stack: 'Next.js',
     },
-    { role: RepositoryRole.Mobile, name: 'fun-travels-tour-mobile', stack: 'Expo', isPrivate: true },
+    {
+      role: RepositoryRole.Mobile,
+      name: 'fun-travels-tour-mobile',
+      stack: 'Expo',
+    },
     {
       role: RepositoryRole.Documentation,
       name: 'fun-travels-tour-document',
@@ -64,7 +70,11 @@ export const FUN_TRAVELS_TOUR_PROJECT: Project = {
   ],
   links: [
     { label: 'Open web app', url: 'https://fun-travels-tour-client.vercel.app' },
-    { label: 'API', url: 'https://fun-travels-tour-api.onrender.com/api/v1/tours/catalog' },
+    { label: 'API', url: 'https://fun-travels-tour-api.onrender.com/api/tours/catalog' },
+    {
+      label: 'Download Android app',
+      url: 'https://expo.dev/artifacts/eas/gk8X_woGO39agq-bTTbpYPh7LOqAFIt7Jp4CaBMhcv8.apk',
+    },
   ],
   screenshots: [
     { src: `${IMAGES}/home.webp`, caption: 'Public home page' },
