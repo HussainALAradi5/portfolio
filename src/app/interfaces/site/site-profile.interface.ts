@@ -6,6 +6,9 @@ export interface SiteProfile {
   role: string;
   intro: string;
   githubUrl: string;
+  email: string;
+  linkedinUrl: string;
+  location: string;
   cv: CvFile;
   socialLinks: readonly SocialLink[];
 }

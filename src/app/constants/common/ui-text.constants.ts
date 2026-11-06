@@ -40,6 +40,15 @@ export const UI_TEXT = {
     stopsLabel: 'Career timeline',
     hint: 'Select a point on the timeline to see what I did there.',
   },
+  contact: {
+    eyebrow: 'Contact',
+    title: 'Let’s work together',
+    message: 'Have a role or a project in mind? Send me an email or message me on LinkedIn, and I will get back to you.',
+    emailMe: 'Email me',
+    linkedin: 'LinkedIn',
+    copyEmail: 'Copy email address',
+    copied: 'Copied',
+  },
   detail: {
     back: 'All projects',
     overview: 'Overview',
