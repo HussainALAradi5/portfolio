@@ -9,6 +9,10 @@ export const SITE_PROFILE: SiteProfile = {
     'I build complete products: the API, the web client, the mobile app and the documentation that ties them together. ' +
     'Most projects below live in separate repositories with layer-first architecture, typed contracts and role-based access.',
   githubUrl: GITHUB_BASE_URL,
+  cv: {
+    url: 'files/cv/hussain-al-aradi-cv.pdf',
+    fileName: 'Hussain Al Aradi - Software Engineer CV.pdf',
+  },
   socialLinks: [
     { label: 'GitHub', url: GITHUB_BASE_URL, icon: ICON.github },
     { label: 'LinkedIn', url: 'https://www.linkedin.com/in/hussainalaradi/', icon: ICON.linkedin },

@@ -3,6 +3,7 @@ import { RouterLink } from '@angular/router';
 import { NgIcon } from '@ng-icons/core';
 import { HlmButton } from '@spartan-ng/helm/button';
 import { HlmTooltip } from '@spartan-ng/helm/tooltip';
+import { CvDownloadButtonComponent } from '../../common/cv-download-button/cv-download-button.component';
 import { SITE_PROFILE } from '../../../config/site/site.config';
 import { UI_TEXT } from '../../../constants/common/ui-text.constants';
 import { ROUTE_PATHS } from '../../../constants/routes/route-paths.constants';
@@ -12,7 +13,7 @@ import { ThemeService } from '../../../services/ui/theme/theme.service';
 
 @Component({
   selector: 'app-site-header',
-  imports: [RouterLink, NgIcon, HlmButton, HlmTooltip],
+  imports: [RouterLink, NgIcon, HlmButton, HlmTooltip, CvDownloadButtonComponent],
   templateUrl: './site-header.component.html',
   styleUrl: './site-header.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

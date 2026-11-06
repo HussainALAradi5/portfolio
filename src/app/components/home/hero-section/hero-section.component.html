@@ -13,6 +13,7 @@
           {{ text.hero.viewProjects }}
           <ng-icon [name]="icon.arrowRight" data-icon="inline-end" />
         </a>
+        <app-cv-download-button size="lg" [isAccent]="true" />
         @for (link of profile.socialLinks; track link.url) {
           <a hlmBtn variant="outline" size="lg" [href]="link.url" target="_blank" rel="noopener">
             <ng-icon [name]="link.icon" data-icon="inline-start" />

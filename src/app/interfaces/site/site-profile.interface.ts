@@ -1,3 +1,4 @@
+import { CvFile } from './cv-file.interface';
 import { SocialLink } from './social-link.interface';
 
 export interface SiteProfile {
@@ -5,5 +6,6 @@ export interface SiteProfile {
   role: string;
   intro: string;
   githubUrl: string;
+  cv: CvFile;
   socialLinks: readonly SocialLink[];
 }
