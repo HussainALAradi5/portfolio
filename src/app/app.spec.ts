@@ -32,6 +32,7 @@ describe('App', () => {
     const header = (fixture.nativeElement as HTMLElement).querySelector('header');
     expect(header?.textContent).toContain(UI_TEXT.nav.projects);
     expect(header?.textContent).toContain(UI_TEXT.nav.experience);
+    expect(header?.textContent).toContain(UI_TEXT.nav.skills);
     expect(header?.querySelector('app-cv-download-button')).toBeNull();
   });
 });

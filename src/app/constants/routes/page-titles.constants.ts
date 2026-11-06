@@ -6,5 +6,6 @@ export const PAGE_NAMES = {
   home: 'Portfolio',
   projects: 'Projects',
   experience: 'Experience',
+  skills: 'Skills',
   notFound: 'Page not found',
 } as const;

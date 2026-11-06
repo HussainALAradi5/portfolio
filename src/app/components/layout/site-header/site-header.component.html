@@ -31,6 +31,16 @@
       <a
         hlmBtn
         variant="ghost"
+        size="sm"
+        [routerLink]="skillsPath"
+        routerLinkActive="nav-active"
+        ariaCurrentWhenActive="page"
+      >
+        {{ text.nav.skills }}
+      </a>
+      <a
+        hlmBtn
+        variant="ghost"
         size="icon-sm"
         [href]="profile.githubUrl"
         target="_blank"

@@ -26,6 +26,7 @@ export class SiteHeaderComponent {
   protected readonly homePath = `/${ROUTE_PATHS.home}`;
   protected readonly projectsPath = `/${ROUTE_PATHS.projects}`;
   protected readonly experiencePath = `/${ROUTE_PATHS.experience}`;
+  protected readonly skillsPath = `/${ROUTE_PATHS.skills}`;
   protected readonly themeIcon = computed(() => (this.theme.mode() === ThemeMode.Dark ? ICON.sun : ICON.moon));
 
   protected toggleTheme(): void {

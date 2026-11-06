@@ -9,6 +9,7 @@ import {
   lucideCode,
   lucideCopy,
   lucideCopyCheck,
+  lucideDatabase,
   lucideDownload,
   lucideExternalLink,
   lucideFileText,
@@ -19,6 +20,7 @@ import {
   lucideHeartPulse,
   lucideHospital,
   lucideKanban,
+  lucideLanguages,
   lucideLayers,
   lucideLinkedin,
   lucideLoaderCircle,
@@ -31,8 +33,10 @@ import {
   lucideServer,
   lucideSmartphone,
   lucideSparkles,
+  lucideStar,
   lucideStethoscope,
   lucideSun,
+  lucideWrench,
 } from '@ng-icons/lucide';
 import type { AppIconName } from '../../types/ui/app-icon-name.type';
 
@@ -48,6 +52,7 @@ export const APP_ICONS = {
   lucideCode,
   lucideCopy,
   lucideCopyCheck,
+  lucideDatabase,
   lucideDownload,
   lucideExternalLink,
   lucideFileText,
@@ -58,6 +63,7 @@ export const APP_ICONS = {
   lucideHeartPulse,
   lucideHospital,
   lucideKanban,
+  lucideLanguages,
   lucideLayers,
   lucideLinkedin,
   lucideLoaderCircle,
@@ -70,8 +76,10 @@ export const APP_ICONS = {
   lucideServer,
   lucideSmartphone,
   lucideSparkles,
+  lucideStar,
   lucideStethoscope,
   lucideSun,
+  lucideWrench,
 } as const;
 
 export const ICON = {

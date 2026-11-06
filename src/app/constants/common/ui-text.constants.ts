@@ -3,6 +3,7 @@ export const UI_TEXT = {
   nav: {
     projects: 'Projects',
     experience: 'Experience',
+    skills: 'Skills',
     github: 'GitHub profile',
     toggleTheme: 'Toggle colour theme',
     loading: 'Loading page',
@@ -39,6 +40,10 @@ export const UI_TEXT = {
     location: 'Location',
     stopsLabel: 'Career timeline',
     hint: 'Select a point on the timeline to see what I did there.',
+  },
+  skills: {
+    title: 'Skills',
+    subtitle: 'The languages, frameworks and tools I work with, as on my CV.',
   },
   contact: {
     eyebrow: 'Contact',
