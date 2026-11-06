@@ -26,12 +26,12 @@ describe('App', () => {
     expect(compiled.querySelector('header')?.textContent).toContain(SITE_PROFILE.name);
   });
 
-  it('should offer an enabled CV download button in the header', async () => {
+  it('should keep the header to navigation, without the hero actions', async () => {
     const fixture = TestBed.createComponent(App);
     await fixture.whenStable();
-    const compiled = fixture.nativeElement as HTMLElement;
-    const button = compiled.querySelector<HTMLButtonElement>('header app-cv-download-button button');
-    expect(button?.textContent).toContain(UI_TEXT.nav.cv);
-    expect(button?.disabled).toBe(false);
+    const header = (fixture.nativeElement as HTMLElement).querySelector('header');
+    expect(header?.textContent).toContain(UI_TEXT.nav.projects);
+    expect(header?.textContent).toContain(UI_TEXT.nav.experience);
+    expect(header?.querySelector('app-cv-download-button')).toBeNull();
   });
 });

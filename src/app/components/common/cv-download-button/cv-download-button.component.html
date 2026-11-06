@@ -3,7 +3,6 @@
   type="button"
   [variant]="variant()"
   [size]="size()"
-  [class.cv-accent]="isAccent()"
   [disabled]="isDownloading()"
   [attr.aria-busy]="isDownloading()"
   [attr.aria-label]="isDownloading() ? text.cv.preparing : text.cv.download"
