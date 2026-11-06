@@ -1,10 +1,24 @@
 @if (selected(); as shot) {
   <figure class="space-y-3">
-    <a [href]="shot.src" target="_blank" rel="noopener" class="block overflow-hidden rounded-xl border bg-muted">
+    <button
+      type="button"
+      class="preview group relative block w-full cursor-zoom-in overflow-hidden rounded-xl border bg-muted focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none"
+      [attr.aria-label]="text.lightbox.open + ': ' + shot.caption"
+      (click)="lightbox.open(selectedIndex())"
+    >
       <img [src]="shot.src" [alt]="shot.caption" decoding="async" class="max-h-[70vh] w-full object-contain" />
-    </a>
+      <span
+        class="absolute end-3 bottom-3 inline-flex items-center gap-1.5 rounded-full bg-background/85 px-3 py-1.5 text-xs font-medium shadow-sm backdrop-blur transition-opacity sm:opacity-0 sm:group-hover:opacity-100 sm:group-focus-visible:opacity-100"
+        aria-hidden="true"
+      >
+        <ng-icon [name]="icon.enlarge" size="14" />
+        {{ text.lightbox.open }}
+      </span>
+    </button>
     <figcaption class="text-center text-sm text-muted-foreground">{{ shot.caption }}</figcaption>
   </figure>
+
+  <app-image-lightbox #lightbox [images]="screenshots()" [(index)]="selectedIndex" />
 
   @if (screenshots().length > 1) {
     <div class="mt-4 grid grid-cols-3 gap-3 sm:grid-cols-5">

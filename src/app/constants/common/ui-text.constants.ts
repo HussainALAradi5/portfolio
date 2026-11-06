@@ -44,6 +44,12 @@ export const UI_TEXT = {
     title: 'Skills',
     subtitle: 'The languages, frameworks and tools I work with, as on my CV.',
   },
+  lightbox: {
+    open: 'View full size',
+    close: 'Close',
+    previous: 'Previous screenshot',
+    next: 'Next screenshot',
+  },
   detail: {
     back: 'All projects',
     overview: 'Overview',

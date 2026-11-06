@@ -1,0 +1,39 @@
+<dialog
+  #dialog
+  class="lightbox"
+  [attr.aria-label]="current()?.caption"
+  (close)="onClosed()"
+  (click)="onDialogClick($event)"
+  (keydown)="onKeydown($event)"
+  (pointerdown)="onPointerDown($event)"
+  (pointerup)="onPointerUp($event)"
+>
+  @if (isOpen() && current(); as image) {
+    <div class="lightbox-frame">
+      <div class="lightbox-bar">
+        @if (hasMany()) {
+          <span class="lightbox-counter" aria-live="polite">{{ index() + 1 }} / {{ images().length }}</span>
+        }
+        <button hlmBtn variant="ghost" size="icon" type="button" class="lightbox-close" [attr.aria-label]="text.lightbox.close" (click)="close()">
+          <ng-icon [name]="icon.close" size="22" />
+        </button>
+      </div>
+
+      <figure class="lightbox-figure">
+        @for (shot of [image]; track shot.src) {
+          <img class="lightbox-image" [src]="shot.src" [alt]="shot.caption" decoding="async" draggable="false" />
+        }
+        <figcaption class="lightbox-caption">{{ image.caption }}</figcaption>
+      </figure>
+
+      @if (hasMany()) {
+        <button hlmBtn variant="secondary" size="icon" type="button" class="lightbox-nav is-previous" [attr.aria-label]="text.lightbox.previous" (click)="step(-1)">
+          <ng-icon [name]="icon.chevronLeft" size="22" />
+        </button>
+        <button hlmBtn variant="secondary" size="icon" type="button" class="lightbox-nav is-next" [attr.aria-label]="text.lightbox.next" (click)="step(1)">
+          <ng-icon [name]="icon.chevronRight" size="22" />
+        </button>
+      }
+    </div>
+  }
+</dialog>
