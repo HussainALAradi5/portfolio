@@ -1,0 +1,66 @@
+<dialog #dialog class="palette" [attr.aria-label]="text.palette.openLabel" (close)="onClosed()" (click)="onDialogClick($event)">
+  <div class="palette-panel rounded-2xl border bg-popover text-popover-foreground shadow-2xl">
+    <div class="flex items-center gap-3 border-b px-4">
+      <ng-icon [name]="icon.search" size="18" class="shrink-0 text-muted-foreground" />
+      <input
+        #input
+        type="text"
+        role="combobox"
+        aria-autocomplete="list"
+        autocomplete="off"
+        spellcheck="false"
+        class="h-14 w-full bg-transparent text-base outline-none placeholder:text-muted-foreground"
+        [placeholder]="text.palette.placeholder"
+        [attr.aria-label]="text.palette.openLabel"
+        [attr.aria-controls]="listboxId"
+        [attr.aria-expanded]="true"
+        [attr.aria-activedescendant]="activeId()"
+        [value]="query()"
+        (input)="onQueryInput($event)"
+        (keydown)="onInputKeydown($event)"
+      />
+    </div>
+
+    <div [id]="listboxId" role="listbox" class="palette-results max-h-[min(60vh,26rem)] overflow-y-auto p-2" [attr.aria-label]="text.palette.openLabel">
+      @for (section of sections(); track section.group) {
+        <div role="group" [attr.aria-labelledby]="listboxId + '-' + section.group">
+          <p [id]="listboxId + '-' + section.group" class="px-3 pt-3 pb-1 text-xs font-semibold tracking-wide text-muted-foreground uppercase">
+            {{ section.label }}
+          </p>
+          @for (command of section.commands; track command.id) {
+            <div
+              role="option"
+              class="option flex cursor-pointer items-center gap-3 rounded-lg px-3 py-2.5 text-sm"
+              [id]="command.id"
+              [class.is-active]="command.id === activeId()"
+              [attr.aria-selected]="command.id === activeId()"
+              (mousemove)="highlight(command)"
+              (click)="run(command)"
+            >
+              <span class="option-icon grid size-8 shrink-0 place-items-center rounded-md border bg-background">
+                <ng-icon [name]="command.icon" size="16" />
+              </span>
+              <span class="min-w-0 flex-1">
+                <span class="block truncate font-medium">{{ command.label }}</span>
+                @if (command.hint; as hint) {
+                  <span class="block truncate text-xs text-muted-foreground">{{ hint }}</span>
+                }
+              </span>
+              @if (command.id === activeId()) {
+                <ng-icon [name]="icon.enter" size="16" class="shrink-0 text-primary" aria-hidden="true" />
+              }
+            </div>
+          }
+        </div>
+      } @empty {
+        <p class="px-3 py-10 text-center text-sm text-muted-foreground">{{ text.palette.empty }} “{{ query() }}”</p>
+      }
+    </div>
+
+    <div class="flex flex-wrap items-center gap-x-4 gap-y-1 border-t px-4 py-2.5 text-xs text-muted-foreground">
+      <span><kbd>↑</kbd> <kbd>↓</kbd> {{ text.palette.navigate }}</span>
+      <span><kbd>Enter</kbd> {{ text.palette.select }}</span>
+      <span><kbd>Esc</kbd> {{ text.palette.close }}</span>
+    </div>
+  </div>
+</dialog>
