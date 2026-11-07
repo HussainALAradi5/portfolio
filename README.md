@@ -1,6 +1,6 @@
 # Portfolio
 
-Personal portfolio of **Hussain Al Aradi**, Software Engineer. It shows eight projects with screenshots, tech stacks, repositories and live demos, my experience and skills as they appear on my CV, and a downloadable CV. Built with **Angular 21**, **Spartan UI** (helm components on `@spartan-ng/brain`) and **Tailwind CSS 4**, in light and dark themes.
+Personal portfolio of **Hussain Al Aradi**, Software Engineer. It shows nine projects with screenshots, tech stacks, repositories and live demos, my experience and skills as they appear on my CV, and a downloadable CV. Built with **Angular 21**, **Spartan UI** (helm components on `@spartan-ng/brain`) and **Tailwind CSS 4**, in light and dark themes.
 
 **Live:** https://hussainalaradi5.github.io/portfolio/
 
@@ -50,6 +50,7 @@ Also on every page:
 | Books Build Minds | Flask, Next.js 16, Flutter, PostgreSQL | Completed |
 | TaskFlow | Express 5, Angular 21, MongoDB | Live demo |
 | Videos Waves | Express 5, Next.js 16, Flutter, MongoDB | Live demo, Android APK |
+| Studium | PHP 8.2, MySQL, vanilla JavaScript, Leaflet | Live demo |
 | Fantasy Cards | React | Live demo |
 | Duck Street | JavaScript, HTML, CSS | Live demo |
 
