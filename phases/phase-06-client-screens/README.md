@@ -26,6 +26,7 @@ A home page that shows everything, pages for projects, experience and skills, an
 - [x] Motion: staggered hero entrance, drifting hero glow, cards that fade up on scroll and lift on hover; all of it off under `prefers-reduced-motion`
 - [x] Download CV: `components/common/cv-download-button/` and `services/site/cv-download/`; the button shows a spinner and stays disabled while the PDF in `public/files/cv/` is fetched, and falls back to opening the file if the fetch fails
 - [x] Duck Street added as an early project (`constants/projects/data/duck-street.constants.ts`) with screenshots of the live game
+- [x] Studium added as a full-stack platform (`constants/projects/data/studium.constants.ts`) with its live site and the five screenshots from its repository
 - [x] Experience timeline (`components/experience/`, data in `constants/experience/`, periods in `utilities/experience/period/`): a horizontal line of stops, oldest first, showing the CV's dates; selecting a stop (click, arrow, Home or End keys) shows its card with the CV's lines, the length and skills; the current role is selected first and pulses; on phones the line scrolls inside its own box
 - [x] Lengths count the months elapsed (Sep 2024 – Sep 2025 is 1 yr; Oct 2023 – Jan 2024 is 3 mos)
 - [x] Header links open their own pages: `/projects`, `/experience` and `/skills` show one section each, `/` shows everything; the active link is highlighted and each page sets its tab title (project pages through `middlewares/resolvers/projects/project-title.resolver.ts`)
@@ -35,7 +36,7 @@ A home page that shows everything, pages for projects, experience and skills, an
 - [x] Command palette (`components/layout/command-palette/`, commands from `services/ui/command-palette/`, matching in `utilities/command-palette/`): Ctrl + K, Cmd + K or the header search button opens a search over pages, projects (with their technologies) and actions (Download CV, switch theme); arrows, Enter and Escape work, with combobox and listbox roles
 
 ## Acceptance criteria
-- All eight projects open from the home page and from search.
+- All nine projects open from the home page and from search.
 - Experience and skills match the CV.
 - No action appears twice on a page.
 - Desktop and 375px widths work in light and dark themes.

@@ -5,6 +5,7 @@ import { DUCK_STREET_PROJECT } from './data/duck-street.constants';
 import { E_CLINIC_PROJECT } from './data/e-clinic.constants';
 import { FANTASY_CARDS_PROJECT } from './data/fantasy-cards.constants';
 import { FUN_TRAVELS_TOUR_PROJECT } from './data/fun-travels-tour.constants';
+import { STUDIUM_PROJECT } from './data/studium.constants';
 import { TASK_FLOW_PROTO_PROJECT } from './data/task-flow-proto.constants';
 import { VIDEOS_WAVES_PROJECT } from './data/videos-waves.constants';
 
@@ -16,6 +17,7 @@ export const PROJECTS: readonly Project[] = [
   BOOKS_BUILD_MINDS_PROJECT,
   TASK_FLOW_PROTO_PROJECT,
   VIDEOS_WAVES_PROJECT,
+  STUDIUM_PROJECT,
   FANTASY_CARDS_PROJECT,
   DUCK_STREET_PROJECT,
 ];

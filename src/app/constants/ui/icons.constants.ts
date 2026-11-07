@@ -40,6 +40,7 @@ import {
   lucideStethoscope,
   lucideSun,
   lucideSunMoon,
+  lucideTrophy,
   lucideWrench,
   lucideX,
 } from '@ng-icons/lucide';
@@ -88,6 +89,7 @@ export const APP_ICONS = {
   lucideStethoscope,
   lucideSun,
   lucideSunMoon,
+  lucideTrophy,
   lucideWrench,
   lucideX,
 } as const;
