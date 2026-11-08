@@ -45,7 +45,7 @@ Also on every page:
 | Project | Stack | Status |
 | --- | --- | --- |
 | CareTrack | Spring Boot 4, Angular 21, Flutter, PostgreSQL, Keycloak | In progress |
-| e-Clinic | Laravel 12, Angular 21, Flutter, PostgreSQL, Redis | Live demo, Android APK |
+| e-Clinic | Laravel 12, Angular 21, Flutter, PostgreSQL | Live demo, Android APK |
 | Fun Travels Tour | Spring Boot 3.5, Next.js 16, Expo, PostgreSQL | Live demo, Android APK |
 | Books Build Minds | Flask, Next.js 16, Flutter, PostgreSQL | Completed |
 | TaskFlow | Express 5, Angular 21, MongoDB | Live demo |
