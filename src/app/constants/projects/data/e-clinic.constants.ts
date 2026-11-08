@@ -50,7 +50,6 @@ export const E_CLINIC_PROJECT: Project = {
     { layer: TechLayer.Mobile, name: 'Dio' },
     { layer: TechLayer.Mobile, name: 'freezed' },
     { layer: TechLayer.Data, name: 'PostgreSQL 16' },
-    { layer: TechLayer.Data, name: 'Redis' },
     { layer: TechLayer.Security, name: 'Laravel Sanctum' },
     { layer: TechLayer.Security, name: 'spatie/laravel-permission' },
   ],
