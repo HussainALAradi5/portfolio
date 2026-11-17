@@ -56,10 +56,14 @@
     </div>
   }
 
-  @if (entry().credentialUrl; as url) {
-    <a hlmBtn variant="outline" size="sm" class="mt-5" [href]="url" target="_blank" rel="noopener">
-      {{ text.experience.verifyCertificate }}
-      <ng-icon [name]="icon.externalLink" data-icon="inline-end" />
-    </a>
+  @if (entry().credentials; as credentials) {
+    <div class="mt-5 flex flex-wrap gap-2">
+      @for (credential of credentials; track credential.url) {
+        <a hlmBtn variant="outline" size="sm" [href]="credential.url" target="_blank" rel="noopener">
+          {{ credential.label }}
+          <ng-icon [name]="icon.externalLink" data-icon="inline-end" />
+        </a>
+      }
+    </div>
   }
 </article>

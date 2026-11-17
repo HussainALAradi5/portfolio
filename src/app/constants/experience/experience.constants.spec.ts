@@ -13,10 +13,18 @@ describe('experience data', () => {
   });
 
   it('links certificates only, over https', () => {
-    const linked = EXPERIENCE.filter((entry) => entry.credentialUrl);
+    const linked = EXPERIENCE.filter((entry) => entry.credentials?.length);
     expect(linked.length).toBeGreaterThan(0);
     expect(linked.every((entry) => entry.kind === ExperienceKind.Certification)).toBe(true);
-    expect(linked.every((entry) => entry.credentialUrl?.startsWith('https://'))).toBe(true);
+    const urls = linked.flatMap((entry) => entry.credentials ?? []).map(({ url }) => url);
+    expect(urls.every((url) => url.startsWith('https://'))).toBe(true);
+  });
+
+  it('groups certificates from one organization in the same month into one stop', () => {
+    const certificateDates = EXPERIENCE.filter(
+      (entry) => entry.kind === ExperienceKind.Certification,
+    ).map(({ organization, start }) => `${organization} ${start.year}-${start.month}`);
+    expect(new Set(certificateDates).size).toBe(certificateDates.length);
   });
 
   it('has unique ids and at most one ongoing role', () => {
