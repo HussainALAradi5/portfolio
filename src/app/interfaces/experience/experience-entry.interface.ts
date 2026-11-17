@@ -1,4 +1,5 @@
 import { ExperienceKind } from '../../enums/experience/experience-kind.enum';
+import { ExperienceCredential } from './experience-credential.interface';
 import { YearMonth } from './year-month.interface';
 
 export interface ExperienceEntry {
@@ -14,6 +15,6 @@ export interface ExperienceEntry {
   achievements: readonly string[];
   /** Technologies named in those lines; may be empty. */
   skills: readonly string[];
-  /** Public page where a certificate can be checked. */
-  credentialUrl?: string;
+  /** Certificates that can be checked online, one link each. */
+  credentials?: readonly ExperienceCredential[];
 }

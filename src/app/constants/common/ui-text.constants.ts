@@ -37,7 +37,6 @@ export const UI_TEXT = {
     period: 'Period',
     duration: 'Length',
     location: 'Location',
-    verifyCertificate: 'Verify certificate',
     stopsLabel: 'Career timeline',
     hint: 'Select a point on the timeline to see what I did there.',
   },
