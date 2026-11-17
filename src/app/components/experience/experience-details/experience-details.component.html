@@ -55,4 +55,11 @@
       }
     </div>
   }
+
+  @if (entry().credentialUrl; as url) {
+    <a hlmBtn variant="outline" size="sm" class="mt-5" [href]="url" target="_blank" rel="noopener">
+      {{ text.experience.verifyCertificate }}
+      <ng-icon [name]="icon.externalLink" data-icon="inline-end" />
+    </a>
+  }
 </article>

@@ -1,3 +1,4 @@
+import { ExperienceKind } from '../../enums/experience/experience-kind.enum';
 import { MONTHS_PER_YEAR } from './experience-labels.constants';
 import { EXPERIENCE } from './experience.constants';
 
@@ -9,6 +10,13 @@ describe('experience data', () => {
 
   it('says what I did in every entry', () => {
     expect(EXPERIENCE.every((entry) => entry.achievements.length > 0)).toBe(true);
+  });
+
+  it('links certificates only, over https', () => {
+    const linked = EXPERIENCE.filter((entry) => entry.credentialUrl);
+    expect(linked.length).toBeGreaterThan(0);
+    expect(linked.every((entry) => entry.kind === ExperienceKind.Certification)).toBe(true);
+    expect(linked.every((entry) => entry.credentialUrl?.startsWith('https://'))).toBe(true);
   });
 
   it('has unique ids and at most one ongoing role', () => {

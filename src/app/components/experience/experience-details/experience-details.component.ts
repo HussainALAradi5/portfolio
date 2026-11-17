@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
 import { NgIcon } from '@ng-icons/core';
 import { HlmBadge } from '@spartan-ng/helm/badge';
+import { HlmButton } from '@spartan-ng/helm/button';
 import { UI_TEXT } from '../../../constants/common/ui-text.constants';
 import { EXPERIENCE_KIND_STYLES } from '../../../constants/experience/experience-labels.constants';
 import { ICON } from '../../../constants/ui/icons.constants';
@@ -12,7 +13,7 @@ import { formatPeriod } from '../../../utilities/experience/period/format-period
 /** Card with everything about the timeline stop that is selected. */
 @Component({
   selector: 'app-experience-details',
-  imports: [NgIcon, HlmBadge],
+  imports: [NgIcon, HlmBadge, HlmButton],
   templateUrl: './experience-details.component.html',
   styleUrl: './experience-details.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
