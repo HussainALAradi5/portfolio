@@ -2,6 +2,9 @@ import { ExperienceKind } from '../../enums/experience/experience-kind.enum';
 import { ExperienceEntry } from '../../interfaces/experience/experience-entry.interface';
 
 const BAHRAIN = 'Bahrain';
+const ONLINE = 'Online';
+const UDEMY = 'Udemy';
+const UDEMY_CERTIFICATE_URL = 'https://www.udemy.com/certificate';
 
 /**
  * Career timeline, oldest first, as it reads left to right on the horizontal timeline.
@@ -73,5 +76,27 @@ export const EXPERIENCE: readonly ExperienceEntry[] = [
       'Building responsive, high-performance web interfaces and RESTful backend services.',
     ],
     skills: ['Next.js', 'ASP.NET', 'C#', 'REST APIs'],
+  },
+  {
+    id: 'udemy-laravel-php-mastery',
+    kind: ExperienceKind.Certification,
+    title: 'Laravel & PHP Mastery: Build 5 Real-World Projects',
+    organization: UDEMY,
+    location: ONLINE,
+    start: { year: 2026, month: 11 },
+    achievements: ['Certificate of Completion, 30.5 hours.'],
+    skills: ['Laravel', 'PHP'],
+    credentialUrl: `${UDEMY_CERTIFICATE_URL}/UC-970e8f20-4837-408b-a184-aed9954ec2c8/`,
+  },
+  {
+    id: 'udemy-ultimate-csharp-masterclass',
+    kind: ExperienceKind.Certification,
+    title: 'Ultimate C# Masterclass',
+    organization: UDEMY,
+    location: ONLINE,
+    start: { year: 2026, month: 11 },
+    achievements: ['Certificate of Completion, 48 hours.'],
+    skills: ['C#'],
+    credentialUrl: `${UDEMY_CERTIFICATE_URL}/UC-dc602440-8a50-4b0f-91f2-f7addba5b536/`,
   },
 ];

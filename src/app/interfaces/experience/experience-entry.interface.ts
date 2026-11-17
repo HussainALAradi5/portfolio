@@ -14,4 +14,6 @@ export interface ExperienceEntry {
   achievements: readonly string[];
   /** Technologies named in those lines; may be empty. */
   skills: readonly string[];
+  /** Public page where a certificate can be checked. */
+  credentialUrl?: string;
 }
