@@ -86,12 +86,17 @@ export const EXPERIENCE: readonly ExperienceEntry[] = [
     location: ONLINE,
     start: { year: 2026, month: 11 },
     achievements: [
-      'Complete Modern PHP 8 Bootcamp: Certificate of Completion, 20 hours.',
-      'Ultimate C# Masterclass: Certificate of Completion, 48 hours.',
-      'Laravel & PHP Mastery: Build 5 Real-World Projects: Certificate of Completion, 30.5 hours.',
+      'Mastering Odoo Development: Technical Fundamentals: Certificate of Completion.',
+      'Complete Modern PHP 8 Bootcamp: Certificate of Completion.',
+      'Ultimate C# Masterclass: Certificate of Completion.',
+      'Laravel & PHP Mastery: Build 5 Real-World Projects: Certificate of Completion.',
     ],
-    skills: ['C#', 'Laravel', 'PHP'],
+    skills: ['Odoo', 'PHP', 'C#', 'Laravel'],
     credentials: [
+      {
+        label: 'Verify the Odoo certificate',
+        url: `${UDEMY_CERTIFICATE_URL}/UC-13482a0a-ce3e-479f-bd0c-c7d15e2b9aa0/`,
+      },
       {
         label: 'Verify the PHP 8 certificate',
         url: `${UDEMY_CERTIFICATE_URL}/UC-b8585c6d-6092-4bff-bd8a-798f29b20a9f/`,
