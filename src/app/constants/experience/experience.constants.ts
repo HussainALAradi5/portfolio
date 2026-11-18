@@ -78,19 +78,24 @@ export const EXPERIENCE: readonly ExperienceEntry[] = [
     skills: ['Next.js', 'ASP.NET', 'C#', 'REST APIs'],
   },
   {
-    // Two courses finished in the same month on the same platform share one timeline stop.
-    id: 'udemy-csharp-laravel-certificates',
+    // Courses finished in the same month on the same platform share one timeline stop.
+    id: 'udemy-certificates-2026-11',
     kind: ExperienceKind.Certification,
     title: 'Certificates',
     organization: UDEMY,
     location: ONLINE,
     start: { year: 2026, month: 11 },
     achievements: [
+      'Complete Modern PHP 8 Bootcamp: Certificate of Completion, 20 hours.',
       'Ultimate C# Masterclass: Certificate of Completion, 48 hours.',
       'Laravel & PHP Mastery: Build 5 Real-World Projects: Certificate of Completion, 30.5 hours.',
     ],
     skills: ['C#', 'Laravel', 'PHP'],
     credentials: [
+      {
+        label: 'Verify the PHP 8 certificate',
+        url: `${UDEMY_CERTIFICATE_URL}/UC-b8585c6d-6092-4bff-bd8a-798f29b20a9f/`,
+      },
       {
         label: 'Verify the C# certificate',
         url: `${UDEMY_CERTIFICATE_URL}/UC-dc602440-8a50-4b0f-91f2-f7addba5b536/`,
