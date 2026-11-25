@@ -53,17 +53,39 @@ describe('SiteHeaderComponent', () => {
     expect(palette.isOpen()).toBe(true);
   });
 
-  it('switches the theme', async () => {
+  it('switches the theme and says whether dark mode is on', async () => {
     const theme = TestBed.inject(ThemeService);
     theme.mode.set(ThemeMode.Light);
     const { fixture, themeButton } = await render();
+    expect(themeButton().getAttribute('aria-pressed')).toBe('false');
 
     themeButton().click();
     await fixture.whenStable();
     expect(theme.mode()).toBe(ThemeMode.Dark);
+    expect(themeButton().getAttribute('aria-pressed')).toBe('true');
 
     themeButton().click();
     await fixture.whenStable();
     expect(theme.mode()).toBe(ThemeMode.Light);
+    expect(themeButton().getAttribute('aria-pressed')).toBe('false');
+  });
+
+  it('shows the sun in dark mode and the moon in light mode, one at a time', async () => {
+    const theme = TestBed.inject(ThemeService);
+    theme.mode.set(ThemeMode.Dark);
+    const { fixture, themeButton } = await render();
+    // The template renders the sun first and the moon second.
+    const shownIndex = () =>
+      [...themeButton().querySelectorAll('.theme-icon')].findIndex((icon) => icon.classList.contains('is-shown'));
+    const shownCount = () => themeButton().querySelectorAll('.theme-icon.is-shown').length;
+
+    expect(shownIndex()).toBe(0);
+    expect(shownCount()).toBe(1);
+
+    themeButton().click();
+    await fixture.whenStable();
+
+    expect(shownIndex()).toBe(1);
+    expect(shownCount()).toBe(1);
   });
 });

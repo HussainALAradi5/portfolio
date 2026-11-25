@@ -4,7 +4,7 @@
   <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
     @for (group of groups; track group.id) {
       <article
-        class="skill-group rounded-2xl border bg-card p-5 transition duration-300 hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/10 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+        class="skill-group rounded-2xl border bg-card p-5 transition duration-(--motion-base) ease-(--ease-standard) hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/10 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
         [class.is-core]="group.isCore"
       >
         <h3 class="flex items-center gap-3 font-semibold">

@@ -8,7 +8,7 @@
     >
       <img [src]="shot.src" [alt]="shot.caption" decoding="async" class="max-h-[70vh] w-full object-contain" />
       <span
-        class="absolute end-3 bottom-3 inline-flex items-center gap-1.5 rounded-full bg-background/85 px-3 py-1.5 text-xs font-medium shadow-sm backdrop-blur transition-opacity sm:opacity-0 sm:group-hover:opacity-100 sm:group-focus-visible:opacity-100"
+        class="absolute end-3 bottom-3 inline-flex items-center gap-1.5 rounded-full bg-background/85 px-3 py-1.5 text-xs font-medium shadow-sm backdrop-blur transition-opacity duration-(--motion-fast) ease-(--ease-standard) sm:opacity-0 sm:group-hover:opacity-100 sm:group-focus-visible:opacity-100"
         aria-hidden="true"
       >
         <ng-icon [name]="icon.enlarge" size="14" />
@@ -27,7 +27,7 @@
           type="button"
           [attr.aria-pressed]="index === selectedIndex()"
           [attr.aria-label]="thumb.caption"
-          class="overflow-hidden rounded-lg border-2 transition-all hover:opacity-100 focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none"
+          class="overflow-hidden rounded-lg border-2 transition-[opacity,border-color] duration-(--motion-fast) ease-(--ease-standard) hover:opacity-100 focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none"
           [class.border-primary]="index === selectedIndex()"
           [class.border-transparent]="index !== selectedIndex()"
           [class.opacity-60]="index !== selectedIndex()"
