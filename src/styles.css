@@ -142,6 +142,62 @@
   }
 }
 
+/*
+ * Skeleton: a muted box the size of the content with a soft shimmer, shown while an image loads instead of a
+ * spinner. The image (marked by ImageRevealDirective) fades in and the shimmer stops once it has loaded.
+ */
+.skeleton {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: var(--muted);
+}
+
+.skeleton:has(> .reveal-image.is-loaded)::after {
+  display: none;
+}
+
+.reveal-image {
+  opacity: 0;
+}
+
+.reveal-image.is-loaded {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .skeleton::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(
+      100deg,
+      transparent 20%,
+      color-mix(in oklch, var(--foreground) 7%, transparent) 50%,
+      transparent 80%
+    );
+    animation: skeleton-shimmer 1.4s var(--ease-in-out) infinite;
+    pointer-events: none;
+  }
+
+  /* Transform is listed too, so images that also zoom on hover (project covers) keep that transition. */
+  .reveal-image {
+    transition:
+      opacity var(--motion-slow) var(--ease-standard),
+      transform var(--motion-slow) var(--ease-enter);
+  }
+}
+
+@keyframes skeleton-shimmer {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
 /* Buttons respond to the press: a quick shrink that springs back, alongside Spartan's 1 px drop. */
 @media (prefers-reduced-motion: no-preference) {
   [data-slot='button'] {

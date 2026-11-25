@@ -4,12 +4,13 @@ import { UI_TEXT } from '../../../constants/common/ui-text.constants';
 import { ICON } from '../../../constants/ui/icons.constants';
 import { ProjectScreenshot } from '../../../interfaces/projects/project-screenshot.interface';
 import { thumbnailSrc } from '../../../utilities/images/thumbnail/thumbnail-src.utility';
+import { ImageRevealDirective } from '../../../directives/images/image-reveal/image-reveal.directive';
 import { ImageLightboxComponent } from '../../common/image-lightbox/image-lightbox.component';
 
 /** Large preview with a thumbnail strip; the preview opens a full-screen lightbox. Selection resets when the screenshots change. */
 @Component({
   selector: 'app-project-gallery',
-  imports: [NgIcon, ImageLightboxComponent],
+  imports: [NgIcon, ImageLightboxComponent, ImageRevealDirective],
   templateUrl: './project-gallery.component.html',
   styleUrl: './project-gallery.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
