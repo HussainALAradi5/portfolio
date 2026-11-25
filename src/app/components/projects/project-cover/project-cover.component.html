@@ -1,11 +1,12 @@
-<div class="relative aspect-[16/10] overflow-hidden bg-muted">
+<div class="relative aspect-[16/10] overflow-hidden bg-muted" [class.skeleton]="cover()">
   @if (cover(); as shot) {
     <img
+      appImageReveal
       [src]="coverSrc()"
       [alt]="shot.caption"
       [attr.loading]="eager() ? 'eager' : 'lazy'"
       decoding="async"
-      class="size-full object-cover object-top transition-transform duration-(--motion-slow) ease-(--ease-enter) group-hover/card:scale-[1.03]"
+      class="size-full object-cover object-top group-hover/card:scale-[1.03]"
     />
   } @else {
     <div class="cover-fallback grid size-full place-items-center">
