@@ -26,11 +26,16 @@
   --motion-fast: 120ms;
   --motion-base: 200ms;
   --motion-slow: 320ms;
-  --motion-page: 280ms;
+  --motion-page: 360ms;
+  /* The theme switch is slower on purpose: the reveal is the moment the visitor asked to see. */
+  --motion-theme: 700ms;
+  --motion-theme-icon: 500ms;
   --motion-stagger: 60ms;
+  --motion-list-stagger: 40ms;
   --ease-standard: cubic-bezier(0.2, 0, 0, 1);
   --ease-enter: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-exit: cubic-bezier(0.4, 0, 1, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
   --background: oklch(1 0 0);
   --foreground: oklch(0.141 0.005 285.823);
   --card: oklch(1 0 0);
@@ -137,6 +142,106 @@
   }
 }
 
+/*
+ * Skeleton: a muted box the size of the content with a soft shimmer, shown while an image loads instead of a
+ * spinner. The image (marked by ImageRevealDirective) fades in and the shimmer stops once it has loaded.
+ */
+.skeleton {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: var(--muted);
+}
+
+.skeleton:has(> .reveal-image.is-loaded)::after {
+  display: none;
+}
+
+.reveal-image {
+  opacity: 0;
+}
+
+.reveal-image.is-loaded {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .skeleton::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(
+      100deg,
+      transparent 20%,
+      color-mix(in oklch, var(--foreground) 7%, transparent) 50%,
+      transparent 80%
+    );
+    animation: skeleton-shimmer 1.4s var(--ease-in-out) infinite;
+    pointer-events: none;
+  }
+
+  /* Transform is listed too, so images that also zoom on hover (project covers) keep that transition. */
+  .reveal-image {
+    transition:
+      opacity var(--motion-slow) var(--ease-standard),
+      transform var(--motion-slow) var(--ease-enter);
+  }
+}
+
+@keyframes skeleton-shimmer {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+/*
+ * Scroll reveal: headings, skill groups and project sections fade up as they scroll into view, where the browser
+ * supports scroll-driven animations. It animates transform, so hover lifts (which use translate) still work.
+ */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .scroll-reveal {
+      animation: scroll-reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 45%;
+    }
+  }
+}
+
+@keyframes scroll-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+}
+
+/* Arrow icons lean the way they point when their link or button is hovered or focused. */
+@media (prefers-reduced-motion: no-preference) {
+  [class*='icon-nudge-'] {
+    transition: transform var(--motion-base) var(--ease-enter);
+  }
+
+  :is(a, button):is(:hover, :focus-visible) .icon-nudge-right {
+    transform: translateX(3px);
+  }
+
+  :is(a, button):is(:hover, :focus-visible) .icon-nudge-left {
+    transform: translateX(-3px);
+  }
+
+  :is(a, button):is(:hover, :focus-visible) .icon-nudge-out {
+    transform: translate(2px, -2px);
+  }
+
+  :is(a, button):is(:hover, :focus-visible) .icon-nudge-down {
+    transform: translateY(2px);
+  }
+}
+
 /* Buttons respond to the press: a quick shrink that springs back, alongside Spartan's 1 px drop. */
 @media (prefers-reduced-motion: no-preference) {
   [data-slot='button'] {
@@ -177,7 +282,7 @@
   }
 
   :root.theme-transition::view-transition-new(root) {
-    animation: theme-reveal var(--motion-slow) var(--ease-enter) both;
+    animation: theme-reveal var(--motion-theme) var(--ease-in-out) both;
   }
 }
 

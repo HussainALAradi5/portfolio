@@ -1,12 +1,13 @@
 import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
 import { NgIcon } from '@ng-icons/core';
+import { ImageRevealDirective } from '../../../directives/images/image-reveal/image-reveal.directive';
 import { Project } from '../../../interfaces/projects/project.interface';
 import { thumbnailSrc } from '../../../utilities/images/thumbnail/thumbnail-src.utility';
 
 /** Thumbnail of a project's first screenshot, or its icon on a gradient when it has none. */
 @Component({
   selector: 'app-project-cover',
-  imports: [NgIcon],
+  imports: [NgIcon, ImageRevealDirective],
   templateUrl: './project-cover.component.html',
   styleUrl: './project-cover.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

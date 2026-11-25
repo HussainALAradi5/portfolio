@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 import {
   DARK_THEME_CLASS,
-  REDUCED_MOTION_QUERY,
   THEME_REVEAL_X_VAR,
   THEME_REVEAL_Y_VAR,
   THEME_STORAGE_KEY,
   THEME_TRANSITION_CLASS,
 } from '../../../constants/ui/theme.constants';
+import { REDUCED_MOTION_QUERY } from '../../../constants/ui/motion.constants';
 import { ThemeMode } from '../../../enums/ui/theme-mode.enum';
 import { ThemeService } from './theme.service';
 

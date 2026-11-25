@@ -1,10 +1,18 @@
 <section class="mx-auto max-w-6xl px-4 pt-12 sm:px-6">
   <app-section-heading [heading]="text.projects.title" [subtitle]="text.projects.subtitle" />
 
-  <hlm-tabs [tab]="defaultFilter" class="mt-8">
-    <hlm-tabs-list [attr.aria-label]="text.projects.filterLabel">
+  <hlm-tabs [tab]="defaultFilter" class="mt-8" (tabActivated)="selectFilter($event)">
+    <hlm-tabs-list #tabList class="filter-list relative" [attr.aria-label]="text.projects.filterLabel">
+      <!-- One highlight behind the tabs, clipped to the active one, so it glides when the filter changes. -->
+      <span
+        class="tab-highlight"
+        aria-hidden="true"
+        [class.is-ready]="highlight()"
+        [style.--highlight-left]="highlight() ? highlight()!.left + 'px' : null"
+        [style.--highlight-right]="highlight() ? highlight()!.right + 'px' : null"
+      ></span>
       @for (tab of filterTabs; track tab.value) {
-        <button [hlmTabsTrigger]="tab.value">
+        <button #trigger [hlmTabsTrigger]="tab.value" [attr.data-filter]="tab.value">
           {{ tab.label }}
           <span class="ms-1 text-xs text-muted-foreground">{{ tab.projects.length }}</span>
         </button>
@@ -13,18 +21,20 @@
 
     @for (tab of filterTabs; track tab.value) {
       <div [hlmTabsContent]="tab.value" class="pt-4">
-        <!-- Lazy: only the open tab's cards are in the page. -->
-        <ng-template hlmTabsContentLazy>
+        <!-- Only the open tab's cards are in the page, so they are created, and animate in, on every switch. -->
+        @if (tab.value === activeFilter()) {
           @if (tab.projects.length) {
             <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               @for (project of tab.projects; track project.slug; let index = $index) {
-                <app-project-card [project]="project" [eager]="index < eagerCoverCount" />
+                <div class="card-slot" animate.enter="card-enter" [style.--enter-index]="index">
+                  <app-project-card [project]="project" [eager]="index < eagerCoverCount" />
+                </div>
               }
             </div>
           } @else {
-            <p class="py-12 text-center text-muted-foreground">{{ text.projects.empty }}</p>
+            <p class="py-12 text-center text-muted-foreground" animate.enter="fade-enter">{{ text.projects.empty }}</p>
           }
-        </ng-template>
+        }
       </div>
     }
   </hlm-tabs>

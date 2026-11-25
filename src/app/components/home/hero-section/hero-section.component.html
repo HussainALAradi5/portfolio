@@ -22,7 +22,10 @@
     <dl class="hero-enter grid grid-cols-3 gap-3">
       @for (stat of stats(); track stat.label) {
         <div class="hero-stat rounded-xl border bg-card/60 p-4 text-center backdrop-blur">
-          <dd class="text-3xl font-bold tracking-tight text-primary sm:text-4xl">{{ stat.value }}</dd>
+          <dd
+            class="text-3xl font-bold tracking-tight text-primary tabular-nums sm:text-4xl"
+            [appCountUp]="stat.value"
+          ></dd>
           <dt class="mt-1 text-xs text-muted-foreground sm:text-sm">{{ stat.label }}</dt>
         </div>
       }

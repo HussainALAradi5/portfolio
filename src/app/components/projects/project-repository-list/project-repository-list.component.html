@@ -20,7 +20,7 @@
           class="flex items-center gap-3 p-3 transition-colors duration-(--motion-fast) ease-(--ease-standard) hover:bg-muted/50"
         >
           <ng-container [ngTemplateOutlet]="row" />
-          <ng-icon [name]="icon.externalLink" class="text-muted-foreground" />
+          <ng-icon [name]="icon.externalLink" class="icon-nudge-out text-muted-foreground" />
         </a>
       } @else {
         <div class="flex items-center gap-3 p-3" [attr.title]="text.detail.privateRepository">
