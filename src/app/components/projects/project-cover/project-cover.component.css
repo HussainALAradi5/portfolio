@@ -5,6 +5,5 @@
 .cover-fallback {
   background:
     radial-gradient(circle at 20% 20%, oklch(0.72 0.15 225 / 0.9), transparent 55%),
-    radial-gradient(circle at 80% 80%, oklch(0.55 0.21 263 / 0.9), transparent 55%),
-    oklch(0.3 0.07 262);
+    radial-gradient(circle at 80% 80%, oklch(0.55 0.21 263 / 0.9), transparent 55%), oklch(0.3 0.07 262);
 }

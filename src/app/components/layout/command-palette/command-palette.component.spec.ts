@@ -78,7 +78,9 @@ describe('CommandPaletteComponent', () => {
     const { dialog } = await render();
     const palette = TestBed.inject(CommandPaletteService);
     palette.open();
-    await TestBed.inject(Router).navigateByUrl('/').catch(() => undefined);
+    await TestBed.inject(Router)
+      .navigateByUrl('/')
+      .catch(() => undefined);
     dialog.close();
     expect(palette.isOpen()).toBe(false);
   });

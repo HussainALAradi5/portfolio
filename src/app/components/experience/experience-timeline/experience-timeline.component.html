@@ -2,6 +2,8 @@
   <app-section-heading [heading]="text.experience.title" [subtitle]="text.experience.subtitle" />
 
   <div #scroller class="timeline-scroller relative -mx-4 mt-10 overflow-x-auto px-4 pt-5 pb-2 sm:mx-0 sm:px-0">
+    <!-- WAI-ARIA tabs: focus sits on each tab button; the list handles the arrow keys as they bubble up. -->
+    <!-- eslint-disable-next-line @angular-eslint/template/interactive-supports-focus -->
     <div
       role="tablist"
       class="timeline-track relative flex min-w-max sm:min-w-0"

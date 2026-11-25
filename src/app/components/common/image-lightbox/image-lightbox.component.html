@@ -1,3 +1,5 @@
+<!-- A native dialog: the backdrop click is a mouse shortcut; keyboard users close it with Escape. -->
+<!-- eslint-disable-next-line @angular-eslint/template/interactive-supports-focus -->
 <dialog
   #dialog
   class="lightbox"
@@ -14,7 +16,15 @@
         @if (hasMany()) {
           <span class="lightbox-counter" aria-live="polite">{{ index() + 1 }} / {{ images().length }}</span>
         }
-        <button hlmBtn variant="ghost" size="icon" type="button" class="lightbox-close" [attr.aria-label]="text.lightbox.close" (click)="close()">
+        <button
+          hlmBtn
+          variant="ghost"
+          size="icon"
+          type="button"
+          class="lightbox-close"
+          [attr.aria-label]="text.lightbox.close"
+          (click)="close()"
+        >
           <ng-icon [name]="icon.close" size="22" />
         </button>
       </div>
@@ -27,10 +37,26 @@
       </figure>
 
       @if (hasMany()) {
-        <button hlmBtn variant="secondary" size="icon" type="button" class="lightbox-nav is-previous" [attr.aria-label]="text.lightbox.previous" (click)="step(-1)">
+        <button
+          hlmBtn
+          variant="secondary"
+          size="icon"
+          type="button"
+          class="lightbox-nav is-previous"
+          [attr.aria-label]="text.lightbox.previous"
+          (click)="step(-1)"
+        >
           <ng-icon [name]="icon.chevronLeft" size="22" />
         </button>
-        <button hlmBtn variant="secondary" size="icon" type="button" class="lightbox-nav is-next" [attr.aria-label]="text.lightbox.next" (click)="step(1)">
+        <button
+          hlmBtn
+          variant="secondary"
+          size="icon"
+          type="button"
+          class="lightbox-nav is-next"
+          [attr.aria-label]="text.lightbox.next"
+          (click)="step(1)"
+        >
           <ng-icon [name]="icon.chevronRight" size="22" />
         </button>
       }

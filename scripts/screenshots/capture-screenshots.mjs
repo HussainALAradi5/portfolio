@@ -33,16 +33,30 @@ const OPEN_PALETTE = `
   input.dispatchEvent(new Event('input'));`;
 const OPEN_LIGHTBOX = `document.querySelector('app-project-gallery button.preview').click();`;
 /** Shows a past role rather than the default current one. */
-const SELECT_ODOO_STOP =`document.querySelectorAll('app-experience-timeline [role="tab"]')[2].click();`;
+const SELECT_ODOO_STOP = `document.querySelectorAll('app-experience-timeline [role="tab"]')[2].click();`;
 
 const SHOTS = [
   { name: 'home-light', path: '/', scheme: 'light', device: DESKTOP, height: 1384 },
   { name: 'projects-dark', path: '/projects', scheme: 'dark', device: DESKTOP, height: 1416 },
   { name: 'project-detail-light', path: '/projects/fun-travels-tour', scheme: 'light', device: DESKTOP, height: 1384 },
-  { name: 'experience-dark', path: '/experience', scheme: 'dark', device: DESKTOP, height: 900, script: SELECT_ODOO_STOP },
+  {
+    name: 'experience-dark',
+    path: '/experience',
+    scheme: 'dark',
+    device: DESKTOP,
+    height: 900,
+    script: SELECT_ODOO_STOP,
+  },
   { name: 'skills-light', path: '/skills', scheme: 'light', device: DESKTOP, height: 820 },
   { name: 'command-palette-dark', path: '/', scheme: 'dark', device: DESKTOP, height: 820, script: OPEN_PALETTE },
-  { name: 'lightbox-dark', path: '/projects/fun-travels-tour', scheme: 'dark', device: DESKTOP, height: 820, script: OPEN_LIGHTBOX },
+  {
+    name: 'lightbox-dark',
+    path: '/projects/fun-travels-tour',
+    scheme: 'dark',
+    device: DESKTOP,
+    height: 820,
+    script: OPEN_LIGHTBOX,
+  },
   { name: 'home-mobile', path: '/', scheme: 'light', device: PHONE, height: 1400 },
 ];
 

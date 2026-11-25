@@ -8,14 +8,19 @@
         [class.is-core]="group.isCore"
       >
         <h3 class="flex items-center gap-3 font-semibold">
-          <span class="group-icon grid size-9 place-items-center rounded-lg bg-primary/10 text-primary" aria-hidden="true">
+          <span
+            class="group-icon grid size-9 place-items-center rounded-lg bg-primary/10 text-primary"
+            aria-hidden="true"
+          >
             <ng-icon [name]="group.icon" size="18" />
           </span>
           {{ group.title }}
         </h3>
         <ul class="mt-4 flex flex-wrap gap-2">
           @for (skill of group.skills; track skill.name) {
-            <li class="skill inline-flex items-center gap-1.5 rounded-lg border bg-background/60 px-3 py-1.5 text-sm font-medium">
+            <li
+              class="skill inline-flex items-center gap-1.5 rounded-lg border bg-background/60 px-3 py-1.5 text-sm font-medium"
+            >
               {{ skill.name }}
               @if (skill.note; as note) {
                 <span class="text-xs font-normal text-muted-foreground">{{ note }}</span>

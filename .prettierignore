@@ -1,0 +1,5 @@
+# Generated Spartan UI helm components; regenerate them with the Spartan CLI instead of reformatting.
+libs/
+dist/
+.angular/
+public/

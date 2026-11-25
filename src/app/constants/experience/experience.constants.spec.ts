@@ -21,9 +21,9 @@ describe('experience data', () => {
   });
 
   it('groups certificates from one organization in the same month into one stop', () => {
-    const certificateDates = EXPERIENCE.filter(
-      (entry) => entry.kind === ExperienceKind.Certification,
-    ).map(({ organization, start }) => `${organization} ${start.year}-${start.month}`);
+    const certificateDates = EXPERIENCE.filter((entry) => entry.kind === ExperienceKind.Certification).map(
+      ({ organization, start }) => `${organization} ${start.year}-${start.month}`,
+    );
     expect(new Set(certificateDates).size).toBe(certificateDates.length);
   });
 

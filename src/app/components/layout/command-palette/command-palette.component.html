@@ -1,4 +1,12 @@
-<dialog #dialog class="palette" [attr.aria-label]="text.palette.openLabel" (close)="onClosed()" (click)="onDialogClick($event)">
+<!-- A native dialog: the backdrop click is a mouse shortcut; keyboard users close it with Escape. -->
+<!-- eslint-disable-next-line @angular-eslint/template/click-events-have-key-events, @angular-eslint/template/interactive-supports-focus -->
+<dialog
+  #dialog
+  class="palette"
+  [attr.aria-label]="text.palette.openLabel"
+  (close)="onClosed()"
+  (click)="onDialogClick($event)"
+>
   <div class="palette-panel rounded-2xl border bg-popover text-popover-foreground shadow-2xl">
     <div class="flex items-center gap-3 border-b px-4">
       <ng-icon [name]="icon.search" size="18" class="shrink-0 text-muted-foreground" />
@@ -21,13 +29,23 @@
       />
     </div>
 
-    <div [id]="listboxId" role="listbox" class="palette-results max-h-[min(60vh,26rem)] overflow-y-auto p-2" [attr.aria-label]="text.palette.openLabel">
+    <div
+      [id]="listboxId"
+      role="listbox"
+      class="palette-results max-h-[min(60vh,26rem)] overflow-y-auto p-2"
+      [attr.aria-label]="text.palette.openLabel"
+    >
       @for (section of sections(); track section.group) {
         <div role="group" [attr.aria-labelledby]="listboxId + '-' + section.group">
-          <p [id]="listboxId + '-' + section.group" class="px-3 pt-3 pb-1 text-xs font-semibold tracking-wide text-muted-foreground uppercase">
+          <p
+            [id]="listboxId + '-' + section.group"
+            class="px-3 pt-3 pb-1 text-xs font-semibold tracking-wide text-muted-foreground uppercase"
+          >
             {{ section.label }}
           </p>
           @for (command of section.commands; track command.id) {
+            <!-- WAI-ARIA combobox: focus stays in the input and moves through options with aria-activedescendant. -->
+            <!-- eslint-disable-next-line @angular-eslint/template/click-events-have-key-events, @angular-eslint/template/interactive-supports-focus -->
             <div
               role="option"
               class="option flex cursor-pointer items-center gap-3 rounded-lg px-3 py-2.5 text-sm"

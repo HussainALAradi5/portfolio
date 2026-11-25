@@ -30,9 +30,7 @@ export const FANTASY_CARDS_PROJECT: Project = {
     { layer: TechLayer.Frontend, name: 'JavaScript' },
     { layer: TechLayer.Frontend, name: 'CSS' },
   ],
-  repositories: [
-    { role: RepositoryRole.Application, name: 'Fantasy_Cards', stack: 'React' },
-  ],
+  repositories: [{ role: RepositoryRole.Application, name: 'Fantasy_Cards', stack: 'React' }],
   links: [{ label: 'Play the game', url: 'https://fantasy_cards.surge.sh/' }],
   screenshots: [
     { src: `${IMAGES}/intro.webp`, caption: 'Intro screen' },
