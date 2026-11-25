@@ -107,11 +107,11 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .lightbox[open] {
-    animation: lightbox-fade 200ms ease-out;
+    animation: lightbox-fade var(--motion-base) var(--ease-standard);
   }
 
   .lightbox-image {
-    animation: lightbox-zoom 240ms cubic-bezier(0.22, 1, 0.36, 1);
+    animation: lightbox-zoom var(--motion-base) var(--ease-enter);
   }
 }
 

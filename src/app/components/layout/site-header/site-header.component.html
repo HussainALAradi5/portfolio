@@ -62,9 +62,14 @@
         type="button"
         [hlmTooltip]="text.nav.toggleTheme"
         [attr.aria-label]="text.nav.toggleTheme"
+        [attr.aria-pressed]="isDark()"
         (click)="toggleTheme()"
       >
-        <ng-icon [name]="themeIcon()" />
+        <!-- Both icons stay in place, so switching rotates and cross-fades one into the other. -->
+        <span class="theme-icons" aria-hidden="true">
+          <ng-icon [name]="icon.sun" class="theme-icon" [class.is-shown]="isDark()" />
+          <ng-icon [name]="icon.moon" class="theme-icon" [class.is-shown]="!isDark()" />
+        </span>
       </button>
     </nav>
   </div>

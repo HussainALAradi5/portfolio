@@ -32,7 +32,8 @@ export class SiteHeaderComponent {
   protected readonly experiencePath = `/${ROUTE_PATHS.experience}`;
   protected readonly skillsPath = `/${ROUTE_PATHS.skills}`;
   protected readonly shortcutLabel = paletteShortcutLabel(inject(DOCUMENT).defaultView?.navigator.userAgent ?? '');
-  protected readonly themeIcon = computed(() => (this.theme.mode() === ThemeMode.Dark ? ICON.sun : ICON.moon));
+  /** In dark mode the toggle shows the sun (switch to light), in light mode the moon. */
+  protected readonly isDark = computed(() => this.theme.mode() === ThemeMode.Dark);
 
   protected openPalette(): void {
     this.palette.open();
