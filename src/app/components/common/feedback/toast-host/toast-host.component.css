@@ -2,18 +2,22 @@
   display: contents;
 }
 
-/* Bottom centre on phones, bottom right on wider screens; clicks pass through the empty area. */
+/*
+ * Top right, just under the sticky header (3.5rem tall), so toasts never cover the page's own controls at the
+ * bottom of a phone screen. Clicks pass through the empty area around them.
+ */
 .toast-region {
   position: fixed;
-  inset: auto 1rem 1rem;
+  inset: calc(3.5rem + 0.75rem) 1rem auto;
   z-index: 70;
   pointer-events: none;
 }
 
+/* Newest on top: the list is in arrival order for screen readers and reversed on screen. */
 .toast-list {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: column-reverse;
+  align-items: flex-end;
   gap: 0.5rem;
 }
 
@@ -50,15 +54,11 @@
 
 @media (min-width: 40rem) {
   .toast-region {
-    inset: auto 1.5rem 1.5rem auto;
-  }
-
-  .toast-list {
-    align-items: flex-end;
+    inset: calc(3.5rem + 1rem) 1.5rem auto auto;
   }
 }
 
-/* Enter: slides up from the screen edge. Leave: fades and drops a little. Neither runs under reduced motion. */
+/* Enter: slides in from the right edge. Leave: fades and slides back out. Neither runs under reduced motion. */
 @media (prefers-reduced-motion: no-preference) {
   .toast-enter {
     animation: toast-in var(--motion-base) var(--ease-enter);
@@ -72,13 +72,13 @@
 @keyframes toast-in {
   from {
     opacity: 0;
-    transform: translateY(16px) scale(0.98);
+    transform: translateX(24px) scale(0.98);
   }
 }
 
 @keyframes toast-out {
   to {
     opacity: 0;
-    transform: translateY(6px) scale(0.98);
+    transform: translateX(12px) scale(0.98);
   }
 }
