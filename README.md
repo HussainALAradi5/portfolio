@@ -11,7 +11,7 @@ Personal portfolio of **Hussain Al Aradi**, Software Engineer. It shows nine pro
 | Page | What it shows |
 | --- | --- |
 | **Home** (`/`) | Everything at once: the hero (Download CV, GitHub, LinkedIn, Email and project totals), projects, experience and skills |
-| **Projects** (`/projects`) | Project cards with Full-stack platforms and Early projects filters |
+| **Projects** (`/projects`) | Project cards with Full-stack platforms and Games filters |
 | **Project page** (`/projects/<slug>`) | Overview, what it does, tech stack by layer, repositories, live links and a screenshot gallery that opens full screen |
 | **Experience** (`/experience`) | A horizontal timeline of work, education and certificates; selecting a stop shows what I did there, the dates and the length |
 | **Skills** (`/skills`) | The CV's skills in groups, core strengths first |

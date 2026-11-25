@@ -13,7 +13,7 @@ export const DUCK_STREET_PROJECT: Project = {
   tagline: 'Arcade road-crossing game in the browser',
   domain: 'Game',
   icon: 'lucideGamepad2',
-  tier: ProjectTier.Early,
+  tier: ProjectTier.Game,
   status: ProjectStatus.Live,
   period: 'May 2024',
   summary:

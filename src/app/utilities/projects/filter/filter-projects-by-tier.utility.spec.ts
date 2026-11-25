@@ -8,8 +8,8 @@ describe('filterProjectsByTier', () => {
   });
 
   it('keeps only the given tier', () => {
-    const early = filterProjectsByTier(PROJECTS, ProjectTier.Early);
-    expect(early.length).toBeGreaterThan(0);
-    expect(early.every((project) => project.tier === ProjectTier.Early)).toBe(true);
+    const games = filterProjectsByTier(PROJECTS, ProjectTier.Game);
+    expect(games.length).toBeGreaterThan(0);
+    expect(games.every((project) => project.tier === ProjectTier.Game)).toBe(true);
   });
 });

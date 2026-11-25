@@ -28,7 +28,7 @@ export const UI_TEXT = {
   },
   projects: {
     title: 'Selected projects',
-    subtitle: 'Multi-repository platforms first, then the earlier projects where I learned the basics.',
+    subtitle: 'Multi-repository platforms first, then the games I built.',
     filterLabel: 'Filter projects',
     empty: 'No projects match this filter.',
     viewDetails: 'View details',
