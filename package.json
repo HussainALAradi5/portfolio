@@ -25,7 +25,8 @@
           "parser": "angular"
         }
       }
-    ]
+    ],
+    "endOfLine": "auto"
   },
   "private": true,
   "packageManager": "npm@11.6.3",
