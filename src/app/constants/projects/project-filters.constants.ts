@@ -5,5 +5,5 @@ import { ProjectFilterOption } from '../../interfaces/projects/project-filter-op
 export const PROJECT_FILTER_OPTIONS: readonly ProjectFilterOption[] = [
   { value: ProjectFilter.All, label: 'All' },
   { value: ProjectFilter.Flagship, label: 'Full-stack platforms', tier: ProjectTier.Flagship },
-  { value: ProjectFilter.Early, label: 'Early projects', tier: ProjectTier.Early },
+  { value: ProjectFilter.Games, label: 'Games', tier: ProjectTier.Game },
 ];

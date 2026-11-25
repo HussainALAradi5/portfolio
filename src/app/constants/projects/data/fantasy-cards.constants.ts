@@ -13,7 +13,7 @@ export const FANTASY_CARDS_PROJECT: Project = {
   tagline: 'Card memory game for all ages',
   domain: 'Game',
   icon: 'lucideSparkles',
-  tier: ProjectTier.Early,
+  tier: ProjectTier.Game,
   status: ProjectStatus.Live,
   period: 'Aug 2024',
   summary:
