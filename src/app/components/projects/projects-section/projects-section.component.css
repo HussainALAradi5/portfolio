@@ -1,3 +1,68 @@
 :host {
   display: block;
 }
+
+/* The highlight replaces Spartan's per-tab background, so the active tab itself stays see-through. */
+.filter-list [role='tab'] {
+  position: relative;
+  z-index: 1;
+}
+
+.filter-list [role='tab'][data-state='active'] {
+  border-color: transparent;
+  background: transparent;
+  box-shadow: none;
+}
+
+/* Spans the list's inner area and is clipped to the active tab; clip-path keeps the corners round as it moves. */
+.tab-highlight {
+  position: absolute;
+  inset: 3px 0;
+  border-radius: calc(var(--radius) - 2px);
+  background: var(--background);
+  clip-path: inset(0 var(--highlight-right, 100%) 0 var(--highlight-left, 0) round calc(var(--radius) - 4px));
+  opacity: 0;
+  pointer-events: none;
+}
+
+:host-context(.dark) .tab-highlight {
+  background: color-mix(in oklch, var(--input) 60%, var(--muted));
+}
+
+.tab-highlight.is-ready {
+  opacity: 1;
+}
+
+/* Grid items wrap each card so the card keeps its own scroll reveal; display grid lets the card fill the row. */
+.card-slot {
+  display: grid;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .tab-highlight.is-ready {
+    transition: clip-path var(--motion-base) var(--ease-enter);
+  }
+
+  /* Cards rise in one after another; the stagger stops after the tenth so long lists don't drag. */
+  .card-enter {
+    animation: card-enter var(--motion-slow) var(--ease-enter) both;
+    animation-delay: calc(min(var(--enter-index), 9) * var(--motion-list-stagger));
+  }
+
+  .fade-enter {
+    animation: fade-enter var(--motion-base) var(--ease-standard) both;
+  }
+}
+
+@keyframes card-enter {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.98);
+  }
+}
+
+@keyframes fade-enter {
+  from {
+    opacity: 0;
+  }
+}
