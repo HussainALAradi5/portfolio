@@ -82,7 +82,9 @@
       @if (project.screenshots.length) {
         <app-project-gallery [screenshots]="project.screenshots" />
       } @else {
-        <p class="rounded-xl border border-dashed p-8 text-center text-muted-foreground">{{ text.detail.noScreenshots }}</p>
+        <p class="rounded-xl border border-dashed p-8 text-center text-muted-foreground">
+          {{ text.detail.noScreenshots }}
+        </p>
       }
     </section>
 

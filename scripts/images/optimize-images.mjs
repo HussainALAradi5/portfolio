@@ -25,8 +25,14 @@ let after = 0;
 for await (const file of walk(ROOT)) {
   const base = file.slice(0, -extname(file).length);
   before += (await stat(file)).size;
-  await sharp(file).resize({ width: FULL_WIDTH, withoutEnlargement: true }).webp({ quality: QUALITY }).toFile(`${base}.webp`);
-  await sharp(file).resize({ width: THUMB_WIDTH, withoutEnlargement: true }).webp({ quality: QUALITY }).toFile(`${base}.thumb.webp`);
+  await sharp(file)
+    .resize({ width: FULL_WIDTH, withoutEnlargement: true })
+    .webp({ quality: QUALITY })
+    .toFile(`${base}.webp`);
+  await sharp(file)
+    .resize({ width: THUMB_WIDTH, withoutEnlargement: true })
+    .webp({ quality: QUALITY })
+    .toFile(`${base}.thumb.webp`);
   after += (await stat(`${base}.webp`)).size + (await stat(`${base}.thumb.webp`)).size;
   await rm(file);
   console.log(`converted ${file}`);

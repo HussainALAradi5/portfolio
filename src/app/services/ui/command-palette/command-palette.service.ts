@@ -1,13 +1,17 @@
 import { Injectable, computed, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
+import { SITE_PROFILE } from '../../../config/site/site.config';
 import { UI_TEXT } from '../../../constants/common/ui-text.constants';
 import { ROUTE_PATHS } from '../../../constants/routes/route-paths.constants';
 import { ICON } from '../../../constants/ui/icons.constants';
 import { CommandGroup } from '../../../enums/command-palette/command-group.enum';
+import { FeedbackKind } from '../../../enums/ui/feedback-kind.enum';
 import { ThemeMode } from '../../../enums/ui/theme-mode.enum';
 import { PaletteCommand } from '../../../interfaces/command-palette/palette-command.interface';
 import { ProjectService } from '../../projects/project/project.service';
 import { CvDownloadService } from '../../site/cv-download/cv-download.service';
+import { ClipboardService } from '../clipboard/clipboard.service';
+import { FeedbackService } from '../feedback/feedback.service';
 import { ThemeService } from '../theme/theme.service';
 
 /** Open state of the command palette and the commands it can run: pages, projects and actions. */
@@ -16,6 +20,8 @@ export class CommandPaletteService {
   private readonly router = inject(Router);
   private readonly theme = inject(ThemeService);
   private readonly cvDownload = inject(CvDownloadService);
+  private readonly clipboard = inject(ClipboardService);
+  private readonly feedback = inject(FeedbackService);
   private readonly projects = inject(ProjectService).findAll();
 
   readonly isOpen = signal(false);
@@ -48,6 +54,15 @@ export class CommandPaletteService {
       run: () => void this.cvDownload.download(),
     },
     {
+      id: 'copy-email',
+      label: UI_TEXT.palette.copyEmail,
+      hint: SITE_PROFILE.email,
+      group: CommandGroup.Actions,
+      icon: ICON.copy,
+      keywords: ['email', 'mail', 'contact', 'copy'],
+      run: () => void this.copyEmail(),
+    },
+    {
       id: 'toggle-theme',
       label: this.theme.mode() === ThemeMode.Dark ? UI_TEXT.palette.switchToLight : UI_TEXT.palette.switchToDark,
       group: CommandGroup.Actions,
@@ -73,6 +88,16 @@ export class CommandPaletteService {
 
   toggle(): void {
     this.isOpen.update((isOpen) => !isOpen);
+  }
+
+  /** Copies the email address and says so; if the browser refuses, the toast shows the address instead. */
+  private async copyEmail(): Promise<void> {
+    const email = SITE_PROFILE.email;
+    if (await this.clipboard.copy(email)) {
+      this.feedback.notify(FeedbackKind.Success, UI_TEXT.palette.emailCopied);
+    } else {
+      this.feedback.notify(FeedbackKind.Error, `${UI_TEXT.palette.copyFailed} ${email}`);
+    }
   }
 
   private pageCommand(id: string, label: string, icon: PaletteCommand['icon'], path: string): PaletteCommand {

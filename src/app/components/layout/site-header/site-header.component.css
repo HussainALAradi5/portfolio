@@ -2,8 +2,32 @@
   display: block;
 }
 
-/* The page the visitor is on. */
+/* The page the visitor is on; the highlight fades in as the route changes. */
 .nav-active {
   background-color: color-mix(in oklch, var(--primary) 12%, transparent);
   color: var(--primary);
+}
+
+/* Sun and moon share one spot: the hidden one is turned and shrunk, the shown one turns into place. */
+.theme-icons {
+  display: grid;
+}
+
+.theme-icon {
+  grid-area: 1 / 1;
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.5);
+}
+
+.theme-icon.is-shown {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .theme-icon {
+    transition:
+      opacity var(--motion-base) var(--ease-standard),
+      transform var(--motion-base) var(--ease-enter);
+  }
 }

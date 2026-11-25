@@ -32,13 +32,16 @@ export class SiteHeaderComponent {
   protected readonly experiencePath = `/${ROUTE_PATHS.experience}`;
   protected readonly skillsPath = `/${ROUTE_PATHS.skills}`;
   protected readonly shortcutLabel = paletteShortcutLabel(inject(DOCUMENT).defaultView?.navigator.userAgent ?? '');
-  protected readonly themeIcon = computed(() => (this.theme.mode() === ThemeMode.Dark ? ICON.sun : ICON.moon));
+  /** In dark mode the toggle shows the sun (switch to light), in light mode the moon. */
+  protected readonly isDark = computed(() => this.theme.mode() === ThemeMode.Dark);
 
   protected openPalette(): void {
     this.palette.open();
   }
 
-  protected toggleTheme(): void {
-    this.theme.toggle();
+  /** The reveal starts from the centre of the toggle, so it works the same for clicks, taps and keyboard. */
+  protected toggleTheme(button: HTMLElement): void {
+    const box = button.getBoundingClientRect();
+    this.theme.toggle({ x: box.left + box.width / 2, y: box.top + box.height / 2 });
   }
 }

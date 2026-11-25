@@ -1,0 +1,84 @@
+:host {
+  display: contents;
+}
+
+/*
+ * Top right, just under the sticky header (3.5rem tall), so toasts never cover the page's own controls at the
+ * bottom of a phone screen. Clicks pass through the empty area around them.
+ */
+.toast-region {
+  position: fixed;
+  inset: calc(3.5rem + 0.75rem) 1rem auto;
+  z-index: 70;
+  pointer-events: none;
+}
+
+/* Newest on top: the list is in arrival order for screen readers and reversed on screen. */
+.toast-list {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.toast {
+  display: flex;
+  width: min(100%, 24rem);
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.625rem 0.625rem 0.625rem 0.875rem;
+  pointer-events: auto;
+}
+
+.toast-message {
+  flex: 1;
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.toast-dismiss {
+  color: var(--muted-foreground);
+}
+
+.toast[data-kind='success'] .toast-icon {
+  color: oklch(0.6 0.15 150);
+}
+
+.toast[data-kind='info'] .toast-icon {
+  color: var(--primary);
+}
+
+.toast[data-kind='error'] .toast-icon {
+  color: var(--destructive);
+}
+
+@media (min-width: 40rem) {
+  .toast-region {
+    inset: calc(3.5rem + 1rem) 1.5rem auto auto;
+  }
+}
+
+/* Enter: slides in from the right edge. Leave: fades and slides back out. Neither runs under reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  .toast-enter {
+    animation: toast-in var(--motion-base) var(--ease-enter);
+  }
+
+  .toast-leave {
+    animation: toast-out var(--motion-fast) var(--ease-exit) forwards;
+  }
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateX(24px) scale(0.98);
+  }
+}
+
+@keyframes toast-out {
+  to {
+    opacity: 0;
+    transform: translateX(12px) scale(0.98);
+  }
+}

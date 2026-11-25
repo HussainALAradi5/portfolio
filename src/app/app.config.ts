@@ -1,5 +1,5 @@
 import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
-import { provideRouter, withComponentInputBinding, withInMemoryScrolling } from '@angular/router';
+import { provideRouter, withComponentInputBinding, withInMemoryScrolling, withViewTransitions } from '@angular/router';
 import { provideIcons } from '@ng-icons/core';
 import { provideSpartanHlm } from '@spartan-ng/helm/utils';
 
@@ -13,6 +13,8 @@ export const appConfig: ApplicationConfig = {
       routes,
       withComponentInputBinding(),
       withInMemoryScrolling({ scrollPositionRestoration: 'top', anchorScrolling: 'enabled' }),
+      // Pages cross-fade as the route changes; the animation itself is in styles.css.
+      withViewTransitions({ skipInitialTransition: true }),
     ),
     provideSpartanHlm(),
     provideIcons(APP_ICONS),

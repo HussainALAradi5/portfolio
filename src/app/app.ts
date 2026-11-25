@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { ToastHostComponent } from './components/common/feedback/toast-host/toast-host.component';
 import { CommandPaletteComponent } from './components/layout/command-palette/command-palette.component';
 import { RouteProgressBarComponent } from './components/layout/route-progress-bar/route-progress-bar.component';
 import { SiteFooterComponent } from './components/layout/site-footer/site-footer.component';
@@ -8,7 +9,14 @@ import { ThemeService } from './services/ui/theme/theme.service';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CommandPaletteComponent, RouteProgressBarComponent, SiteHeaderComponent, SiteFooterComponent],
+  imports: [
+    RouterOutlet,
+    CommandPaletteComponent,
+    RouteProgressBarComponent,
+    SiteHeaderComponent,
+    SiteFooterComponent,
+    ToastHostComponent,
+  ],
   templateUrl: './app.html',
   styleUrl: './app.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
