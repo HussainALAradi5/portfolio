@@ -19,6 +19,12 @@ export const UI_TEXT = {
   cv: {
     download: 'Download CV',
     preparing: 'Preparing…',
+    downloaded: 'CV downloaded',
+    openedInTab: 'The download did not start, so the CV opened in a new tab.',
+  },
+  feedback: {
+    region: 'Notifications',
+    dismiss: 'Dismiss',
   },
   projects: {
     title: 'Selected projects',
@@ -57,6 +63,9 @@ export const UI_TEXT = {
     experience: 'Experience',
     skills: 'Skills',
     downloadCv: 'Download CV',
+    copyEmail: 'Copy email address',
+    emailCopied: 'Email address copied',
+    copyFailed: 'Could not copy. The address is',
     switchToDark: 'Switch to dark theme',
     switchToLight: 'Switch to light theme',
   },

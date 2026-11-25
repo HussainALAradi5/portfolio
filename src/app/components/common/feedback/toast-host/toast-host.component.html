@@ -1,0 +1,27 @@
+<section class="toast-region" [attr.aria-label]="text.feedback.region">
+  <ol class="toast-list" aria-live="polite">
+    @for (toast of feedback.toasts(); track toast.id) {
+      <li
+        class="toast rounded-xl border bg-popover text-popover-foreground shadow-lg"
+        [attr.data-kind]="toast.kind"
+        [attr.role]="toast.kind === errorKind ? 'alert' : null"
+        animate.enter="toast-enter"
+        animate.leave="toast-leave"
+      >
+        <ng-icon class="toast-icon" [name]="kindIcons[toast.kind]" size="18" />
+        <p class="toast-message">{{ toast.message }}</p>
+        <button
+          hlmBtn
+          variant="ghost"
+          size="icon-xs"
+          type="button"
+          class="toast-dismiss"
+          [attr.aria-label]="text.feedback.dismiss"
+          (click)="feedback.dismiss(toast.id)"
+        >
+          <ng-icon [name]="icon.close" />
+        </button>
+      </li>
+    }
+  </ol>
+</section>

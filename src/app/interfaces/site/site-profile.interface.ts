@@ -5,6 +5,7 @@ export interface SiteProfile {
   name: string;
   role: string;
   intro: string;
+  email: string;
   cv: CvFile;
   socialLinks: readonly SocialLink[];
 }

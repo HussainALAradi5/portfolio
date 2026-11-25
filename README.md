@@ -18,9 +18,11 @@ Personal portfolio of **Hussain Al Aradi**, Software Engineer. It shows nine pro
 
 Also on every page:
 
-- **Search** with **Ctrl + K** (**⌘ K** on a Mac) or the header button: pages, projects (matched by name, domain and technologies) and actions such as Download CV and switching the theme.
-- **Light and dark themes**, following the system setting until you choose one.
-- **Motion** (hero entrance, card reveal, timeline fill) that turns off under the system's reduce-motion setting.
+- **Search** with **Ctrl + K** (**⌘ K** on a Mac) or the header button: pages, projects (matched by name, domain and technologies) and actions such as Download CV, Copy email address and switching the theme.
+- **Light and dark themes**, following the system setting until you choose one; switching spreads the new theme in a circle from the toggle.
+- **Motion** from one set of tokens in `src/styles.css`: page transitions, hero entrance, card reveal, timeline fill, button presses and the sun/moon toggle. All of it turns off under the system's reduce-motion setting.
+- **Feedback**: a short toast confirms actions such as a CV download or a copied email address, and explains what happened when one fails.
+- **Touch-friendly**: on touch screens every button is at least 44 by 44 px.
 - **Link previews**: shared links show a card with my name, title and core stack on LinkedIn, WhatsApp, X and Slack.
 - Every action appears once: CV, GitHub, LinkedIn and Email live in the hero, and the header only navigates.
 

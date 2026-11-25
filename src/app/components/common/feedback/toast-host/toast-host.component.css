@@ -1,0 +1,84 @@
+:host {
+  display: contents;
+}
+
+/* Bottom centre on phones, bottom right on wider screens; clicks pass through the empty area. */
+.toast-region {
+  position: fixed;
+  inset: auto 1rem 1rem;
+  z-index: 70;
+  pointer-events: none;
+}
+
+.toast-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.toast {
+  display: flex;
+  width: min(100%, 24rem);
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.625rem 0.625rem 0.625rem 0.875rem;
+  pointer-events: auto;
+}
+
+.toast-message {
+  flex: 1;
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.toast-dismiss {
+  color: var(--muted-foreground);
+}
+
+.toast[data-kind='success'] .toast-icon {
+  color: oklch(0.6 0.15 150);
+}
+
+.toast[data-kind='info'] .toast-icon {
+  color: var(--primary);
+}
+
+.toast[data-kind='error'] .toast-icon {
+  color: var(--destructive);
+}
+
+@media (min-width: 40rem) {
+  .toast-region {
+    inset: auto 1.5rem 1.5rem auto;
+  }
+
+  .toast-list {
+    align-items: flex-end;
+  }
+}
+
+/* Enter: slides up from the screen edge. Leave: fades and drops a little. Neither runs under reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  .toast-enter {
+    animation: toast-in var(--motion-base) var(--ease-enter);
+  }
+
+  .toast-leave {
+    animation: toast-out var(--motion-fast) var(--ease-exit) forwards;
+  }
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+}
+
+@keyframes toast-out {
+  to {
+    opacity: 0;
+    transform: translateY(6px) scale(0.98);
+  }
+}
