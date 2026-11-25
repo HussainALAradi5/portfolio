@@ -60,6 +60,8 @@ Also on every page:
 npm ci
 npm start                    # http://localhost:4200
 npm test -- --watch=false    # unit tests (Vitest)
+npm run lint                 # ESLint with Angular and template accessibility rules
+npm run format:check         # Prettier (npm run format to fix)
 npm run build                # output: dist/portfolio/browser
 npm run images:optimize      # new PNG/JPG project screenshots to WebP + thumbnails
 npm run screenshots          # README screenshots in docs/screenshots (starts and stops its own server)
@@ -131,7 +133,7 @@ The site follows the CV, so change them together:
 
 Live at **https://hussainalaradi5.github.io/portfolio/**.
 
-`.github/workflows/deploy.yml` runs on every push to `master` (or by hand from the Actions tab): it installs, runs the unit tests, builds with `--base-href /portfolio/`, copies `index.html` to `404.html` so deep links such as `/portfolio/experience` load the app, and deploys to Pages. A failing test stops the deploy.
+`.github/workflows/deploy.yml` runs on every push to `master` (or by hand from the Actions tab): it installs, checks formatting and lint, runs the unit tests, builds with `--base-href /portfolio/`, copies `index.html` to `404.html` so deep links such as `/portfolio/experience` load the app, and deploys to Pages. A formatting or lint error, or a failing test, stops the deploy.
 
 One-time setup: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
 

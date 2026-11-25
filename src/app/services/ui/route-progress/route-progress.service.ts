@@ -1,13 +1,6 @@
 import { DestroyRef, Injectable, inject, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import {
-  Event,
-  NavigationCancel,
-  NavigationEnd,
-  NavigationError,
-  NavigationStart,
-  Router,
-} from '@angular/router';
+import { Event, NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router';
 import { ROUTE_PROGRESS } from '../../../constants/ui/route-progress.constants';
 
 /**
@@ -26,9 +19,7 @@ export class RouteProgressService {
   private trickleTimer?: ReturnType<typeof setInterval>;
 
   constructor() {
-    this.router.events
-      .pipe(takeUntilDestroyed(inject(DestroyRef)))
-      .subscribe((event) => this.handleRouterEvent(event));
+    this.router.events.pipe(takeUntilDestroyed(inject(DestroyRef))).subscribe((event) => this.handleRouterEvent(event));
   }
 
   private handleRouterEvent(event: Event): void {
@@ -54,7 +45,10 @@ export class RouteProgressService {
 
   private trickle(): void {
     this.value.update((value) =>
-      Math.min(ROUTE_PROGRESS.maxWhileLoading, value + (ROUTE_PROGRESS.maxWhileLoading - value) * ROUTE_PROGRESS.trickleRatio),
+      Math.min(
+        ROUTE_PROGRESS.maxWhileLoading,
+        value + (ROUTE_PROGRESS.maxWhileLoading - value) * ROUTE_PROGRESS.trickleRatio,
+      ),
     );
   }
 

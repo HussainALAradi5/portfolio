@@ -10,10 +10,13 @@
     "images:optimize": "node scripts/images/optimize-images.mjs",
     "screenshots": "node scripts/screenshots/capture-screenshots.mjs",
     "og:render": "node scripts/og/render-og-image.mjs",
-    "icons:favicon": "node scripts/icons/build-favicon-ico.mjs"
+    "icons:favicon": "node scripts/icons/build-favicon-ico.mjs",
+    "format": "prettier --write \"src/**/*.{ts,html,css}\" \"scripts/**/*.mjs\"",
+    "format:check": "prettier --check \"src/**/*.{ts,html,css}\" \"scripts/**/*.mjs\"",
+    "lint": "ng lint"
   },
   "prettier": {
-    "printWidth": 100,
+    "printWidth": 120,
     "singleQuote": true,
     "overrides": [
       {
@@ -49,13 +52,18 @@
     "@angular/build": "^21.0.4",
     "@angular/cli": "^21.0.4",
     "@angular/compiler-cli": "^21.0.0",
+    "@eslint/js": "^10.0.1",
     "@spartan-ng/cli": "^1.9.0",
     "@tailwindcss/postcss": "^4.1.12",
+    "angular-eslint": "21.4.0",
+    "eslint": "^10.3.0",
     "jsdom": "^27.1.0",
     "postcss": "^8.5.3",
+    "prettier": "^3.10.1",
     "sharp": "^0.35.5",
     "tailwindcss": "^4.1.12",
     "typescript": "~5.9.2",
+    "typescript-eslint": "8.59.2",
     "vitest": "^4.0.8"
   }
 }

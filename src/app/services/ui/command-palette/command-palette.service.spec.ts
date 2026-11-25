@@ -19,10 +19,15 @@ describe('CommandPaletteService', () => {
   });
 
   const service = () => TestBed.inject(CommandPaletteService);
-  const find = (id: string) => service().commands().find((command) => command.id === id)!;
+  const find = (id: string) =>
+    service()
+      .commands()
+      .find((command) => command.id === id)!;
 
   it('offers every page, every project and the actions', () => {
-    const groups = service().commands().map((command) => command.group);
+    const groups = service()
+      .commands()
+      .map((command) => command.group);
     expect(groups.filter((group) => group === CommandGroup.Pages)).toHaveLength(4);
     expect(groups.filter((group) => group === CommandGroup.Projects)).toHaveLength(PROJECTS.length);
     expect(groups.filter((group) => group === CommandGroup.Actions)).toHaveLength(2);
