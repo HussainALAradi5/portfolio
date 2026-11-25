@@ -39,7 +39,9 @@ export class SiteHeaderComponent {
     this.palette.open();
   }
 
-  protected toggleTheme(): void {
-    this.theme.toggle();
+  /** The reveal starts from the centre of the toggle, so it works the same for clicks, taps and keyboard. */
+  protected toggleTheme(button: HTMLElement): void {
+    const box = button.getBoundingClientRect();
+    this.theme.toggle({ x: box.left + box.width / 2, y: box.top + box.height / 2 });
   }
 }
