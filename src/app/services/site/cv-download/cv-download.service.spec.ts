@@ -1,5 +1,8 @@
 import { TestBed } from '@angular/core/testing';
 import { SITE_PROFILE } from '../../../config/site/site.config';
+import { UI_TEXT } from '../../../constants/common/ui-text.constants';
+import { FeedbackKind } from '../../../enums/ui/feedback-kind.enum';
+import { FeedbackService } from '../../ui/feedback/feedback.service';
 import { CvDownloadService } from './cv-download.service';
 
 describe('CvDownloadService', () => {
@@ -26,6 +29,11 @@ describe('CvDownloadService', () => {
     await download;
     expect(service.isDownloading()).toBe(false);
     expect(HTMLAnchorElement.prototype.click).toHaveBeenCalledOnce();
+    expect(
+      TestBed.inject(FeedbackService)
+        .toasts()
+        .map(({ kind, message }) => ({ kind, message })),
+    ).toEqual([{ kind: FeedbackKind.Success, message: UI_TEXT.cv.downloaded }]);
   });
 
   it('ignores clicks while a download is running', async () => {
@@ -45,5 +53,10 @@ describe('CvDownloadService', () => {
 
     expect(openSpy).toHaveBeenCalledWith(SITE_PROFILE.cv.url, '_blank', 'noopener');
     expect(service.isDownloading()).toBe(false);
+    expect(
+      TestBed.inject(FeedbackService)
+        .toasts()
+        .map(({ kind, message }) => ({ kind, message })),
+    ).toEqual([{ kind: FeedbackKind.Info, message: UI_TEXT.cv.openedInTab }]);
   });
 });
