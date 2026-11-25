@@ -1,7 +1,16 @@
 import { DOCUMENT } from '@angular/common';
 import { Injectable, effect, inject, signal } from '@angular/core';
-import { DARK_SCHEME_QUERY, DARK_THEME_CLASS, THEME_STORAGE_KEY } from '../../../constants/ui/theme.constants';
+import {
+  DARK_SCHEME_QUERY,
+  DARK_THEME_CLASS,
+  REDUCED_MOTION_QUERY,
+  THEME_REVEAL_X_VAR,
+  THEME_REVEAL_Y_VAR,
+  THEME_STORAGE_KEY,
+  THEME_TRANSITION_CLASS,
+} from '../../../constants/ui/theme.constants';
 import { ThemeMode } from '../../../enums/ui/theme-mode.enum';
+import { ScreenPoint } from '../../../interfaces/ui/screen-point.interface';
 
 @Injectable({ providedIn: 'root' })
 export class ThemeService {
@@ -11,13 +20,43 @@ export class ThemeService {
   constructor() {
     effect(() => {
       const mode = this.mode();
-      this.document.documentElement.classList.toggle(DARK_THEME_CLASS, mode === ThemeMode.Dark);
+      this.applyMode(mode);
       this.writeStoredMode(mode);
     });
   }
 
-  toggle(): void {
-    this.mode.update((mode) => (mode === ThemeMode.Dark ? ThemeMode.Light : ThemeMode.Dark));
+  /**
+   * Switches between light and dark. Where the browser supports view transitions and the visitor has not asked
+   * for reduced motion, the new theme spreads in a circle from `origin` (the toggle), or from the centre.
+   */
+  toggle(origin?: ScreenPoint): void {
+    const next = this.mode() === ThemeMode.Dark ? ThemeMode.Light : ThemeMode.Dark;
+    const root = this.document.documentElement;
+
+    if (!this.document.startViewTransition || this.prefersReducedMotion()) {
+      this.mode.set(next);
+      return;
+    }
+
+    const view = this.document.defaultView;
+    root.style.setProperty(THEME_REVEAL_X_VAR, `${origin?.x ?? (view?.innerWidth ?? 0) / 2}px`);
+    root.style.setProperty(THEME_REVEAL_Y_VAR, `${origin?.y ?? (view?.innerHeight ?? 0) / 2}px`);
+    root.classList.add(THEME_TRANSITION_CLASS);
+
+    // The DOM must change inside the callback, so the class is applied here rather than waiting for the effect.
+    const transition = this.document.startViewTransition(() => {
+      this.mode.set(next);
+      this.applyMode(next);
+    });
+    transition.finished.finally(() => root.classList.remove(THEME_TRANSITION_CLASS));
+  }
+
+  private applyMode(mode: ThemeMode): void {
+    this.document.documentElement.classList.toggle(DARK_THEME_CLASS, mode === ThemeMode.Dark);
+  }
+
+  private prefersReducedMotion(): boolean {
+    return this.document.defaultView?.matchMedia?.(REDUCED_MOTION_QUERY).matches ?? false;
   }
 
   private readInitialMode(): ThemeMode {

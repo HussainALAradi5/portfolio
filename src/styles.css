@@ -154,6 +154,63 @@
   }
 }
 
+/*
+ * Page changes (router view transitions): the old page fades out as the new one fades and rises in.
+ * The header keeps its own name, so it stays still while the page under it changes.
+ */
+:root:not(.theme-transition) app-site-header {
+  view-transition-name: site-header;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  ::view-transition-old(root) {
+    animation: page-leave var(--motion-page) var(--ease-exit) both;
+  }
+
+  ::view-transition-new(root) {
+    animation: page-enter var(--motion-page) var(--ease-enter) both;
+  }
+
+  /* Theme switch: the new colours spread in a circle from the toggle; the old page stays put underneath. */
+  :root.theme-transition::view-transition-old(root) {
+    animation: none;
+  }
+
+  :root.theme-transition::view-transition-new(root) {
+    animation: theme-reveal var(--motion-slow) var(--ease-enter) both;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
+
+@keyframes page-leave {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+@keyframes theme-reveal {
+  from {
+    clip-path: circle(0 at var(--theme-reveal-x, 50%) var(--theme-reveal-y, 0));
+  }
+  to {
+    clip-path: circle(150vmax at var(--theme-reveal-x, 50%) var(--theme-reveal-y, 0));
+  }
+}
+
 /* Keyboard keys, as in the search button and the command palette. */
 @layer base {
   kbd {
