@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, computed, input } from '@angular/co
 import { NgIcon } from '@ng-icons/core';
 import { HlmButton } from '@spartan-ng/helm/button';
 import { CvDownloadButtonComponent } from '../../common/cv-download-button/cv-download-button.component';
+import { CountUpDirective } from '../../../directives/motion/count-up/count-up.directive';
 import { SITE_PROFILE } from '../../../config/site/site.config';
 import { UI_TEXT } from '../../../constants/common/ui-text.constants';
 import { HeroStat } from '../../../interfaces/home/hero-stat.interface';
@@ -11,7 +12,7 @@ import { countRepositories } from '../../../utilities/projects/stats/count-repos
 
 @Component({
   selector: 'app-hero-section',
-  imports: [NgIcon, HlmButton, CvDownloadButtonComponent],
+  imports: [NgIcon, HlmButton, CvDownloadButtonComponent, CountUpDirective],
   templateUrl: './hero-section.component.html',
   styleUrl: './hero-section.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

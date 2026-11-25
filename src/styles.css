@@ -198,6 +198,50 @@
   }
 }
 
+/*
+ * Scroll reveal: headings, skill groups and project sections fade up as they scroll into view, where the browser
+ * supports scroll-driven animations. It animates transform, so hover lifts (which use translate) still work.
+ */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .scroll-reveal {
+      animation: scroll-reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 45%;
+    }
+  }
+}
+
+@keyframes scroll-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+}
+
+/* Arrow icons lean the way they point when their link or button is hovered or focused. */
+@media (prefers-reduced-motion: no-preference) {
+  [class*='icon-nudge-'] {
+    transition: transform var(--motion-base) var(--ease-enter);
+  }
+
+  :is(a, button):is(:hover, :focus-visible) .icon-nudge-right {
+    transform: translateX(3px);
+  }
+
+  :is(a, button):is(:hover, :focus-visible) .icon-nudge-left {
+    transform: translateX(-3px);
+  }
+
+  :is(a, button):is(:hover, :focus-visible) .icon-nudge-out {
+    transform: translate(2px, -2px);
+  }
+
+  :is(a, button):is(:hover, :focus-visible) .icon-nudge-down {
+    transform: translateY(2px);
+  }
+}
+
 /* Buttons respond to the press: a quick shrink that springs back, alongside Spartan's 1 px drop. */
 @media (prefers-reduced-motion: no-preference) {
   [data-slot='button'] {

@@ -46,7 +46,7 @@
           [attr.aria-label]="text.lightbox.previous"
           (click)="step(-1)"
         >
-          <ng-icon [name]="icon.chevronLeft" size="22" />
+          <ng-icon [name]="icon.chevronLeft" class="icon-nudge-left" size="22" />
         </button>
         <button
           hlmBtn
@@ -57,7 +57,7 @@
           [attr.aria-label]="text.lightbox.next"
           (click)="step(1)"
         >
-          <ng-icon [name]="icon.chevronRight" size="22" />
+          <ng-icon [name]="icon.chevronRight" class="icon-nudge-right" size="22" />
         </button>
       }
     </div>

@@ -1,7 +1,7 @@
 @if (project(); as project) {
   <article class="mx-auto max-w-6xl px-4 pt-8 sm:px-6">
     <a hlmBtn variant="ghost" size="sm" class="-ms-2" [routerLink]="projectsPath">
-      <ng-icon [name]="icon.arrowLeft" data-icon="inline-start" />
+      <ng-icon [name]="icon.arrowLeft" class="icon-nudge-left" data-icon="inline-start" />
       {{ text.detail.back }}
     </a>
 
@@ -23,7 +23,7 @@
             @for (link of project.links; track link.url; let first = $first) {
               <a hlmBtn [variant]="first ? 'default' : 'outline'" [href]="link.url" target="_blank" rel="noopener">
                 {{ link.label }}
-                <ng-icon [name]="icon.externalLink" data-icon="inline-end" />
+                <ng-icon [name]="icon.externalLink" class="icon-nudge-out" data-icon="inline-end" />
               </a>
             }
           </div>
@@ -36,12 +36,12 @@
 
     <div class="mt-12 grid gap-8 lg:grid-cols-[1.6fr_1fr]">
       <div class="space-y-10">
-        <section class="space-y-3">
+        <section class="scroll-reveal space-y-3">
           <h2 class="text-xl font-semibold tracking-tight">{{ text.detail.overview }}</h2>
           <p class="leading-relaxed text-muted-foreground">{{ project.summary }}</p>
         </section>
 
-        <section class="space-y-4">
+        <section class="scroll-reveal space-y-4">
           <h2 class="text-xl font-semibold tracking-tight">{{ text.detail.highlights }}</h2>
           <ul class="grid gap-3 sm:grid-cols-2">
             @for (highlight of project.highlights; track highlight) {
@@ -55,7 +55,7 @@
       </div>
 
       <aside class="space-y-6">
-        <section hlmCard>
+        <section hlmCard class="scroll-reveal">
           <div hlmCardHeader>
             <h2 hlmCardTitle class="flex items-center gap-2">
               <ng-icon [name]="icon.layers" />
@@ -67,7 +67,7 @@
           </div>
         </section>
 
-        <section class="space-y-3">
+        <section class="scroll-reveal space-y-3">
           <h2 class="flex items-center gap-2 font-semibold">
             <ng-icon [name]="icon.repository" />
             {{ text.detail.repositories }}
@@ -77,7 +77,7 @@
       </aside>
     </div>
 
-    <section class="mt-14 space-y-4">
+    <section class="scroll-reveal mt-14 space-y-4">
       <h2 class="text-xl font-semibold tracking-tight">{{ text.detail.gallery }}</h2>
       @if (project.screenshots.length) {
         <app-project-gallery [screenshots]="project.screenshots" />
@@ -95,7 +95,7 @@
         @if (neighbours().previous; as previous) {
           <a [routerLink]="[projectsPath, previous.slug]" class="group block rounded-lg p-3 hover:bg-muted/50">
             <span class="flex items-center gap-1 text-xs text-muted-foreground">
-              <ng-icon [name]="icon.arrowLeft" />
+              <ng-icon [name]="icon.arrowLeft" class="icon-nudge-left" />
               {{ text.detail.previous }}
             </span>
             <span class="font-medium group-hover:underline">{{ previous.name }}</span>
@@ -107,7 +107,7 @@
           <a [routerLink]="[projectsPath, next.slug]" class="group block rounded-lg p-3 hover:bg-muted/50">
             <span class="flex items-center justify-end gap-1 text-xs text-muted-foreground">
               {{ text.detail.next }}
-              <ng-icon [name]="icon.arrowRight" />
+              <ng-icon [name]="icon.arrowRight" class="icon-nudge-right" />
             </span>
             <span class="font-medium group-hover:underline">{{ next.name }}</span>
           </a>
