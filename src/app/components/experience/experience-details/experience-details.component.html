@@ -61,7 +61,7 @@
       @for (credential of credentials; track credential.url) {
         <a hlmBtn variant="outline" size="sm" [href]="credential.url" target="_blank" rel="noopener">
           {{ credential.label }}
-          <ng-icon [name]="icon.externalLink" data-icon="inline-end" />
+          <ng-icon [name]="icon.externalLink" class="icon-nudge-out" data-icon="inline-end" />
         </a>
       }
     </div>
