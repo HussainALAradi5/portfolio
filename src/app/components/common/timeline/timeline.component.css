@@ -1,0 +1,118 @@
+:host {
+  display: block;
+}
+
+.timeline {
+  /* Where the line runs; item templates read these to put their nodes on it. */
+  --timeline-line-x: 0.6875rem;
+  --timeline-node-centre: 24px;
+  position: relative;
+}
+
+.timeline-rail,
+.timeline-fill {
+  position: absolute;
+  border-radius: 999px;
+  pointer-events: none;
+}
+
+.timeline-rail {
+  background: var(--border);
+}
+
+.timeline-fill {
+  background: linear-gradient(90deg, oklch(0.72 0.15 225), var(--primary));
+}
+
+/* Horizontal: the line joins the centres of the first and last item's node (each item is 1/count wide). */
+.timeline[data-orientation='horizontal'] {
+  --rail-inset: calc(100% / var(--item-count) / 2);
+}
+
+.timeline[data-orientation='horizontal'] .timeline-rail,
+.timeline[data-orientation='horizontal'] .timeline-fill {
+  top: calc(var(--timeline-node-centre) - 1.5px);
+  right: var(--rail-inset);
+  left: var(--rail-inset);
+  height: 3px;
+}
+
+.timeline[data-orientation='horizontal'] .timeline-fill {
+  transform: scaleX(var(--progress));
+  transform-origin: left center;
+}
+
+.timeline[data-orientation='horizontal'] .timeline-items {
+  display: flex;
+  min-width: max-content;
+}
+
+.timeline[data-orientation='horizontal'] .timeline-slot {
+  display: flex;
+  width: 10rem;
+  flex-shrink: 0;
+}
+
+@media (min-width: 40rem) {
+  .timeline[data-orientation='horizontal'] .timeline-items {
+    min-width: 0;
+  }
+
+  .timeline[data-orientation='horizontal'] .timeline-slot {
+    width: auto;
+    flex: 1 1 0;
+  }
+}
+
+/* Vertical: the line runs down the left, fading out towards the end. */
+.timeline[data-orientation='vertical'] .timeline-rail {
+  top: 0.75rem;
+  bottom: 0.75rem;
+  left: var(--timeline-line-x);
+  width: 2px;
+  background: linear-gradient(180deg, var(--primary), color-mix(in oklch, var(--primary) 15%, transparent));
+}
+
+.timeline[data-orientation='vertical'] .timeline-fill {
+  top: 0.75rem;
+  bottom: 0.75rem;
+  left: var(--timeline-line-x);
+  width: 2px;
+  transform: scaleY(var(--progress));
+  transform-origin: center top;
+}
+
+.timeline[data-orientation='vertical'] .timeline-items {
+  display: grid;
+  gap: 2rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .timeline-fill {
+    transition: transform var(--motion-slow) var(--ease-enter);
+  }
+
+  /* Items enter one after another along the line; the stagger stops after the tenth. */
+  .timeline-enter {
+    animation: timeline-enter var(--motion-slow) var(--ease-enter) both;
+    animation-delay: calc(min(var(--enter-index), 9) * var(--motion-list-stagger));
+  }
+
+  .timeline[data-orientation='vertical'] .timeline-enter {
+    animation-name: timeline-enter-vertical;
+  }
+}
+
+@keyframes timeline-enter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+@keyframes timeline-enter-vertical {
+  from {
+    opacity: 0;
+    transform: translateX(-12px);
+  }
+}

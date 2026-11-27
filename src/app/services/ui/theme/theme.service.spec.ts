@@ -57,7 +57,7 @@ describe('ThemeService', () => {
     const installViewTransitions = (reducedMotion: boolean) => {
       startViewTransition = vi.fn((update: () => void) => {
         update();
-        return { finished: new Promise<void>((resolve) => (finish = resolve)) };
+        return { ready: Promise.resolve(), finished: new Promise<void>((resolve) => (finish = resolve)) };
       });
       Object.defineProperty(document, 'startViewTransition', { value: startViewTransition, configurable: true });
       Object.defineProperty(window, 'matchMedia', {

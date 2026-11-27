@@ -2,23 +2,7 @@
   display: block;
 }
 
-/* One line runs down the left; each year heading is a node on it and each project a dot. */
-.project-timeline {
-  --line-x: 0.6875rem;
-  position: relative;
-  display: grid;
-  gap: 2rem;
-}
-
-.project-timeline::before {
-  content: '';
-  position: absolute;
-  inset: 0.75rem auto 0.75rem var(--line-x);
-  width: 2px;
-  border-radius: 999px;
-  background: linear-gradient(180deg, var(--primary), color-mix(in oklch, var(--primary) 15%, transparent));
-}
-
+/* The shared timeline draws the line; each year heading is a node on it and each project a dot. */
 .timeline-heading {
   position: relative;
   display: flex;
@@ -29,7 +13,7 @@
 
 .timeline-node {
   position: absolute;
-  inset-inline-start: calc(var(--line-x) - 0.5rem + 1px);
+  inset-inline-start: calc(var(--timeline-line-x) - 0.5rem + 1px);
   width: 1rem;
   height: 1rem;
   border: 3px solid var(--background);
@@ -38,13 +22,13 @@
   box-shadow: 0 0 0 4px color-mix(in oklch, var(--primary) 22%, transparent);
 }
 
-.timeline-items {
+.timeline-entries {
   display: grid;
   gap: 0.875rem;
   margin-top: 1rem;
 }
 
-.timeline-item {
+.timeline-entry {
   position: relative;
   padding-inline-start: 2.25rem;
 }
@@ -52,7 +36,7 @@
 .timeline-dot {
   position: absolute;
   top: 1.75rem;
-  inset-inline-start: calc(var(--line-x) - 0.3125rem + 1px);
+  inset-inline-start: calc(var(--timeline-line-x) - 0.3125rem + 1px);
   width: 0.625rem;
   height: 0.625rem;
   border-radius: 999px;
@@ -60,7 +44,7 @@
   box-shadow: 0 0 0 2px color-mix(in oklch, var(--primary) 70%, transparent);
 }
 
-.timeline-item:hover .timeline-dot {
+.timeline-entry:hover .timeline-dot {
   background: var(--primary);
 }
 
@@ -81,24 +65,14 @@
     transition: background-color var(--motion-base) var(--ease-standard);
   }
 
-  .heading-enter {
-    animation: timeline-fade var(--motion-slow) var(--ease-enter) both;
-  }
-
   /* Entries slide in from the line one after another, the stagger stopping after the tenth. */
-  .item-enter {
-    animation: timeline-slide var(--motion-slow) var(--ease-enter) both;
+  .entry-enter {
+    animation: entry-slide var(--motion-slow) var(--ease-enter) both;
     animation-delay: calc(min(var(--enter-index), 9) * var(--motion-list-stagger));
   }
 }
 
-@keyframes timeline-fade {
-  from {
-    opacity: 0;
-  }
-}
-
-@keyframes timeline-slide {
+@keyframes entry-slide {
   from {
     opacity: 0;
     transform: translateX(-12px);

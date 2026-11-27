@@ -25,7 +25,7 @@ describe('ProjectTimelineComponent', () => {
     expect([...element.querySelectorAll('h3')].map((heading) => heading.textContent?.trim())).toEqual(
       groups.map((group) => group.label),
     );
-    const links = [...element.querySelectorAll<HTMLAnchorElement>('.timeline-item a')];
+    const links = [...element.querySelectorAll<HTMLAnchorElement>('.timeline-entry a')];
     expect(links.map((link) => link.getAttribute('href'))).toEqual(
       groups.flatMap((group) => group.projects.map((project) => `/projects/${project.slug}`)),
     );

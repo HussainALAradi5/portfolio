@@ -10,13 +10,16 @@ import {
 } from '../../../constants/projects/project-labels.constants';
 import { ROUTE_PATHS } from '../../../constants/routes/route-paths.constants';
 import { ICON } from '../../../constants/ui/icons.constants';
+import { TimelineItemDirective } from '../../../directives/ui/timeline-item/timeline-item.directive';
 import { ProjectGroup } from '../../../interfaces/projects/project-group.interface';
+import { projectTransitionName } from '../../../utilities/projects/transition/project-transition-name.utility';
+import { TimelineComponent } from '../../common/timeline/timeline.component';
 import { ProjectCoverComponent } from '../project-cover/project-cover.component';
 
-/** Projects down a vertical line, one heading per year (or type), each entry a compact linked card. */
+/** Projects on the shared vertical timeline: one heading per year (or type), each entry a compact linked card. */
 @Component({
   selector: 'app-project-timeline',
-  imports: [RouterLink, NgIcon, HlmBadge, ProjectCoverComponent],
+  imports: [RouterLink, NgIcon, HlmBadge, ProjectCoverComponent, TimelineComponent, TimelineItemDirective],
   templateUrl: './project-timeline.component.html',
   styleUrl: './project-timeline.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -30,4 +33,6 @@ export class ProjectTimelineComponent {
   protected readonly statusLabels = PROJECT_STATUS_LABELS;
   protected readonly statusVariants = PROJECT_STATUS_BADGE_VARIANTS;
   protected readonly projectsPath = `/${ROUTE_PATHS.projects}`;
+  protected readonly groupKey = (group: ProjectGroup): string => group.label;
+  protected readonly transitionName = projectTransitionName;
 }

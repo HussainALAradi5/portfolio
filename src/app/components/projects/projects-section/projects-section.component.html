@@ -29,7 +29,7 @@
               class="segment"
               [class.is-active]="preferences.sort() === option.value"
               [attr.aria-pressed]="preferences.sort() === option.value"
-              (click)="preferences.sort.set(option.value)"
+              (click)="changeSort(option.value)"
             >
               <ng-icon [name]="option.icon" size="15" />
               <span>{{ option.label }}</span>
@@ -45,7 +45,7 @@
               [attr.aria-pressed]="preferences.view() === option.value"
               [attr.aria-label]="option.label"
               [attr.title]="option.label"
-              (click)="preferences.view.set(option.value)"
+              (click)="changeView(option.value)"
             >
               <ng-icon [name]="option.icon" size="15" />
             </button>
@@ -65,7 +65,12 @@
               } @else {
                 <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                   @for (project of sortedProjects(); track project.slug; let index = $index) {
-                    <div class="card-slot" animate.enter="card-enter" [style.--enter-index]="index">
+                    <div
+                      class="card-slot"
+                      animate.enter="card-enter"
+                      [style.--enter-index]="index"
+                      [style.view-transition-name]="transitionName(project.slug)"
+                    >
                       <app-project-card [project]="project" [eager]="index < eagerCoverCount" />
                     </div>
                   }

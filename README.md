@@ -96,7 +96,7 @@ src/app/
 ├── utilities/              projects, experience/period, command-palette/{filter,shortcut}, routes/page-title, images/thumbnail
 ├── components/
 │   ├── layout/             header, footer, route progress bar, command palette
-│   ├── common/             section heading, CV download button, image lightbox, feedback/toast-host
+│   ├── common/             section heading, CV download button, image lightbox, feedback/toast-host, timeline (generic, horizontal or vertical)
 │   ├── home/               hero
 │   ├── projects/           projects section, card, cover, gallery, tech groups, repository list
 │   ├── experience/         timeline, details card

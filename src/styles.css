@@ -286,6 +286,35 @@
   }
 }
 
+/*
+ * Layout switch (projects grid, timeline, sort): each card glides and resizes into its new place while the rest
+ * of the page cross-fades; the cards' own entrance is skipped so they are not animated twice.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  :root.layout-transition::view-transition-group(*) {
+    animation-duration: var(--motion-slow);
+    animation-timing-function: var(--ease-in-out);
+  }
+
+  :root.layout-transition::view-transition-old(root) {
+    animation: page-leave var(--motion-base) var(--ease-exit) both;
+  }
+
+  :root.layout-transition::view-transition-new(root) {
+    animation: layout-fade-in var(--motion-slow) var(--ease-standard) both;
+  }
+
+  :root.layout-transition :is(.card-enter, .entry-enter, .timeline-enter) {
+    animation: none;
+  }
+}
+
+@keyframes layout-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   ::view-transition-group(*),
   ::view-transition-old(*),

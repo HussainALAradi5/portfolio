@@ -48,6 +48,8 @@ export class ThemeService {
       this.mode.set(next);
       this.applyMode(next);
     });
+    // The browser may skip the animation (hidden tab, layout change); the theme has still switched, so that is fine.
+    transition.ready.catch(() => undefined);
     transition.finished.finally(() => root.classList.remove(THEME_TRANSITION_CLASS));
   }
 
