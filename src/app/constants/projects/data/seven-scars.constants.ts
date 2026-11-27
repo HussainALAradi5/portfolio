@@ -45,13 +45,16 @@ export const SEVEN_SCARS_PROJECT: Project = {
   ],
   repositories: [],
   links: [{ label: 'Play the beta', url: 'https://hussainalaradi5.github.io/seven-scars-play/' }],
-  // Concept art from the game's design repository: the store key art, chapter covers and ride spreads.
+  // The official key art set from the game's design repository, after the store feature graphic as the card cover.
   screenshots: [
-    { src: `${IMAGES}/01-key-art.webp`, caption: 'Key art' },
-    { src: `${IMAGES}/02-cover-burning-docks.webp`, caption: 'Chapter 1 cover: The Burning Docks' },
-    { src: `${IMAGES}/03-cover-chapter-2.webp`, caption: 'Chapter 2 cover' },
-    { src: `${IMAGES}/04-ride-speedboat.webp`, caption: 'Ride spread: speedboat escape' },
-    { src: `${IMAGES}/05-ride-motorbike.webp`, caption: 'Ride spread: motorbike chase' },
-    { src: `${IMAGES}/06-ride-train-roof.webp`, caption: 'Ride spread: train-roof fight' },
+    { src: `${IMAGES}/01-feature.webp`, caption: 'Store feature graphic' },
+    { src: `${IMAGES}/02-key-main.webp`, caption: 'Key art: Rook before the Tide under the Blood Moon' },
+    { src: `${IMAGES}/03-key-rook.webp`, caption: 'Key art: Rook' },
+    { src: `${IMAGES}/04-key-the-tide.webp`, caption: 'Key art: The Tide' },
+    { src: `${IMAGES}/05-key-lira.webp`, caption: 'Key art: Lira' },
+    { src: `${IMAGES}/06-key-vesk.webp`, caption: 'Key art: Vesk under the Blood Moon' },
+    { src: `${IMAGES}/07-key-the-duel.webp`, caption: 'Key art: The final duel' },
+    { src: `${IMAGES}/08-key-the-choice.webp`, caption: 'Key art: The final choice' },
+    { src: `${IMAGES}/09-key-ash-dragon.webp`, caption: 'Key art: The Ash Dragon' },
   ],
 };
