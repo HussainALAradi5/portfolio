@@ -67,13 +67,15 @@
           </div>
         </section>
 
-        <section class="scroll-reveal space-y-3">
-          <h2 class="flex items-center gap-2 font-semibold">
-            <ng-icon [name]="icon.repository" />
-            {{ text.detail.repositories }}
-          </h2>
-          <app-project-repository-list [repositories]="project.repositories" />
-        </section>
+        @if (project.repositories.length) {
+          <section class="scroll-reveal space-y-3">
+            <h2 class="flex items-center gap-2 font-semibold">
+              <ng-icon [name]="icon.repository" />
+              {{ text.detail.repositories }}
+            </h2>
+            <app-project-repository-list [repositories]="project.repositories" />
+          </section>
+        }
       </aside>
     </div>
 

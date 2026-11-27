@@ -40,11 +40,16 @@
   </div>
 
   <div hlmCardFooter class="mt-5 justify-between gap-2 border-t py-4">
-    <span class="flex items-center gap-1.5 text-xs text-muted-foreground">
-      <ng-icon [name]="icon.repository" />
-      {{ repositoryCount() }}
-      {{ repositoryCount() === 1 ? text.projects.repository : text.projects.repositories }}
-    </span>
+    <!-- Projects with private code list no repositories, so the count is left out rather than showing 0. -->
+    @if (repositoryCount()) {
+      <span class="flex items-center gap-1.5 text-xs text-muted-foreground">
+        <ng-icon [name]="icon.repository" />
+        {{ repositoryCount() }}
+        {{ repositoryCount() === 1 ? text.projects.repository : text.projects.repositories }}
+      </span>
+    } @else {
+      <span></span>
+    }
     <a hlmBtn variant="ghost" size="sm" [routerLink]="detailLink()">
       {{ text.projects.viewDetails }}
       <ng-icon [name]="icon.arrowRight" class="icon-nudge-right" data-icon="inline-end" />
