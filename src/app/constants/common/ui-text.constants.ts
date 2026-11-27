@@ -34,6 +34,10 @@ export const UI_TEXT = {
     viewDetails: 'View details',
     repositories: 'repositories',
     repository: 'repository',
+    project: 'project',
+    projectsCount: 'projects',
+    sortLabel: 'Sort projects',
+    viewLabel: 'Show projects as',
   },
   experience: {
     title: 'Experience',

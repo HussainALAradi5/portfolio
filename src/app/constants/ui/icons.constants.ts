@@ -1,6 +1,11 @@
 import {
   lucideArrowLeft,
   lucideArrowRight,
+  lucideArrowDownWideNarrow,
+  lucideArrowUpNarrowWide,
+  lucideGitCommitVertical,
+  lucideLayoutGrid,
+  lucideShapes,
   lucideAward,
   lucideBookOpen,
   lucideBriefcase,
@@ -55,6 +60,11 @@ import type { AppIconName } from '../../types/ui/app-icon-name.type';
 export const APP_ICONS = {
   lucideArrowLeft,
   lucideArrowRight,
+  lucideArrowDownWideNarrow,
+  lucideArrowUpNarrowWide,
+  lucideGitCommitVertical,
+  lucideLayoutGrid,
+  lucideShapes,
   lucideAward,
   lucideBookOpen,
   lucideBriefcase,
