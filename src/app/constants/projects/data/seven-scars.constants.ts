@@ -45,8 +45,10 @@ export const SEVEN_SCARS_PROJECT: Project = {
   ],
   repositories: [],
   links: [{ label: 'Play the beta', url: 'https://hussainalaradi5.github.io/seven-scars-play/' }],
-  // The official key art set from the game's design repository, after the store feature graphic as the card cover.
+  // The game's logo first (centred on a 16:10 brand background, so it is the card cover), then the store feature
+  // graphic and the official key art set from the game's design repository.
   screenshots: [
+    { src: `${IMAGES}/00-logo-cover.webp`, caption: 'Seven Scars logo' },
     { src: `${IMAGES}/01-feature.webp`, caption: 'Store feature graphic' },
     { src: `${IMAGES}/02-key-main.webp`, caption: 'Key art: Rook before the Tide under the Blood Moon' },
     { src: `${IMAGES}/03-key-rook.webp`, caption: 'Key art: Rook' },
