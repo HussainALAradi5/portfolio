@@ -2,25 +2,22 @@
   <app-section-heading [heading]="text.experience.title" [subtitle]="text.experience.subtitle" />
 
   <div #scroller class="timeline-scroller relative -mx-4 mt-10 overflow-x-auto px-4 pt-5 pb-2 sm:mx-0 sm:px-0">
-    <!-- WAI-ARIA tabs: focus sits on each tab button; the list handles the arrow keys as they bubble up. -->
-    <!-- eslint-disable-next-line @angular-eslint/template/interactive-supports-focus -->
-    <div
-      role="tablist"
-      class="timeline-track relative flex min-w-max sm:min-w-0"
-      [style.--stop-count]="entries.length"
-      [style.--progress]="progress()"
-      [attr.aria-label]="text.experience.stopsLabel"
+    <!-- WAI-ARIA tabs on the shared timeline: focus sits on each tab button; arrow keys are handled as they bubble up. -->
+    <app-timeline
+      listRole="tablist"
+      [items]="entries"
+      [itemKey]="entryKey"
+      [orientation]="horizontal"
+      [progress]="progress()"
+      [label]="text.experience.stopsLabel"
       (keydown)="onKeydown($event)"
     >
-      <span class="timeline-rail" aria-hidden="true"></span>
-      <span class="timeline-fill" aria-hidden="true"></span>
-
-      @for (entry of entries; track entry.id; let index = $index) {
+      <ng-template [appTimelineItem]="entries" let-entry let-index="index">
         <button
           #stop
           type="button"
           role="tab"
-          class="stop group relative flex w-40 shrink-0 flex-col items-center gap-3 px-2 pb-2 text-center outline-none sm:w-auto sm:flex-1"
+          class="stop group relative flex w-full flex-col items-center gap-3 px-2 pb-2 text-center outline-none"
           [class.is-selected]="index === selectedIndex()"
           [class.is-current]="entry.end === null"
           [attr.aria-selected]="index === selectedIndex()"
@@ -35,8 +32,8 @@
           <span class="stop-title text-sm leading-snug font-semibold">{{ entry.title }}</span>
           <span class="text-xs leading-snug text-muted-foreground">{{ entry.organization }}</span>
         </button>
-      }
-    </div>
+      </ng-template>
+    </app-timeline>
   </div>
 
   <p class="mt-2 text-center text-xs text-muted-foreground">{{ text.experience.hint }}</p>

@@ -2,35 +2,6 @@
   display: block;
 }
 
-/* The rail runs between the centres of the first and last stop node (each stop is 1/count wide). */
-.timeline-track {
-  --node-centre: 24px;
-  --rail-inset: calc(100% / var(--stop-count) / 2);
-}
-
-.timeline-rail,
-.timeline-fill {
-  position: absolute;
-  top: calc(var(--node-centre) - 1.5px);
-  left: var(--rail-inset);
-  height: 3px;
-  border-radius: 999px;
-}
-
-.timeline-rail {
-  right: var(--rail-inset);
-  background: var(--border);
-}
-
-.timeline-fill {
-  /* Full length, scaled to the progress: transform animates smoothly where width would not. */
-  right: var(--rail-inset);
-  transform: scaleX(var(--progress));
-  transform-origin: left center;
-  background: linear-gradient(90deg, oklch(0.72 0.15 225), var(--primary));
-  transition: transform var(--motion-slow) var(--ease-enter);
-}
-
 .stop {
   cursor: pointer;
   border-radius: 1rem;
@@ -87,7 +58,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .timeline-fill,
   .stop-node {
     transition: none;
   }

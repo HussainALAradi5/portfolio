@@ -1,0 +1,80 @@
+:host {
+  display: block;
+}
+
+/* The shared timeline draws the line; each year heading is a node on it and each project a dot. */
+.timeline-heading {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding-inline-start: 2.25rem;
+}
+
+.timeline-node {
+  position: absolute;
+  inset-inline-start: calc(var(--timeline-line-x) - 0.5rem + 1px);
+  width: 1rem;
+  height: 1rem;
+  border: 3px solid var(--background);
+  border-radius: 999px;
+  background: var(--primary);
+  box-shadow: 0 0 0 4px color-mix(in oklch, var(--primary) 22%, transparent);
+}
+
+.timeline-entries {
+  display: grid;
+  gap: 0.875rem;
+  margin-top: 1rem;
+}
+
+.timeline-entry {
+  position: relative;
+  padding-inline-start: 2.25rem;
+}
+
+.timeline-dot {
+  position: absolute;
+  top: 1.75rem;
+  inset-inline-start: calc(var(--timeline-line-x) - 0.3125rem + 1px);
+  width: 0.625rem;
+  height: 0.625rem;
+  border-radius: 999px;
+  background: var(--background);
+  box-shadow: 0 0 0 2px color-mix(in oklch, var(--primary) 70%, transparent);
+}
+
+.timeline-entry:hover .timeline-dot {
+  background: var(--primary);
+}
+
+/* The cover keeps its 16:10 box, so it shows its skeleton while loading and never shifts the row. */
+.timeline-cover {
+  align-self: flex-start;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .timeline-card {
+    transition:
+      translate var(--motion-base) var(--ease-standard),
+      border-color var(--motion-base) var(--ease-standard),
+      box-shadow var(--motion-base) var(--ease-standard);
+  }
+
+  .timeline-dot {
+    transition: background-color var(--motion-base) var(--ease-standard);
+  }
+
+  /* Entries slide in from the line one after another, the stagger stopping after the tenth. */
+  .entry-enter {
+    animation: entry-slide var(--motion-slow) var(--ease-enter) both;
+    animation-delay: calc(min(var(--enter-index), 9) * var(--motion-list-stagger));
+  }
+}
+
+@keyframes entry-slide {
+  from {
+    opacity: 0;
+    transform: translateX(-12px);
+  }
+}

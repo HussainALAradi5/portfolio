@@ -11,7 +11,7 @@ Personal portfolio of **Hussain Al Aradi**, Software Engineer. It shows ten proj
 | Page | What it shows |
 | --- | --- |
 | **Home** (`/`) | Everything at once: the hero (Download CV, GitHub, LinkedIn, Email and project totals), projects, experience and skills |
-| **Projects** (`/projects`) | Project cards with Full-stack platforms and Games filters |
+| **Projects** (`/projects`) | Full-stack platforms and Games filters, sorted newest, oldest or by type, as a grid (the default) or a timeline grouped by year or type; the choice is remembered |
 | **Project page** (`/projects/<slug>`) | Overview, what it does, tech stack by layer, repositories, live links and a screenshot gallery that opens full screen |
 | **Experience** (`/experience`) | A horizontal timeline of work, education and certificates; selecting a stop shows what I did there, the dates and the length |
 | **Skills** (`/skills`) | The CV's skills in groups, core strengths first |
@@ -96,7 +96,7 @@ src/app/
 ├── utilities/              projects, experience/period, command-palette/{filter,shortcut}, routes/page-title, images/thumbnail
 ├── components/
 │   ├── layout/             header, footer, route progress bar, command palette
-│   ├── common/             section heading, CV download button, image lightbox, feedback/toast-host
+│   ├── common/             section heading, CV download button, image lightbox, feedback/toast-host, timeline (generic, horizontal or vertical)
 │   ├── home/               hero
 │   ├── projects/           projects section, card, cover, gallery, tech groups, repository list
 │   ├── experience/         timeline, details card

@@ -9,6 +9,9 @@ import {
   viewChildren,
 } from '@angular/core';
 import { NgIcon } from '@ng-icons/core';
+import { TimelineItemDirective } from '../../../directives/ui/timeline-item/timeline-item.directive';
+import { TimelineOrientation } from '../../../enums/ui/timeline-orientation.enum';
+import { ExperienceEntry } from '../../../interfaces/experience/experience-entry.interface';
 import { UI_TEXT } from '../../../constants/common/ui-text.constants';
 import { EXPERIENCE_KIND_STYLES } from '../../../constants/experience/experience-labels.constants';
 import { EXPERIENCE } from '../../../constants/experience/experience.constants';
@@ -16,6 +19,7 @@ import { KEY } from '../../../constants/ui/keyboard.constants';
 import { YearMonth } from '../../../interfaces/experience/year-month.interface';
 import { formatPeriod } from '../../../utilities/experience/period/format-period.utility';
 import { SectionHeadingComponent } from '../../common/section-heading/section-heading.component';
+import { TimelineComponent } from '../../common/timeline/timeline.component';
 import { ExperienceDetailsComponent } from '../experience-details/experience-details.component';
 
 const now = new Date();
@@ -27,7 +31,7 @@ const PANEL_ID = 'experience-details';
  */
 @Component({
   selector: 'app-experience-timeline',
-  imports: [NgIcon, SectionHeadingComponent, ExperienceDetailsComponent],
+  imports: [NgIcon, SectionHeadingComponent, ExperienceDetailsComponent, TimelineComponent, TimelineItemDirective],
   templateUrl: './experience-timeline.component.html',
   styleUrl: './experience-timeline.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -40,6 +44,8 @@ export class ExperienceTimelineComponent {
   protected readonly panelId = PANEL_ID;
   protected readonly kindStyles = EXPERIENCE_KIND_STYLES;
   protected readonly entries = EXPERIENCE;
+  protected readonly horizontal = TimelineOrientation.Horizontal;
+  protected readonly entryKey = (entry: ExperienceEntry): string => entry.id;
   protected readonly stopPeriods = EXPERIENCE.map(({ start, end }) => formatPeriod(start, end));
   /** Ongoing roles count their length up to the current month. */
   protected readonly today: YearMonth = { year: now.getFullYear(), month: now.getMonth() + 1 };

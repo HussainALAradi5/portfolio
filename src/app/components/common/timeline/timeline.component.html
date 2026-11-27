@@ -1,0 +1,27 @@
+<div
+  class="timeline"
+  [attr.data-orientation]="orientation()"
+  [style.--item-count]="items().length"
+  [style.--progress]="progress() ?? 0"
+>
+  <span class="timeline-rail" aria-hidden="true"></span>
+  @if (progress() !== null) {
+    <span class="timeline-fill" aria-hidden="true"></span>
+  }
+
+  <div class="timeline-items" [attr.role]="listRole()" [attr.aria-label]="label() || null">
+    @for (item of items(); track itemKey()(item); let index = $index) {
+      <div
+        class="timeline-slot"
+        [attr.role]="listRole() === 'tablist' ? 'presentation' : 'listitem'"
+        animate.enter="timeline-enter"
+        [style.--enter-index]="index"
+      >
+        <ng-container
+          [ngTemplateOutlet]="itemTemplate().template"
+          [ngTemplateOutletContext]="{ $implicit: item, index }"
+        />
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,53 @@
+<app-timeline [items]="groups()" [itemKey]="groupKey" [label]="text.projects.title">
+  <ng-template [appTimelineItem]="groups()" let-group>
+    <div class="timeline-heading">
+      <span class="timeline-node" aria-hidden="true"></span>
+      <h3 class="text-lg font-semibold tracking-tight">{{ group.label }}</h3>
+      <span hlmBadge variant="secondary">
+        {{ group.projects.length }}
+        {{ group.projects.length === 1 ? text.projects.project : text.projects.projectsCount }}
+      </span>
+    </div>
+
+    <ol class="timeline-entries">
+      @for (project of group.projects; track project.slug; let index = $index) {
+        <li class="timeline-entry" animate.enter="entry-enter" [style.--enter-index]="index">
+          <span class="timeline-dot" aria-hidden="true"></span>
+          <!-- Same transition name as the project's grid card, so switching views glides the card between layouts. -->
+          <a
+            [routerLink]="[projectsPath, project.slug]"
+            class="timeline-card group flex gap-4 rounded-xl border bg-card p-3 hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/10 sm:p-4"
+            [style.view-transition-name]="transitionName(project.slug)"
+          >
+            <div class="timeline-cover w-24 shrink-0 overflow-hidden rounded-lg border sm:w-40">
+              <app-project-cover [project]="project" />
+            </div>
+            <div class="min-w-0 flex-1">
+              <div class="flex flex-wrap items-center gap-1.5">
+                <span hlmBadge variant="secondary">
+                  <ng-icon [name]="project.icon" />
+                  {{ project.domain }}
+                </span>
+                <span hlmBadge [variant]="statusVariants[project.status]">{{ statusLabels[project.status] }}</span>
+                <span class="text-xs text-muted-foreground">{{ project.period }}</span>
+              </div>
+              <h4 class="mt-1.5 font-semibold tracking-tight transition-colors group-hover:text-primary">
+                {{ project.name }}
+              </h4>
+              <p class="line-clamp-2 text-sm text-muted-foreground">{{ project.tagline }}</p>
+              <div class="mt-2 hidden flex-wrap gap-1 sm:flex">
+                @for (tech of project.tech.slice(0, techLimit); track tech.name) {
+                  <span hlmBadge variant="outline">{{ tech.name }}</span>
+                }
+              </div>
+            </div>
+            <ng-icon
+              [name]="icon.arrowRight"
+              class="icon-nudge-right hidden shrink-0 self-center text-muted-foreground sm:block"
+            />
+          </a>
+        </li>
+      }
+    </ol>
+  </ng-template>
+</app-timeline>
